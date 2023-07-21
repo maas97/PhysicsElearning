@@ -29,6 +29,7 @@ exports.addDayOfCourse=(request,response,next)=>{
     new daysOfCourseSchema({
         educationalLevel:request.body.educationalLevel,
         semester:request.body.semester,
+        dayNumber:request.body.dayNumber,
     }).save()// insertOne
     .then(data=>{
         response.status(201).json({data});
@@ -49,6 +50,7 @@ exports.updateDayofCourse=(request,response,next)=>{
             $set:{
                 educationalLevel:request.body.educationalLevel,
                 semester:request.body.semester,
+                dayNumber:request.body.dayNumber,
             }
         })   
     })

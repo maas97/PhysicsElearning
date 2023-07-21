@@ -8,6 +8,7 @@ exports.post = [
 exports.update = [
     body("educationalLevel").isString().withMessage("Educational Level must be string"),
     body("semester").isString().withMessage("semester must be string"),
+    body("dayNumber").isNumeric().withMessage("Day must be Number"),
 ];
 
 exports.delete = [
