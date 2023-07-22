@@ -1,17 +1,34 @@
-<%- include('partials/header'); -%>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav>
+    <h1><a href="home">Physics</a></h1>
+  </nav>
 
-<form action="/signup">
+
+
+
+
+<form action="home">
   <h2>Login</h2>
   <label for="email">Email</label>
   <input type="text" name="email" required />
-  <div class="email error">some error</div>
+  <!-- <div class="email error">some error</div> -->
   <label for="password">Password</label>
   <input type="password" name="password" required />
   <div class="password error"></div>
   <button>login</button>
 </form>
 
-<%- include('partials/footer'); -%>
+<footer>Copyright Physics platform</footer>
+
+
+
 
 <script>
   const form = document.querySelector('form');
@@ -26,3 +43,5 @@
     console.log(email, password);
   });
 </script>
+</body>
+</html>

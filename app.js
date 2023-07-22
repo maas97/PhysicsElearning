@@ -37,9 +37,9 @@ app.use(
         origin: "*",
     })
 );
-
-app.use(morgan("combined"));
 app.use(express.static('public'));
+app.use(morgan("combined"));
+app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -51,7 +51,6 @@ app.use(contentOfCourseRoute);
 app.use(productRoute);
 app.use(quizRoute);
 app.use(authRoute);
-app.set('view engine', 'ejs');
 
 // app.use(login); // Auth After Log in
 // app.use(auth);

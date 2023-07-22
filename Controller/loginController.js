@@ -33,6 +33,10 @@ module.exports.login_get = (req, res) => {
   res.render('login');
 }
 
+module.exports.home = (req, res) => {
+  res.render('home');
+}
+
 // module.exports.signup_post = async (req, res) => {
 //   const { email, password } = req.body;
 
