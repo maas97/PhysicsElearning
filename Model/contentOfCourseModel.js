@@ -1,9 +1,5 @@
 const mongoose = require("mongoose")
 
-
-const validGovernates = ['Cairo', 'Alexandria', 'Giza', 'Kafr El Sheikh', 'Al Dakahlia']; // Add more if needed
-const validCities = ['Qallin', "El Hamool", "El Reyad", "Desouk", "Metoubes", "Fuwa", "Sidi Salem"]; // Add more if needed
-const validEducationalLevel = ["1st Seconadary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
 const typeOfContent = ["video", "file"]; // Add more if needed
 
 
@@ -32,7 +28,7 @@ const Schema = new mongoose.Schema({
         "Please enter a valid link for the lesson"
     ],
     },
-    dateOfContent :{
+    dateOfPublishingContent :{
       type: Date,
       required: [true, "Description is required"],
       default: Date.now
@@ -45,4 +41,4 @@ const Schema = new mongoose.Schema({
 })
 
 
-mongoose.model("lessons",Schema); //new name for model
+mongoose.model("contents",Schema); //new name for model

@@ -1,27 +1,24 @@
 const mongoose = require("mongoose")
 
-const validTypeOfQuiz = ["quizOfLesson", "quizOfUnit", "quizOfSemester", "other"];
+const validEducationalLevel = ["1st Secondary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
+const validSemester = ["1st", "2nd"];
 
 const Schema = new mongoose.Schema({
     _id: {
         type: mongoose.Types.ObjectId,
         default: () => new mongoose.Types.ObjectId() // Generate a new ObjectId as the default value
       },
-    quizName:{
+    productName:{
         type:String,
         required: [true, "Product name is required"],
     },
-    quizType :{
+    productPrice :{
         type: Number,
         required: [true, "Product Price is required"],
     },
-    quizDescription:{
+    productDescription:{
       type:String,
       required: [true, "Product description is required"],    
-    },
-    noOfQuestions:{
-        type: Number,
-        required: [true, ""]
     },
     educationalLevel:{
       type: String,
@@ -32,8 +29,13 @@ const Schema = new mongoose.Schema({
       type: String,
       enum: validSemester,
       required: [true, "semester is required"],
+  },
+  image:{
+    type: String,
+    required: [true , "A lesson must have a course day"],
+    default: "default.jpg"
   }
 })
 
 
-mongoose.model("quizzes",Schema); //new name for model
+mongoose.model("products",Schema); //new name for model

@@ -11,6 +11,9 @@ mongoose.set("strictQuery", false);
 const adminRoute = require("./Route/adminRoute");
 const studentRoute = require("./Route/studentRoute");
 const dayOfCourseRoute = require("./Route/daysOfCourseRoute");
+const contentOfCourseRoute = require("./Route/contentOfCourseRoute");
+const productRoute = require("./Route/productRoute");
+const quizRoute = require("./Route/quizRoute");
 // const auth = require("./Middleware/auth");
 
 
@@ -42,6 +45,9 @@ app.use(express.json());
 app.use(adminRoute);
 app.use(studentRoute);
 app.use(dayOfCourseRoute);
+app.use(contentOfCourseRoute);
+app.use(productRoute);
+app.use(quizRoute);
 
 // app.use(login); // Auth After Log in
 // app.use(auth);

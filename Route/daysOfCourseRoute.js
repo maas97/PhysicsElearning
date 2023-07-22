@@ -3,6 +3,7 @@ const router = express.Router();
 const daysOfCourseValidation = require("../Core/Validation/daysOfCourseValidation");
 const validateMW = require("../Core/Validation/validateMW");
 const controller = require("../Controller/daysOfCourseController");
+const contentOfCourseRoute = require("../Route/contentOfCourseRoute");
 // const authorization = require("../Middleware/authorization");
 
 router
@@ -17,5 +18,7 @@ router
 router
     .route("/daysOfCourse/:id")
     .get(controller.getDayOfCourseById);
+
+router.use("/daysOfCourse/:id/contentOfCourse", contentOfCourseRoute);
 
 module.exports = router;
