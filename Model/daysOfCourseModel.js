@@ -30,4 +30,4 @@ Schema.plugin(AutoIncrement,{
     inc_field: "_id"
 });
 
-mongoose.model("daysOfCourse",Schema); //new name for model
+mongoose.model("dayOfCourse",Schema); //new name for model

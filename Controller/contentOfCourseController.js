@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 require("../Model/contentOfCourseModel");
 
 //getter
-const contentSchema = mongoose.model("contents");
+const contentSchema = mongoose.model("content");
 
 exports.getAllContent=(request,response)=>{
     contentSchema.find({})

@@ -37,4 +37,4 @@ const Schema = new mongoose.Schema({
 })
 
 
-mongoose.model("products",Schema); //new name for model
+mongoose.model("product",Schema); //new name for model

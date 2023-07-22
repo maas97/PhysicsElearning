@@ -93,4 +93,4 @@ const Schema = new mongoose.Schema({
 })
 
 
-mongoose.model("students",Schema); //new name for model
+mongoose.model("student",Schema); //new name for model

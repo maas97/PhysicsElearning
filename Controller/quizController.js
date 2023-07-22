@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 require("../Model/quizModel");
 
 //getter
-const quizSchema = mongoose.model("quizzes");
+const quizSchema = mongoose.model("quiz");
 
 exports.getAllQuizzes=(request,response)=>{
     quizSchema.find({})

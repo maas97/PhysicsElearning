@@ -39,4 +39,4 @@ const Schema = new mongoose.Schema({
 })
 
 
-mongoose.model("quizzes",Schema); //new name for model
+mongoose.model("quiz",Schema); //new name for model

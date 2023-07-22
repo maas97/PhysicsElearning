@@ -6,11 +6,15 @@ const path = require("path");
 const saltRounds = 10
 const salt = bcrypt.genSaltSync(saltRounds);
 
+
+
 //getter
-const basicAdminSchema = mongoose.model("basicAdmins");
+const basicAdminSchema = mongoose.model("basicAdmin");
+
 
 exports.getAllBasicAdmins=(request,response)=>{
-    basicAdminSchema.find({}, {password: 0})
+    basicAdminSchema.find({}, )
+    // {password: 0}
                 .then((data)=>{
                     response.status(200).json({data});        
                 })

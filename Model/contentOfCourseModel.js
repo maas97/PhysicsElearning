@@ -42,4 +42,4 @@ const Schema = new mongoose.Schema({
 })
 
 
-mongoose.model("contents",Schema); //new name for model
+mongoose.model("content",Schema); //new name for model

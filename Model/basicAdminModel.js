@@ -55,4 +55,4 @@ const Schema = new mongoose.Schema({
 //     inc_field: "_id"
 // });
 
-mongoose.model("basicAdmins",Schema); //new name for model
+mongoose.model("basicAdmin",Schema); //new name for model

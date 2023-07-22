@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 require("../Model/daysOfCourseModel");
 
 //getter
-const daysOfCourseSchema = mongoose.model("daysOfCourse");
+const daysOfCourseSchema = mongoose.model("dayOfCourse");
 
 exports.getAlldaysOfCourses=(request,response)=>{
     daysOfCourseSchema.find({})

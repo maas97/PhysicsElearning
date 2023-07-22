@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 require("../Model/productModel");
 
 //getter
-const productSchema = mongoose.model("products");
+const productSchema = mongoose.model("product");
 
 exports.getAllProducts=(request,response)=>{
     productSchema.find({})

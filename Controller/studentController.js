@@ -7,7 +7,7 @@ const saltRounds = 10
 const salt = bcrypt.genSaltSync(saltRounds);
 
 //getter
-const studentSchema = mongoose.model("students");
+const studentSchema = mongoose.model("student");
 
 exports.getAllstudents=(request,response)=>{
     studentSchema.find({}, {password: 0})

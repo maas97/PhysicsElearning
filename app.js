@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const fs = require("fs");
 const app = express();
+
 const port = process.env.PORT || 8080;
 mongoose.set("strictQuery", false);
 // const signRoute = require("./Routes/sign");
@@ -14,6 +15,7 @@ const dayOfCourseRoute = require("./Route/daysOfCourseRoute");
 const contentOfCourseRoute = require("./Route/contentOfCourseRoute");
 const productRoute = require("./Route/productRoute");
 const quizRoute = require("./Route/quizRoute");
+const authRoute = require("./Route/authRoute");
 // const auth = require("./Middleware/auth");
 
 
@@ -32,22 +34,24 @@ mongoose
 
 app.use(
     cors({
-        origin: "http://localhost:4200",
+        origin: "*",
     })
 );
 
 app.use(morgan("combined"));
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
-app.use(express.json());
 app.use(adminRoute);
 app.use(studentRoute);
 app.use(dayOfCourseRoute);
 app.use(contentOfCourseRoute);
 app.use(productRoute);
 app.use(quizRoute);
+app.use(authRoute);
+app.set('view engine', 'ejs');
 
 // app.use(login); // Auth After Log in
 // app.use(auth);
