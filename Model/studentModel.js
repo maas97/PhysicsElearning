@@ -85,7 +85,11 @@ const Schema = new mongoose.Schema({
             }
          }
       },
-    // image : { type:String },
+      isActive:{
+        type: Boolean,
+        default: false
+      },
+    image : { type:String },
 })
 
 

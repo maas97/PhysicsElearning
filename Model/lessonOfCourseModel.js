@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const validGovernates = ['Cairo', 'Alexandria', 'Giza', 'Kafr El Sheikh', 'Al Dakahlia']; // Add more if needed
 const validCities = ['Qallin', "El Hamool", "El Reyad", "Desouk", "Metoubes", "Fuwa", "Sidi Salem"]; // Add more if needed
 const validEducationalLevel = ["1st Seconadary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
+const typeOfContent = ["video", "file"]; // Add more if needed
 
 
 const Schema = new mongoose.Schema({
@@ -19,7 +20,11 @@ const Schema = new mongoose.Schema({
         type: String,
         required: [true, "Description is required"],
     },
-    videoLink:{
+    typeOfContent:{
+      type:String,
+      enum: typeOfContent,
+      required: [true, "Type of lesson is required"],    },
+    LinkOfContent:{
       type: String,
       required: [true, "Description is required"],
       match: [
@@ -27,10 +32,16 @@ const Schema = new mongoose.Schema({
         "Please enter a valid link for the lesson"
     ],
     },
-    dayOfCourse :{
-      type: String,
+    dateOfContent :{
+      type: Date,
       required: [true, "Description is required"],
+      default: Date.now
   },
+  courseDayId:{
+    type: Number,
+    ref: "daysOfCourse",
+    required: [true , "A lesson must have a course day"],
+  }
 })
 
 
