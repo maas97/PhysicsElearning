@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
 
+const validEducationalLevel = ["1st Secondary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
+const validSemester = ["1st", "2nd"];
 const validTypeOfQuiz = ["quizOfLesson", "quizOfUnit", "quizOfSemester", "other"];
 
 const Schema = new mongoose.Schema({
@@ -9,19 +11,20 @@ const Schema = new mongoose.Schema({
       },
     quizName:{
         type:String,
-        required: [true, "Product name is required"],
+        required: [true, "Quiz name is required"],
     },
     quizType :{
-        type: Number,
-        required: [true, "Product Price is required"],
+        type: String,
+        enum: validTypeOfQuiz,
+        required: [true, "Quiz type is required"],
     },
     quizDescription:{
       type:String,
-      required: [true, "Product description is required"],    
+      required: [true, "Quiz description is required"],    
     },
     noOfQuestions:{
         type: Number,
-        required: [true, ""]
+        required: [true, "Number of questions is required"]
     },
     educationalLevel:{
       type: String,

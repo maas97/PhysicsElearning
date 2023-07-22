@@ -18,11 +18,10 @@ const Schema = new mongoose.Schema({
       enum: validSemester,
       required: [true, "Semester is required"],
   },
-  dayNumber:{
-    type:Number,
-    required: [true, "Day Number is required"],
-
-  }
+    dayNumber:{
+      type:Number,
+      required: [true, "Day Number is required"],
+    }
 })
 
 

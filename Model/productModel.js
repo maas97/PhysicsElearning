@@ -32,7 +32,6 @@ const Schema = new mongoose.Schema({
   },
   image:{
     type: String,
-    required: [true , "A lesson must have a course day"],
     default: "default.jpg"
   }
 })

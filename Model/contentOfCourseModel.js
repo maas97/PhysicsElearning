@@ -19,14 +19,15 @@ const Schema = new mongoose.Schema({
     typeOfContent:{
       type:String,
       enum: typeOfContent,
-      required: [true, "Type of lesson is required"],    },
+      required: [true, "Type of lesson is required"]
+    },
     LinkOfContent:{
       type: String,
       required: [true, "Description is required"],
       match: [
         /^(https?:\/\/)([^\s\/$.?#]+\.[^\s]*)$/,
         "Please enter a valid link for the lesson"
-    ],
+    ]
     },
     dateOfPublishingContent :{
       type: Date,
