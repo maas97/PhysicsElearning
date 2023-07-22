@@ -19,11 +19,11 @@ const Schema = new mongoose.Schema({
             },
         message: "الرجاء إدخال الاسم الأول بشكل صحيح",
         },
-        required: [true, "First Name is required"],
+        // required: [true, "First Name is required"],
     },
     lastName :{
         type: String,
-        required: [true, "Last Name is required"],
+        // required: [true, "Last Name is required"],
         validate: {
             validator: function (v) {
             return /^[a-zA-Z]+(?: [a-zA-Z]+)?$/.test(v); // allow letters with only one space between 
@@ -57,23 +57,23 @@ const Schema = new mongoose.Schema({
                 `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
                 010/011/012/015 
                 ويكون في نطاق 11 رقم`],
-        required: true
+        // required: true
     },
     educationalLevel:{
         type:String,
         enum: validEducationalLevel,
-        required: [true, "Educational Level is required"],
+        // required: [true, "Educational Level is required"],
     },
     location: {
         governate: {// المحافظة
           type: String,
           enum: validGovernates,
-          required: true
+          // required: true
         },
         city: {// المركز
           type: String,
           enum: validCities,
-          required: true
+          // required: true
         },
         area : { // باقي العنوان التفصيلي
             type:String,
