@@ -1,17 +1,73 @@
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap'); */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@200;400;700&display=swap');
+  /* font-family: 'Noto Sans Arabic', sans-serif;
+  */
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+  }
 
 body{
   margin: 20px 40px;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  background: #fafafa;
+  background: white;
+  overflow-x: hidden;
+  direction: rtl;
 }
+
 h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer{
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
-  color: #444;
+  font-family: 'Noto Sans', sans-serif;
+  color: #FC861C;
+}
+.sir, .mohammed, .ramadan {
+  font-size: 1.7rem;
+}
+.logo:hover{
+  opacity: 0.5;
+}
+.logo-footer{
+  font-size: 1.1rem;
+}
+.sir{
+  color: #FC861C;
+
+}
+.mohammed{
+  color: #48C3BE;
+}
+.ramadan{
+  color: #AAAAAA;
+}
+.navbar-brand{
+  margin-left: 2rem;
+}
+.nav-item{
+  /* border: 1px solid green; */
+  margin-right: 10px;
+}
+.nav-arabic{
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-weight: 400;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 12rem;
+  opacity: 0.8;
+}
+.nav-arabic:hover{
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: underline;
 }
 ul{
   list-style-type: none;
@@ -20,10 +76,11 @@ a{
   text-decoration: none;
 }
 nav{
+  margin: -20px -40px 0px -40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 120px;
+  height: 15vh;
 }
 nav ul{
   display: flex;
@@ -43,6 +100,11 @@ nav li a{
 .btn{
   border-radius: 36px;
   background: #FEE996;
+}
+.intro{
+  height: 85vh;
+  background: black;
+  margin: 0px -40px;
 }
 form h2{
   font-size: 2.4em;
@@ -102,7 +164,7 @@ header h3{
   font-size: 1.6em;
   margin-bottom: 10px;
   margin-left: 2px;
-  color: #999;
+  color: #48C3BE;
 }
 header .btn{
   margin-top: 20px;
@@ -136,4 +198,5 @@ footer{
   text-align: center;
   margin-top: 120px;
   color: #aaa;
+  /* height: 20vh; */
 }
