@@ -19,7 +19,7 @@ const studentSchema = new mongoose.Schema({
         type:String,
         validate: {
             validator: function (v) {
-            return /^[a-zA-Z]+(?: [a-zA-Z]+)?$/.test(v);
+            return /^(?:[a-zA-Z\u0600-\u06FF]+\s{0,1})+$/.test(v);
             },
         message: "الرجاء إدخال الاسم الأول بشكل صحيح",
         },
@@ -30,7 +30,7 @@ const studentSchema = new mongoose.Schema({
         // required: [true, "Last Name is required"],
         validate: {
             validator: function (v) {
-            return /^[a-zA-Z]+(?: [a-zA-Z]+)?$/.test(v); // allow letters with only one space between 
+            return /^[\u0600-\u06FF\uFB50-\uFDFF\uFE70-\uFEFFa-zA-Z\s]+$/.test(v); // allow letters with only one space between 
             },
             message: "الرجاء إدخال الاسم الأخير بشكل صحيح",
         },
@@ -53,22 +53,19 @@ const studentSchema = new mongoose.Schema({
     },
     age : {
         type: Number,
-        unique: [true, "Age must be unique"],
-        match: [/^(010|011|012|015)\d{8}$/
+        match: [/^(1[0-9]|10)$/
         ,
-        `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
-        010/011/012/015 
-        ويكون في نطاق 11 رقم`],
+       ` الرجاء إدخال عمر بين 10 إلى 19 سنة`],
     },
     phoneNumber:{
         type: String,
         unique: [true, "Phone number must be unique"],
-        match: [/^(10|11|12|13|14|15|16|17|18|19)\d{8}$/
+        match: [/^(010|011|012|015)\d{8}$/
                 ,
                 `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
                 010/011/012/015 
                 ويكون في نطاق 11 رقم`],
-        // required: true
+        required: true
     },
     educationalLevel:{
         type:String,

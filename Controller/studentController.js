@@ -36,7 +36,7 @@ exports.addStudent=(request,response,next)=>{
         lastName:request.body.lastName,
         password: bcrypt.hashSync(request.body.password, salt),
         email:request.body.email,
-        birthdate:request.body.birthdate,
+        age:request.body.age,
         phoneNumber:request.body.phoneNumber,
         educationalLevel: request.body.educationalLevel,
         location:{
@@ -70,7 +70,7 @@ exports.updateStudent=(request,response,next)=>{
                 lastName:request.body.lastName,
                 password: password,
                 email:request.body.email,
-                birthdate:request.body.birthdate,
+                age:request.body.age,
                 phoneNumber:request.body.phoneNumber
                 // image:request.file?.filename ?? undefined//if no file posted, then make mongo put undefined  
             }

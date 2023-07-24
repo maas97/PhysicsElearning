@@ -15,23 +15,27 @@ process.on('uncaughtException', function (error) {
 
 // // handle errors
 const handleErrors = (err) => {
-  // console.log(err.code);
-  // console.log(err.code);
-  let errors = { email: '', password: '' };
+  console.log(err.code);
+  console.log(err.message);
+  let errors = { email: ''};
 
   //login errors
   if(err.message === 'incorrect email'){
     errors.email = "The email or password is incorrect"
   }
-
   if(err.message === "Incorrect Password"){
     errors.password = "The email or password is incorrect"
   }
+  console.log("*****************************************************************************");
+
+  console.log(err.message);
+
+  console.log("*****************************************************************************");
 
   // duplicate email error
   if (err.code === 11000) {
     // console.log(err.code);
-    errors.email = 'that email is already registered';
+    errors.email = 'هذا الإيميل لديه أكونت مسبقا على منصتنا برجاء تسجيل الدخول';
     console.log(errors);
     // console.log(errors.email);
     
@@ -40,9 +44,13 @@ const handleErrors = (err) => {
 
 
   // validation errors
+  console.log("////////////////////////////////////////////////////////////////////////////");
+
   console.log(err);
 
-  if (err.message.includes('user validation failed')) {
+  console.log("////////////////////////////////////////////////////////////////////////////");
+
+  if (err.message.includes('student validation failed')) {
     console.log(err);
     Object.values(err.errors).forEach(({ properties }) => {
       // console.log(val);
@@ -76,13 +84,17 @@ module.exports.home = (req, res) => {
   res.render('home');
 }
 
+module.exports.courses = (req, res) => {
+  res.render('courses');
+}
+
 module.exports.signup_post = (req,res,next)=>{
   new studentSchema({
       firstName:  req.body.firstName,
       lastName:   req.body.lastName,
       password:   bcrypt.hashSync(req.body.password, salt),
       email:      req.body.email,
-      birthdate:  req.body.birthdate,
+      age:        req.body.age,
       phoneNumber:req.body.phoneNumber,
   }).save()// insertOne
   .then(student=>{
@@ -98,19 +110,24 @@ module.exports.signup_post = (req,res,next)=>{
     // console.log(error.errors.email);
     // console.log("/////////////////////////////////////////////////////////////////");
     const errors = handleErrors(error);
-    console.log(errors);
-    if(errors.email === '' && errors.password === ''){
-      // for any errors other than duplicate email
-      const emailErrorMessage = {message: error.errors.email.properties.message};
-      console.log(emailErrorMessage);
-      if(emailErrorMessage){
-      res.status(400).json( emailErrorMessage );
-      }
+    // console.log(errors);
+    // if(errors.email === '' && errors.password === ''){
+    //   // for any errors other than duplicate email
+    //   const emailErrorMessage = {message: error.errors.email.properties.message};
+    //   // console.log("*****************************************************************************");
+    //   console.log(emailErrorMessage);
+    //   if(emailErrorMessage){
+    //   res.status(400).json( emailErrorMessage );
+    //   }
       // res.status(400).json({ errors });
       // console.log(errorMessage);
-    }else{
-    res.status(400).json({ errors });
-    }
+    // }
+    // else{
+      // console.log("*****************************************************************************");
+
+      console.log(errors);
+      res.status(400).json({ errors });
+    // }
     // next(error)
   });
 }

@@ -12,10 +12,10 @@
   }
 
 body{
-  margin: 20px 40px;
+  /* margin: 20px 40px; */
   font-size: 1.2rem;
   letter-spacing: 1px;
-  background: white;
+  background: rgb(160, 14, 14);
   overflow-x: hidden;
   direction: rtl;
 }
@@ -76,7 +76,7 @@ a{
   text-decoration: none;
 }
 nav{
-  margin: -20px -40px 0px -40px;
+  /* margin: -20px -40px 0px -40px; */
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -104,7 +104,7 @@ nav li a{
 .intro{
   height: 85vh;
   background: black;
-  margin: 0px -40px;
+  /* margin: 0px -40px; */
 }
 form h2{
   font-size: 2.4em;
@@ -174,29 +174,11 @@ header .btn{
   display: inline-block;
   font-size: 0.8em;
 }
-.recipes{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 30px;
-  row-gap: 80px;
-  margin: 80PX AUTO;
-  max-width: 1200px;
-}
-.recipe{
-  display: inline-block;
-  border-radius: 20px;
-  background: white;
-  position: relative;
-  text-align: center;
-  padding: 0 20px 30px 20px
-}
-.recipe img{
-  width: 100px;
-  margin: -30px auto 20px;
-}
+
 footer{
   text-align: center;
   margin-top: 120px;
   color: #aaa;
+  /* width: 100%; */
   /* height: 20vh; */
 }

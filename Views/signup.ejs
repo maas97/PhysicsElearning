@@ -3,35 +3,41 @@
 
 <form novalidate>
   <div class="form-group">
-  <h2>اشترك الآن</h2>
-  <label for="firstName">First Name</label>
-  <input type="text" name="firstName"  class="form-control" id="firstName" pattern="[A-Za-z]+" required/>
+  <h2>الاشتراك</h2>
+  <h4>برجاء إدخال البيانات الآتية</h4>
+  <br>
+  <label for="firstName">الاسم الأول</label>
+  <input type="text" name="firstName"  class="form-control" maxlength="20" id="firstName" pattern="[A-Za-z]+" required/>
   <div class="invalid-feedback">
-    Please enter valid name that contains letters only
+    الرجاء إدخال الاسم الأول بشكل صحيح محتويا على حروف فقط
   </div>
-  <label for="lastName">Last Name</label>
-  <input type="text" name="lastName"  class="form-control" id="lastName" pattern="[A-Za-z]+" required />
+  <label for="lastName">الاسم الأخير</label>
+  <input type="text" name="lastName"  class="form-control" maxlength="20" id="lastName" pattern="[A-Za-z]+" required />
   <div class="invalid-feedback">
-    Please enter valid name that contains letters only
+    الرجاء إدخال الاسم الأخير بشكل صحيح محتويا على حروف فقط
   </div>
   <div class="lastName error"></div>
-  <label for="email">Email</label>
-  <input type="text" name="email" required />
+  <label for="email">الإيميل</label>
+  <input type="text" name="email" maxlength="30" required />
   <div class="email error"></div>
-  <label for="password">Password</label>
-  <input type="password" name="password" class="form-control" id="password" minlength="8" required  />
+  <label for="password">كلمة المرور</label>
+  <input type="password" name="password" class="form-control" id="password" minlength="8" maxlength="30" required  />
   <div class="password error"></div>
   <div class="invalid-feedback">
-    Please enter a password with min length : 8, Contains at least one alphabetical character, Contains at least one digit & Contains at least one special character 
+    <!-- Please enter a password with min length : 8, Contains at least one alphabetical character, Contains at least one digit & Contains at least one special character  -->
+  الرجاء إدخال كلمة المرور بحد أدنى 8 خانات وحد أقصى 30 خانة متضمنة على الأقل: حرف واحد، رقم واحد، رمز واحد
   </div>
-  <label for="birthdate">Birthdate</label>
-  <input type="date" name="birthdate" min="2009-01-01" max="2009-12-31"  required/>
-  <label for="phoneNumber">Phone</label>
-  <input type="number" name="phoneNumber" id="phoneNumber" pattern="^(010|011|012|015)\d{8}$" class="form-control" required />
+  <label for="age">العمر</label>
+  <input type="number" name="age" id="age" class="form-control" min="10" max="19" maxlength="2"  required/>
   <div class="invalid-feedback">
-    Please enter a valid Egyptian phone number
+الرجاء إدخال عمر مناسب من 10 إلى 19 سنة
   </div>
-  <button>Sign up</button>
+  <label for="phoneNumber">رقم الموبايل</label>
+  <input type="number" name="phoneNumber" id="phoneNumber" pattern="^(010|011|012|015)\d{8}$" maxlength="11" class="form-control" required />
+  <div class="invalid-feedback">
+     الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+  </div>
+  <button>اشترك الآن</button>
 </div>
 </form>
 
@@ -48,10 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const lastNameElement = document.getElementById("lastName");
   const passwordElement = document.getElementById("password");
   const phoneNumberElement = document.getElementById("phoneNumber");
+  const ageElement = document.getElementById("age");
 
   const emailError = document.querySelector('.email.error');
-  const passwordError = document.querySelector('.password.error');
-  const lastNameError = document.querySelector('.lastName.error');
 
   // first name validation
   firstNameElement.addEventListener('input', function(e) {
@@ -138,60 +143,76 @@ phoneNumberElement.addEventListener('input', function(e) {
   }
 });
 
+// age validation
+ageElement.addEventListener('input', function(e) {
+  e.preventDefault();
+  const ageValue = ageElement.value;
+  
+  if(ageValue.trim() === ''){
+    ageElement.classList.remove("is-valid");
+    ageElement.classList.add("is-invalid");
+  }else{
+    if (/^(1[0-9]|10)$/.test(ageValue)) {
+      ageElement.classList.remove("is-invalid");
+      ageElement.classList.add("is-valid");
+    } else {
+      ageElement.classList.remove("is-valid");
+      ageElement.classList.add("is-invalid");
+    }
+  }
+});
+
+// at submit button and email checking
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // firstNameElement.classList.add("is-invalid");
-    // lastNameElement.classList.add("is-invalid");
-    // passwordElement.classList.add("is-invalid");
-    // phoneNumberElement.classList.add("is-invalid");
-
     emailError.textContent = '';
-    passwordError.textContent = '';
-
     // get values
     const email = form.email.value;
     const password = form.password.value;
+    const firstName = form.firstName.value;
     const lastName = form.lastName.value;
-    console.log(typeof(lastName));
+    const age = form.age.value;
+    const phoneNumber = form.phoneNumber.value;
 
     try {
-  const res = await fetch ("/signup", {
-    method: "POST",
-    body: JSON.stringify({ lastName, email , password}),
-    headers: {"Content-Type":"application/json"}
-  });
-    const data = await res.json();
-    // console.log(data);
-    
-    //validation for incorrect email
-    if (data.message) {
-      // console.log(data);
-      // console.log(data.errors);
-      // console.log(data.message);
-      emailError.textContent = data.message;
-      }
-
-    //validation for duplicated email
-    if (data.errors) {
+      const res = await fetch ("/signup", {
+        method: "POST",
+        body: JSON.stringify({ firstName, lastName, email , password, age, phoneNumber}),
+        headers: {"Content-Type":"application/json"}
+      });
+        const data = await res.json();
         // console.log(data);
-        emailError.textContent = data.errors.email;
-        passwordError.textContent = data.errors.password;
-      }
+        
+        //validation for incorrect email
+        if (data.message) {
+          // console.log(data);
+          // console.log(data.errors);
+          // console.log(data.message);
+          emailError.textContent = data.message;
+          }
 
-      // //validation for invalid last name
-      // if (data.message) {
-      // // console.log(data);
-      // // console.log(data.errors);
-      // // console.log(data);
-      // lastNameError.textContent = data;
-      // }
+        //validation for duplicated email
+        if (data.errors) {
+            // console.log(data);
+            emailError.textContent = data.errors.email;
+            // passwordError.textContent = data.errors.password;
+          }
 
-    if(data.student){
-      location.assign("/login");
-    }
+          // //validation for invalid last name
+          // if (data.message) {
+          // // console.log(data);
+          // // console.log(data.errors);
+          // // console.log(data);
+          // lastNameError.textContent = data;
+          // }
 
-} catch (error) {
+        if(data.student){
+          location.assign("/login");
+        }
+
+}   catch (error) {
   
 }
 
