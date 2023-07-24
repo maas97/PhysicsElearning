@@ -63,7 +63,7 @@ const studentSchema = new mongoose.Schema({
     phoneNumber:{
         type: String,
         unique: [true, "Phone number must be unique"],
-        match: [/^(010|011|012|015)\d{8}$/
+        match: [/^(10|11|12|13|14|15|16|17|18|19)\d{8}$/
                 ,
                 `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
                 010/011/012/015 
