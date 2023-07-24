@@ -1,45 +1,192 @@
 <%- include("partials/header.ejs") -%>
 
 
-<form>
+<form novalidate>
+  <div class="form-group">
   <h2>اشترك الآن</h2>
   <label for="firstName">First Name</label>
-  <input type="text" name="firstName"  />
+  <input type="text" name="firstName"  class="form-control" id="firstName" pattern="[A-Za-z]+" required/>
+  <div class="invalid-feedback">
+    Please enter valid name that contains letters only
+  </div>
   <label for="lastName">Last Name</label>
-  <input type="text" name="lastName"  />
+  <input type="text" name="lastName"  class="form-control" id="lastName" pattern="[A-Za-z]+" required />
+  <div class="invalid-feedback">
+    Please enter valid name that contains letters only
+  </div>
+  <div class="lastName error"></div>
   <label for="email">Email</label>
   <input type="text" name="email" required />
-  <!-- <div class="email error"></div> -->
+  <div class="email error"></div>
   <label for="password">Password</label>
-  <input type="password" name="password" required />
-  <!-- <div class="password error"></div> -->
+  <input type="password" name="password" class="form-control" id="password" minlength="8" required  />
+  <div class="password error"></div>
+  <div class="invalid-feedback">
+    Please enter a password with min length : 8, Contains at least one alphabetical character, Contains at least one digit & Contains at least one special character 
+  </div>
   <label for="birthdate">Birthdate</label>
-  <input type="date" name="birthdate"  />
+  <input type="date" name="birthdate" min="2009-01-01" max="2009-12-31"  required/>
   <label for="phoneNumber">Phone</label>
-  <input type="number" name="phoneNumber"/>
+  <input type="number" name="phoneNumber" id="phoneNumber" pattern="^(010|011|012|015)\d{8}$" class="form-control" required />
+  <div class="invalid-feedback">
+    Please enter a valid Egyptian phone number
+  </div>
   <button>Sign up</button>
+</div>
 </form>
 
 <%- include("partials/footer.ejs") -%>
 
 
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  //  document.querySelector('.invalid-feedback').style.display = 'none';
   const form = document.querySelector('form');
+  
+  const firstNameElement = document.getElementById("firstName");
+  const lastNameElement = document.getElementById("lastName");
+  const passwordElement = document.getElementById("password");
+  const phoneNumberElement = document.getElementById("phoneNumber");
+
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+  const lastNameError = document.querySelector('.lastName.error');
+
+  // first name validation
+  firstNameElement.addEventListener('input', function(e) {
+  e.preventDefault();
+  const firstNameValue = firstNameElement.value;
+  // console.log(firstNameValue);
+  if(firstNameValue.trim() === ''){
+    firstNameElement.classList.remove("is-valid");
+    firstNameElement.classList.add("is-invalid");
+  }else{
+    if (/[^a-zA-Z]/.test(firstNameValue)) {
+    firstNameElement.classList.remove("is-valid");
+    firstNameElement.classList.add("is-invalid");
+  }else {
+    firstNameElement.classList.remove("is-invalid");
+    firstNameElement.classList.add("is-valid");
+
+  }
+  }
+ 
+});
+
+// last name validation
+lastNameElement.addEventListener('input', function(e) {
+  e.preventDefault();
+  const lastNameValue = lastNameElement.value;
+  // console.log(lastNameValue);
+  if(lastNameValue.trim() === ''){
+    lastNameElement.classList.remove("is-valid");
+    lastNameElement.classList.add("is-invalid");
+  }else{
+  if (/[^a-zA-Z]/.test(lastNameValue)) {
+    lastNameElement.classList.remove("is-valid");
+    lastNameElement.classList.add("is-invalid");
+  } else {
+    lastNameElement.classList.remove("is-invalid");
+    lastNameElement.classList.add("is-valid");
+  }
+  }
+});
+
+
+// password validation
+passwordElement.addEventListener('input', function(e) {
+  e.preventDefault();
+  const passwordValue = passwordElement.value;
+  console.log(passwordValue);
+  console.log(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(passwordValue));
+  
+  if(passwordValue.trim() === ''){
+    passwordElement.classList.remove("is-valid");
+    passwordElement.classList.add("is-invalid");
+  }else{
+    // const passwordRegex = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/";
+    if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%#?&.])[A-Za-z\d@!%#?&.]{8,}$/.test(passwordValue)) {
+      passwordElement.classList.remove("is-invalid");
+      passwordElement.classList.add("is-valid");
+    } else {
+      passwordElement.classList.remove("is-valid");
+      passwordElement.classList.add("is-invalid");
+    }
+  }
+});
+
+
+
+// phone validation
+phoneNumberElement.addEventListener('input', function(e) {
+  e.preventDefault();
+  const phoneValue = phoneNumberElement.value;
+  // console.log(phoneValue);
+  
+  if(phoneValue.trim() === ''){
+    phoneNumberElement.classList.remove("is-valid");
+    phoneNumberElement.classList.add("is-invalid");
+  }else{
+    if (/^(010|011|012|015)\d{8}$/.test(phoneValue)) {
+      phoneNumberElement.classList.remove("is-invalid");
+      phoneNumberElement.classList.add("is-valid");
+    } else {
+      phoneNumberElement.classList.remove("is-valid");
+      phoneNumberElement.classList.add("is-invalid");
+    }
+  }
+});
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // firstNameElement.classList.add("is-invalid");
+    // lastNameElement.classList.add("is-invalid");
+    // passwordElement.classList.add("is-invalid");
+    // phoneNumberElement.classList.add("is-invalid");
+
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
     // get values
     const email = form.email.value;
     const password = form.password.value;
+    const lastName = form.lastName.value;
+    console.log(typeof(lastName));
 
     try {
   const res = await fetch ("/signup", {
     method: "POST",
-    body: JSON.stringify({ email , password}),
+    body: JSON.stringify({ lastName, email , password}),
     headers: {"Content-Type":"application/json"}
   });
     const data = await res.json();
+    // console.log(data);
+    
+    //validation for incorrect email
+    if (data.message) {
+      // console.log(data);
+      // console.log(data.errors);
+      // console.log(data.message);
+      emailError.textContent = data.message;
+      }
+
+    //validation for duplicated email
+    if (data.errors) {
+        // console.log(data);
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+      }
+
+      // //validation for invalid last name
+      // if (data.message) {
+      // // console.log(data);
+      // // console.log(data.errors);
+      // // console.log(data);
+      // lastNameError.textContent = data;
+      // }
+
     if(data.student){
       location.assign("/login");
     }
@@ -49,6 +196,9 @@
 }
 
   });
+
+
+});
 </script>
 </body>
 </html>

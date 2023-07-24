@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-require("../Model/studentModel");
+const Student = require("../Model/studentModel");
 const fs =require("fs") 
 const bcrypt = require("bcryptjs");
 const path = require("path");
@@ -9,31 +9,50 @@ const jwt = require("jsonwebtoken");
 require("cookie-parser");
 const studentSchema = mongoose.model("student");
 
+process.on('uncaughtException', function (error) {
+  console.log(error.stack);
+});
 
 // // handle errors
 const handleErrors = (err) => {
-  console.log(err.message, err.code);
+  // console.log(err.code);
+  // console.log(err.code);
   let errors = { email: '', password: '' };
+
+  //login errors
+  if(err.message === 'incorrect email'){
+    errors.email = "The email or password is incorrect"
+  }
+
+  if(err.message === "Incorrect Password"){
+    errors.password = "The email or password is incorrect"
+  }
 
   // duplicate email error
   if (err.code === 11000) {
+    // console.log(err.code);
     errors.email = 'that email is already registered';
+    console.log(errors);
+    // console.log(errors.email);
+    
     return errors;
   }
+
+
+  // validation errors
+  console.log(err);
+
+  if (err.message.includes('user validation failed')) {
+    console.log(err);
+    Object.values(err.errors).forEach(({ properties }) => {
+      // console.log(val);
+      // console.log(properties);
+      errors[properties.path] = properties.message;
+    });
+  }
+
+  return errors;
 }
-
-//   // validation errors
-//   if (err.message.includes('user validation failed')) {
-//     // console.log(err);
-//     Object.values(err.errors).forEach(({ properties }) => {
-//       // console.log(val);
-//       // console.log(properties);
-//       errors[properties.path] = properties.message;
-//     });
-//   }
-
-//   return errors;
-// }
 
 // creating token function
 
@@ -57,22 +76,43 @@ module.exports.home = (req, res) => {
   res.render('home');
 }
 
-module.exports.signup_post = (request,response,next)=>{
+module.exports.signup_post = (req,res,next)=>{
   new studentSchema({
-      password: bcrypt.hashSync(request.body.password, salt),
-      email:request.body.email,
+      firstName:  req.body.firstName,
+      lastName:   req.body.lastName,
+      password:   bcrypt.hashSync(req.body.password, salt),
+      email:      req.body.email,
+      birthdate:  req.body.birthdate,
+      phoneNumber:req.body.phoneNumber,
   }).save()// insertOne
   .then(student=>{
+      console.log(student);
       const token = createToken(student._id);
       console.log(student._id);
-      response.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
-      response.status(201).json({student: student._id});
+      res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
+      res.status(201).json({student: student._id});
   })
   .catch((error)=>{
-    // const errors = handleErrors(error);
-    // console.log(errors);
-    // response.status(400).json({ errors });
-    next(error)});
+    // console.log(error);
+    // console.log("****************************************************************");
+    // console.log(error.errors.email);
+    // console.log("/////////////////////////////////////////////////////////////////");
+    const errors = handleErrors(error);
+    console.log(errors);
+    if(errors.email === '' && errors.password === ''){
+      // for any errors other than duplicate email
+      const emailErrorMessage = {message: error.errors.email.properties.message};
+      console.log(emailErrorMessage);
+      if(emailErrorMessage){
+      res.status(400).json( emailErrorMessage );
+      }
+      // res.status(400).json({ errors });
+      // console.log(errorMessage);
+    }else{
+    res.status(400).json({ errors });
+    }
+    // next(error)
+  });
 }
 
 
@@ -96,8 +136,22 @@ module.exports.signup_post = (request,response,next)=>{
  
 // }
 
-module.exports.login_post = async (req, res) => {
+module.exports.login_post = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email, password);
-  res.send('user login');
+
+  try {
+    const student = await Student.login(email, password);
+    const token = createToken(student._id);
+    res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
+    res.status(200).json({ student: student._id });
+    console.log(student._id);
+    console.log(email, password);
+
+
+  } catch (err) {
+    const errors = handleErrors(err);
+    res.status(400).json({errors});
+    // next(errors);
+  }
+
 }

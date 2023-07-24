@@ -19,6 +19,10 @@ const authRoute = require("./Route/authRoute");
 // const auth = require("./Middleware/auth");
 
 
+process.on('uncaughtException', function (error) {
+    console.log(error.stack);
+ });
+
 let str1 = "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority";
 
     // 53Kady8wLo9WyP4C

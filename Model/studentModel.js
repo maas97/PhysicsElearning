@@ -1,12 +1,16 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
+process.on('uncaughtException', function (error) {
+  console.log(error.stack);
+});
 
 const validGovernates = ['Cairo', 'Alexandria', 'Giza', 'Kafr El Sheikh', 'Al Dakahlia']; // Add more if needed
 const validCities = ['Qallin', "El Hamool", "El Reyad", "Desouk", "Metoubes", "Fuwa", "Sidi Salem"]; // Add more if needed
 const validEducationalLevel = ["1st Seconadary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
 
 
-const Schema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Types.ObjectId,
         default: () => new mongoose.Types.ObjectId() // Generate a new ObjectId as the default value
@@ -47,11 +51,18 @@ const Schema = new mongoose.Schema({
         @outlook.com`
     ],
     },
-    birthdate : {
-        type: Date,
+    age : {
+        type: Number,
+        unique: [true, "Age must be unique"],
+        match: [/^(010|011|012|015)\d{8}$/
+        ,
+        `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
+        010/011/012/015 
+        ويكون في نطاق 11 رقم`],
     },
     phoneNumber:{
         type: String,
+        unique: [true, "Phone number must be unique"],
         match: [/^(010|011|012|015)\d{8}$/
                 ,
                 `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
@@ -92,5 +103,18 @@ const Schema = new mongoose.Schema({
     image : { type:String },
 })
 
+studentSchema.statics.login = async function(email,password){
+  const student = await this.findOne({email});
+  if (student){
+      const authenticate = await bcrypt.compare(password, student.password);
+    if(authenticate){
+      return student;
+    }
+    throw Error ("Incorrect Password");
+  }
+  throw Error("incorrect email");
+};
 
-mongoose.model("student",Schema); //new name for model
+const Student =mongoose.model("student",studentSchema); //new name for model
+
+module.exports = Student;

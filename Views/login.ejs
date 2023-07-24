@@ -6,7 +6,7 @@
   <h2>Login</h2>
   <label for="email">Email</label>
   <input type="text" name="email" required />
-  <!-- <div class="email error">some error</div> -->
+  <div class="email error"></div>
   <label for="password">Password</label>
   <input type="password" name="password" required />
   <div class="password error"></div>
@@ -19,6 +19,8 @@
 
 <script>
   const form = document.querySelector('form');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -34,12 +36,17 @@ body: JSON.stringify({ email , password}),
 headers: {"Content-Type":"application/json"}
 });
 const data = await res.json();
+if (data.errors) {
+        // emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password || data.errors.email;
+      }
 if(data.student){
   location.assign("/");
 }
 
 } catch (error) {
-  
+    // res.status(400).JSON({error});
+    console.log(error);
 }  });
 </script>
 </body>
