@@ -16,8 +16,8 @@ const contentOfCourseRoute = require("./Route/contentOfCourseRoute");
 const productRoute = require("./Route/productRoute");
 const quizRoute = require("./Route/quizRoute");
 const authRoute = require("./Route/authRoute");
-// const auth = require("./Middleware/auth");
-
+const auth = require("./Middleware/authenticationMW");
+const {checkStudent} = require("./Middleware/authenticationMW");
 
 process.on('uncaughtException', function (error) {
     console.log(error.stack);
@@ -48,6 +48,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.get("*", checkStudent);
 app.use(authRoute);
 app.use(adminRoute);
 app.use(studentRoute);
