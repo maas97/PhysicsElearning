@@ -67,6 +67,16 @@ const studentSchema = new mongoose.Schema({
                 ويكون في نطاق 11 رقم`],
         required: true
     },
+    parentPhoneNumber:{
+      type: String,
+      unique: [true, "Phone number must be unique"],
+      match: [/^(010|011|012|015)\d{8}$/
+              ,
+              `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
+              010/011/012/015 
+              ويكون في نطاق 11 رقم`],
+      required: true
+  },
     educationalLevel:{
         type:String,
         enum: validEducationalLevel,
@@ -97,7 +107,6 @@ const studentSchema = new mongoose.Schema({
         type: Boolean,
         default: false
       },
-    image : { type:String },
 })
 
 studentSchema.statics.login = async function(email,password){
