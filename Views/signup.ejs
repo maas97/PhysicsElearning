@@ -32,10 +32,19 @@
   <div class="invalid-feedback">
 الرجاء إدخال عمر مناسب من 10 إلى 19 سنة
   </div>
-  <label for="phoneNumber">رقم الموبايل</label>
+  <label for="phoneNumber">رقم موبايل الطالب</label>
   <input type="number" name="phoneNumber" id="phoneNumber" pattern="^(010|011|012|015)\d{8}$" maxlength="11" class="form-control" required />
   <div class="invalid-feedback">
      الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+  </div>
+  <div class="phoneError" style="color: rgb(222,56,69);">
+  </div>
+  <label for="parentPhoneNumber">رقم موبايل ولي الأمر</label>
+  <input type="number" name="parentPhoneNumber" id="parentPhoneNumber" pattern="^(010|011|012|015)\d{8}$" maxlength="11" class="form-control" required />
+  <div class="invalid-feedback">
+     الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+  </div>
+  <div class="parentPhoneError" style="color: rgb(222,56,69);">
   </div>
   <button>اشترك الآن</button>
 </div>
@@ -54,9 +63,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const lastNameElement = document.getElementById("lastName");
   const passwordElement = document.getElementById("password");
   const phoneNumberElement = document.getElementById("phoneNumber");
+  const parentPhoneNumberElement = document.getElementById("parentPhoneNumber");
   const ageElement = document.getElementById("age");
 
   const emailError = document.querySelector('.email.error');
+  const phoneError = document.querySelector('.phoneError');
+  const parentPhoneError = document.querySelector('.parentPhoneError');
 
   // first name validation
   firstNameElement.addEventListener('input', function(e) {
@@ -73,10 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }else {
     firstNameElement.classList.remove("is-invalid");
     firstNameElement.classList.add("is-valid");
-
   }
   }
- 
 });
 
 // last name validation
@@ -143,6 +153,26 @@ phoneNumberElement.addEventListener('input', function(e) {
   }
 });
 
+// parentPhone validation
+parentPhoneNumberElement.addEventListener('input', function(e) {
+  e.preventDefault();
+  const parentPhoneValue = parentPhoneNumberElement.value;
+  // console.log(phoneValue);
+  
+  if(parentPhoneValue.trim() === ''){
+    parentPhoneNumberElement.classList.remove("is-valid");
+    parentPhoneNumberElement.classList.add("is-invalid");
+  }else{
+    if (/^(010|011|012|015)\d{8}$/.test(parentPhoneValue)) {
+      parentPhoneNumberElement.classList.remove("is-invalid");
+      parentPhoneNumberElement.classList.add("is-valid");
+    } else {
+      parentPhoneNumberElement.classList.remove("is-valid");
+      parentPhoneNumberElement.classList.add("is-invalid");
+    }
+  }
+});
+
 // age validation
 ageElement.addEventListener('input', function(e) {
   e.preventDefault();
@@ -168,6 +198,8 @@ ageElement.addEventListener('input', function(e) {
     e.preventDefault();
 
     emailError.textContent = '';
+    phoneError.textContent = '';
+    parentPhoneError.textContent = '';
     // get values
     const email = form.email.value;
     const password = form.password.value;
@@ -175,11 +207,31 @@ ageElement.addEventListener('input', function(e) {
     const lastName = form.lastName.value;
     const age = form.age.value;
     const phoneNumber = form.phoneNumber.value;
+    const parentPhoneNumber = form.parentPhoneNumber.value;
+
+    const firstNameElement = document.getElementById("firstName");
+  const lastNameElement = document.getElementById("lastName");
+  const passwordElement = document.getElementById("password");
+  const phoneNumberElement = document.getElementById("phoneNumber");
+  const parentPhoneNumberElement = document.getElementById("parentPhoneNumber");
+  const ageElement = document.getElementById("age");
+
 
     try {
-      const res = await fetch ("/signup", {
+      if(parentPhoneNumber === phoneNumber){
+        parentPhoneError.textContent = 'لا يمكن لرقم ولي الأمر ورقم الطالب أن يكونوا متطابقين';
+      }else{
+        if(email === '' || password === '' || firstName === '' || lastName === '' || age === '' || phoneNumber === '' || parentPhoneNumber === '' ){
+          parentPhoneError.textContent = 'برجاء مليء كافة البيانات';
+        }
+        if(firstNameElement.classList.contains('invalid-feedback') || lastNameElement.classList.contains('invalid-feedback') || passwordElement.classList.contains('invalid-feedback') || 
+        phoneNumberElement.classList.contains('invalid-feedback') || parentPhoneNumberElement.classList.contains('invalid-feedback') || ageElement.classList.contains('invalid-feedback') ){
+          parentPhoneError.textContent = 'برجاء التحقق من كافة البيانات';
+        }
+        else{
+          const res = await fetch ("/signup", {
         method: "POST",
-        body: JSON.stringify({ firstName, lastName, email , password, age, phoneNumber}),
+        body: JSON.stringify({ firstName, lastName, email , password, age, phoneNumber, parentPhoneNumber}),
         headers: {"Content-Type":"application/json"}
       });
         const data = await res.json();
@@ -191,12 +243,22 @@ ageElement.addEventListener('input', function(e) {
           // console.log(data.errors);
           // console.log(data.message);
           emailError.textContent = data.message;
+          phoneError.textContent = data.message;
+          parentPhoneError.textContent = data.message;
           }
 
         //validation for duplicated email
         if (data.errors) {
             // console.log(data);
             emailError.textContent = data.errors.email;
+            phoneNumberElement.classList.remove("is-invalid");
+            phoneError.textContent = '';
+            phoneError.textContent = data.errors.phoneNumber;
+            console.log(data.errors.phoneNumber);
+            parentPhoneNumberElement.classList.remove("is-invalid");
+            parentPhoneError.textContent = '';
+            parentPhoneError.textContent = data.errors.phoneNumber;
+            console.log(data.errors.parentPhoneError);
             // passwordError.textContent = data.errors.password;
           }
 
@@ -209,8 +271,18 @@ ageElement.addEventListener('input', function(e) {
           // }
 
         if(data.student){
+
+          // to signup manually by updating the cookie to be empty and have very very short time expiration 
+
           location.assign("/login");
         }
+
+
+        }
+        
+      }
+
+      
 
 }   catch (error) {
   

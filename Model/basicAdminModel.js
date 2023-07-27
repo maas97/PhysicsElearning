@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         default: () => new mongoose.Types.ObjectId() // Generate a new ObjectId as the default value
       },
-          firstName:{
+    firstName:{
         type:String,
         validate: {
             validator: function (v) {

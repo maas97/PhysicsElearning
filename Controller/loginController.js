@@ -17,7 +17,7 @@ process.on('uncaughtException', function (error) {
 const handleErrors = (err) => {
   console.log(err.code);
   console.log(err.message);
-  let errors = { email: ''};
+  let errors = { email: '', phoneNumber: '', parentPhoneNumber: ''};
 
   //login errors
   if(err.message === 'incorrect email'){
@@ -35,7 +35,16 @@ const handleErrors = (err) => {
   // duplicate email error
   if (err.code === 11000) {
     // console.log(err.code);
-    errors.email = 'هذا الإيميل لديه أكونت مسبقا على منصتنا برجاء تسجيل الدخول';
+    if (err.message.includes("phoneNumber")) {
+      errors.phoneNumber = 'رقم الطالب مسجل مسبقا على منصتنا';
+    }
+    if (err.message.includes("parentPhoneNumber")) {
+      errors.parentPhoneNumber = 'رقم ولي الأمر مسجل مسبقا على منصتنا';
+    }
+    if (err.message.includes("email")) {
+      errors.email = 'هذا الإيميل لديه أكونت مسبقا على منصتنا برجاء تسجيل الدخول';
+    }
+    
     console.log(errors);
     // console.log(errors.email);
     
@@ -101,6 +110,7 @@ module.exports.signup_post = (req,res,next)=>{
       email:      req.body.email,
       age:        req.body.age,
       phoneNumber:req.body.phoneNumber,
+      parentPhoneNumber:req.body.parentPhoneNumber,
   }).save()// insertOne
   .then(student=>{
       console.log(student);

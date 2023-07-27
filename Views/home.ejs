@@ -65,28 +65,34 @@
   <!-- Pre-header End -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+  <header class="header-area border border-secondary header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <nav class="main-nav">
+          <nav class="main-nav border border-danger">
             <!-- ***** Logo Start ***** -->
             <a href="/" >
               <a class="navbar-brand" href="/"><span class="sir logo" style="margin-right: 5px;" > Sir  </span> <span class="mohammed logo" style="margin-right: 5px;"> Mohammed  </span> <span class="ramadan logo"> Ramadan </span></a>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
-            <ul class="nav">
+            <ul class="nav border border-primary">
+              
+              <% if(user) { %>
+              <li class="scroll-to-section"><a href="#">  مرحبا <%= user.firstName %> </a></li>
               <li class="scroll-to-section"><a href="/" class="active">الرئيسية</a></li>
+              <li class="scroll-to-section"><a href="/courses" >كورساتي</a></li>
+              <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
+              <li class="scroll-to-section"><a href="/logout">تسجيل الخروج</a></li> 
+              <li class="scroll-to-section"><a href="#"></a></li> 
+
+              <% } else { %>
+              <li class="scroll-to-section"><a href="/" class="active">الرئيسية</a></li>
+              <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
               <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
               <li class="scroll-to-section"><a href="#services">محاضرات مجانية</a></li>
-              <% if(user) { %>
-              <li class="scroll-to-section"><a href="/courses">كورساتي</a></li>
-              <li class="scroll-to-section"><a href="/"> مرحبا، <%= user.firstName %></a></li>
-              <li class="scroll-to-section"><a href="/logout">تسجيل الخروج</a></li> 
-              <% } else { %>
-              <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
               <li class="scroll-to-section"><a href="/login">تسجيل الدخول</a></li> 
+              <li class="scroll-to-section"><a href="#"></a></li> 
               <% } %>
             </ul>        
             <a class='menu-trigger'>
@@ -100,7 +106,7 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner hero-overly wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div class="main-banner hero-overly wow fadeIn border border-danger" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -114,9 +120,11 @@
                     <p>موقع مستر محمد رمضان للفيزياء للثانوية العامة</p>
                   </div>
                   <div class="col-lg-12">
-                    <div class="border-first-button scroll-to-section">
-                      <a href="/signup">اشترك الآن</a>
-                    </div>
+                    <% if(!user) { %>
+                      <div class="border-first-button scroll-to-section">
+                        <a href="/signup">اشترك الآن</a>
+                      </div>
+                    <% } %>  
                   </div>
                 </div>
               </div>
@@ -128,7 +136,7 @@
     </div>
   </div>
 
-  <div id="free-quote" class="free-quote">
+  <div id="free-quote" class="free-quote border border-danger">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">

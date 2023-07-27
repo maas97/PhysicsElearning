@@ -72,26 +72,24 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="/" >
-              <a class="navbar-brand" href="/"><span class="sir logo" style="margin-right: 5px;" > Sir  </span> <span class="mohammed logo" style="margin-right: 5px;"> Mohammed  </span> <span class="ramadan logo"> Ramadan </span></a>
+              <a class="navbar-brand" href="#"><span class="sir logo" style="margin-right: 5px;" > Sir  </span> <span class="mohammed logo" style="margin-right: 5px;"> Mohammed  </span> <span class="ramadan logo"> Ramadan </span></a>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="/" class="active">الرئيسية</a></li>
-              <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
-              <li class="scroll-to-section"><a href="#services">محاضرات مجانية</a></li>
+            <!-- <ul class="nav">
               <% if(user) { %>
-              <li class="scroll-to-section"><a href="/courses">كورساتي</a></li>
-              <li class="scroll-to-section"><a href="/"> مرحبا، <%= user.firstName %></a></li>
-              <li class="scroll-to-section"><a href="/logout">تسجيل الخروج</a></li> 
-              <% } else { %>
-              <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
-              <li class="scroll-to-section"><a href="/login">تسجيل الدخول</a></li> 
-              <% } %>
-            </ul>        
-            <a class='menu-trigger'>
+                <!-- <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
+                <li class="scroll-to-section"><a href="#services">محاضرات مجانية</a></li> -->
+                <% } else { %>
+                <li class="scroll-to-section"><a href="/" class="active">الرئيسية</a></li>
+                <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
+                <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
+                <li class="scroll-to-section"><a href="#services">محاضرات مجانية</a></li>
+                <% } %>
+            </ul>         -->
+            <!-- <a class='menu-trigger'>
                 <span>Menu</span>
-            </a>
+            </a> -->
             <!-- ***** Menu End ***** -->
           </nav>
         </div>
@@ -100,12 +98,12 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner hero-overly wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+  <div class="main-banner hero-overly wow fadeIn border border-danger" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 border border-danger">
+        <div class="col-lg-12">
           <div class="row">
-            <div class="col-md-6 mx-auto align-self-center border border-primary">
+            <div class="col-md-6 mx-auto align-self-center">
               <div class="left-content mx-auto show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
                 <div class="row mx-auto">
                   <div class="col-md-6 mx-auto">

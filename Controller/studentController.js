@@ -38,6 +38,7 @@ exports.addStudent=(request,response,next)=>{
         email:request.body.email,
         age:request.body.age,
         phoneNumber:request.body.phoneNumber,
+        parentPhoneNumber: request.body.parentPhoneNumber,
         educationalLevel: request.body.educationalLevel,
         location:{
             governate: request.body.governate,
@@ -68,11 +69,17 @@ exports.updateStudent=(request,response,next)=>{
             $set:{
                 firstName:request.body.firstName,
                 lastName:request.body.lastName,
-                password: password,
+                password: bcrypt.hashSync(request.body.password, salt),
                 email:request.body.email,
                 age:request.body.age,
-                phoneNumber:request.body.phoneNumber
-                // image:request.file?.filename ?? undefined//if no file posted, then make mongo put undefined  
+                phoneNumber:request.body.phoneNumber,
+                parentPhoneNumber: request.body.parentPhoneNumber,
+                educationalLevel: request.body.educationalLevel,
+                location:{
+                    governate: request.body.governate,
+                    city: request.body.city,
+                    area: request.body.area
+                }
             }
         })   
     })

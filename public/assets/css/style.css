@@ -38,7 +38,7 @@ figure, header, nav, section, article, aside, footer, figcaption {
 
 /* sir mohamed ramadan */
 .sir, .mohammed, .ramadan {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .sir{
   color: #FC861C;
@@ -65,7 +65,9 @@ figure, header, nav, section, article, aside, footer, figcaption {
   font-weight: 900;
   margin-bottom: 40px;
 }
-
+.labelForm{
+  font-weight: 700;
+}
 .loginForm{
   width: 30vw;
   margin: 0 auto;
@@ -103,6 +105,43 @@ figure, header, nav, section, article, aside, footer, figcaption {
   font-size: 0.8em;
   font-weight: bold;
 }
+
+
+
+
+/*what above 991*/
+ /* @media screen and (min-width: 766px) and (max-width: 1200px) {
+  .sir, .mohammed, .ramadan {
+    font-size: 1rem;
+    margin-left: 0px;
+  }
+  .scroll-to-section a{
+    font-size: 0.5rem;
+  }
+  .main-nav{
+    width: 80vw;
+    margin-left: 150px;
+  }
+} */
+/*
+@media (min-width: 776px) {
+  .loginTitle{
+    font-size: 1.5em !important;
+    font-weight: 900;
+  }
+  .loginForm{
+    width: 80vw;
+  }
+  .sir, .mohammed, .ramadan {
+    font-size: 1.2rem;
+    margin-right: 20px;
+  }
+  .scroll-to-section{
+    font-size: 0.5rem;
+  }
+}
+
+
 @media (max-width: 766px) {
   .loginTitle{
     font-size: 1.5em !important;
@@ -111,7 +150,11 @@ figure, header, nav, section, article, aside, footer, figcaption {
   .loginForm{
     width: 80vw;
   }
-}
+  .sir, .mohammed, .ramadan {
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+} */
 
 /* clear fix */
 .grid:after {
@@ -476,7 +519,7 @@ header
 .header-area .main-nav .nav li a {
   display: block;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 0.9rem;
   color: #2a2a2a;
   text-transform: capitalize;
   -webkit-transition: all 0.3s ease 0s;
@@ -723,10 +766,16 @@ header
   .background-header .nav li a.active:after {
     display: none;
   }
-  .header-area .logo {
-    /* margin-left: 30px; */
-    font-size: 0.9rem;
+
+  .header-area .main-nav .nav li a {
+    display: block;
+    font-weight: 500;
+    font-size: 0.5rem;
   }
+  /* .header-area .logo {
+    margin-left: 30px;
+    font-size: 0.9rem;
+  } */
 
   
 .hero-overly::before{
@@ -980,6 +1029,7 @@ header
 @media (min-width: 767px) {
   .header-area .main-nav .nav {
     display: flex !important;
+    
   }
   
 .hero-overly::before{
@@ -1161,7 +1211,6 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  /* background-image: url(../images/slider-left-dec.jpg); */
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -1171,23 +1220,10 @@ Banner Style
   z-index: 1;
 }
 
-.main-banner:before {
-  content: '';
-  /* background-image: url(../images/slider-right-dec.jpg); */
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0;
-  top: 60px;
-  width: 1159px;
-  height: 797px;
-  z-index: -1;
-}
 
-/* .main-banner .left-content {
-  margin-right: 15px;
-} */
 
 .main-banner .left-content h6 {
+  margin-top: 120px;
   text-transform: capitalize;
   font-size: 20px;
   font-weight: 700;
@@ -1211,15 +1247,15 @@ Banner Style
   color: white;
 }
 
-.main-banner .right-image {
+/* .main-banner .right-image {
   text-align: right;
   position: relative;
   z-index: 20;
-}
+} */
 
-.main-banner .right-image img {
+/* .main-banner .right-image img {
   max-width: 593px;
-}
+} */
 
 @media (max-width:1200px) {
   .main-banner{
@@ -1699,7 +1735,7 @@ Free Quote
   text-align: center;
   position: relative;
   z-index: 2;
-  margin-top: 130px;
+  margin-top: 70px;
 }
 
 .free-quote .section-heading {
