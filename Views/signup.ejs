@@ -1,37 +1,77 @@
-<%- include("partials/header.ejs") -%>
+<%- include("partials/htmlHead.ejs") -%>
+<!-- Write here the title of the page -->
+    <title>الاشتراك في المنصة</title>
+
+<!-- write here the rest of the css custom style of this current page for example -->
+   
+ <!-- <link rel="stylesheet" href="/style.css">  -->
+
+ <link rel="stylesheet" href="/assets/css/signupStyle.css">
 
 
-<form novalidate>
+  </head>
+
+<body>
+  
+
+<%- include("partials/preloader.ejs") -%>
+<%- include("partials/preheader.ejs") -%>
+<%- include("partials/navbar.ejs") -%>
+
+<!-- <form novalidate style="margin-top: 120px;">
   <div class="form-group">
   <h2>الاشتراك</h2>
   <h4>برجاء إدخال البيانات الآتية</h4>
   <br>
+
+
+
   <label for="firstName">الاسم الأول</label>
   <input type="text" name="firstName"  class="form-control" maxlength="20" id="firstName" pattern="[A-Za-z]+" required/>
   <div class="invalid-feedback">
     الرجاء إدخال الاسم الأول بشكل صحيح محتويا على حروف فقط
-  </div>
+  </div>\
+
+
+
+
   <label for="lastName">الاسم الأخير</label>
   <input type="text" name="lastName"  class="form-control" maxlength="20" id="lastName" pattern="[A-Za-z]+" required />
   <div class="invalid-feedback">
     الرجاء إدخال الاسم الأخير بشكل صحيح محتويا على حروف فقط
   </div>
   <div class="lastName error"></div>
+
+
+
+
+
   <label for="email">الإيميل</label>
   <input type="text" name="email" maxlength="30" required />
   <div class="email error"></div>
+
+
+
+
   <label for="password">كلمة المرور</label>
   <input type="password" name="password" class="form-control" id="password" minlength="8" maxlength="30" required  />
   <div class="password error"></div>
   <div class="invalid-feedback">
-    <!-- Please enter a password with min length : 8, Contains at least one alphabetical character, Contains at least one digit & Contains at least one special character  -->
   الرجاء إدخال كلمة المرور بحد أدنى 8 خانات وحد أقصى 30 خانة متضمنة على الأقل: حرف واحد، رقم واحد، رمز واحد
   </div>
+
+
+
+
   <label for="age">العمر</label>
   <input type="number" name="age" id="age" class="form-control" min="10" max="19" maxlength="2"  required/>
   <div class="invalid-feedback">
 الرجاء إدخال عمر مناسب من 10 إلى 19 سنة
   </div>
+
+
+
+
   <label for="phoneNumber">رقم موبايل الطالب</label>
   <input type="number" name="phoneNumber" id="phoneNumber" pattern="^(010|011|012|015)\d{8}$" maxlength="11" class="form-control" required />
   <div class="invalid-feedback">
@@ -39,6 +79,10 @@
   </div>
   <div class="phoneError" style="color: rgb(222,56,69);">
   </div>
+
+
+
+
   <label for="parentPhoneNumber">رقم موبايل ولي الأمر</label>
   <input type="number" name="parentPhoneNumber" id="parentPhoneNumber" pattern="^(010|011|012|015)\d{8}$" maxlength="11" class="form-control" required />
   <div class="invalid-feedback">
@@ -46,12 +90,129 @@
   </div>
   <div class="parentPhoneError" style="color: rgb(222,56,69);">
   </div>
+
+
+
+
+
   <button>اشترك الآن</button>
 </div>
-</form>
+</form> -->
+
+
+
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">الاشتراك في المنصة</label>
+		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+        <form action="/">
+
+          <div class="group">
+            <label for="firstName" class="label">الاسم الأول</label>
+            <input id="firstName" name="firstName" type="text" class="input form-control" maxlength="20"  pattern="[A-Za-z]+" required>
+            <div class="invalid-feedback">
+              الرجاء إدخال الاسم الأول بشكل صحيح محتويا على حروف فقط
+            </div>            
+          </div>
+
+
+          <div class="group">
+            <label for="lastName" class="label">الاسم الأخير</label>
+            <input id="lastName" name="lastName" type="text" class="input form-control" maxlength="20" pattern="[A-Za-z]+" required>
+            <div class="invalid-feedback">
+              الرجاء إدخال الاسم الأول بشكل صحيح محتويا على حروف فقط
+            </div>             
+          </div>
+
+
+
+          <div class="group">
+            <label for="email" class="label">الإيميل</label>
+            <input id="email" name="email" type="text" class="input" maxlength="30" required>
+            <div class="email error"></div>
+          </div>
+
+
+
+          <div class="group">
+            <label for="password" class="label">كلمة المرور</label>
+            <input id="password" name="password" type="password" class="input form-control" minlength="8" maxlength="30" required>
+            <div class="password error"></div>
+            <div class="invalid-feedback">
+            الرجاء إدخال كلمة المرور بحد أدنى 8 خانات وحد أقصى 30 خانة متضمنة على الأقل: حرف واحد، رقم واحد، رمز واحد
+            </div>
+          </div>
+
+
+          <div class="group">
+            <label for="age" class="label">العمر</label>
+            <input id="age" name="age" type="number" class="input form-control" min="10" max="19" maxlength="2" required>
+            <div class="invalid-feedback">
+              الرجاء إدخال عمر مناسب من 10 إلى 19 سنة
+            </div>
+          </div>
+
+
+          <div class="group">
+            <label for="phoneNumber" class="label">رقم موبايل الطالب</label>
+            <input id="phoneNumber" name="phoneNumber" type="number" class="input form-control" pattern="^(010|011|012|015)\d{8}$" maxlength="11" required>
+            <div class="invalid-feedback">
+              الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+           </div>
+           <div class="phoneError" style="color: rgb(222,56,69);">
+           </div>
+          </div>
+
+
+          <div class="group">
+            <label for="parentPhoneNumber" class="label">رقم موبايل ولي الأمر</label>
+            <input id="parentPhoneNumber" name="parentPhoneNumber" type="number" class="input form-control" pattern="^(010|011|012|015)\d{8}$" maxlength="11" required>
+            <div class="invalid-feedback">
+            الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+            </div>
+            <div class="parentPhoneError" style="color: rgb(222,56,69);">
+            </div>          
+          </div>
+
+          
+          <!-- <div class="group">
+            <label for="password" class="label">العنوان</label>
+            <input id="password" name="password" type="password" class="input password error" data-type="password" required>
+            <div class="errorPassword"></div>
+          </div> -->
+          <div class="group">
+            <input type="submit" class="button" value="اشترك الآن">
+          </div>
+          <div class="hr"></div>
+          <div><span style="color: rgb(135, 176, 248);">لديك حساب بالفعل !! </span><a href="/login">سجل دخولك الآن</a></div>
+        </div>
+        </form>
+				
+
+			<div class="for-pwd-htm">
+				<div class="group">
+					<label for="user" class="label">رقم الموبايل</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="إعادة ضبط كلمة المرور">
+				</div>
+				<div class="hr"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
 
 <%- include("partials/footer.ejs") -%>
 
+<%- include("partials/jsScripts.ejs") -%>
 
 <script>
 

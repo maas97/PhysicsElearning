@@ -1,110 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("partials/htmlHead.ejs") -%>
+<!-- Write here the title of the page -->
+<title>الرئيسية</title>
 
-  <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="/atom_7206724.png">
-
-    <title>الرئيسية</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/animated.css">
-    <link rel="stylesheet" href="/assets/css/owl.css">
-    <!-- <link rel="stylesheet" href="/style.css"> -->
+<!-- write here the rest of the css custom style of this current page for example -->
+    <!-- <link rel="stylesheet" href="/style.css"> 
+    /
+    /
+    /
+    -->
 
   </head>
 
 <body>
+  
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- Pre-header Starts -->
-  <div class="pre-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-sm-8 col-7">
-          <ul class="info">
-            <li class="envelope"><a href="#" class="email-top"><i class="fa fa-envelope"></i>digimedia@company.com</a></li>
-            <li class="phone"><a href="#"><i class="fa fa-phone"></i>010-020-0340</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-sm-4 col-5">
-          <ul class="social-media ">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Pre-header End -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area border border-secondary header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav border border-danger">
-            <!-- ***** Logo Start ***** -->
-            <a href="/" >
-              <a class="navbar-brand" href="/"><span class="sir logo" style="margin-right: 5px;" > Sir  </span> <span class="mohammed logo" style="margin-right: 5px;"> Mohammed  </span> <span class="ramadan logo"> Ramadan </span></a>
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav border border-primary">
-              
-              <% if(user) { %>
-              <li class="scroll-to-section"><a href="#">  مرحبا <%= user.firstName %> </a></li>
-              <li class="scroll-to-section"><a href="/" class="active">الرئيسية</a></li>
-              <li class="scroll-to-section"><a href="/courses" >كورساتي</a></li>
-              <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
-              <li class="scroll-to-section"><a href="/logout">تسجيل الخروج</a></li> 
-              <li class="scroll-to-section"><a href="#"></a></li> 
-
-              <% } else { %>
-              <li class="scroll-to-section"><a href="/" class="active">الرئيسية</a></li>
-              <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
-              <li class="scroll-to-section"><a href="#about">امتحانات مجانية</a></li>
-              <li class="scroll-to-section"><a href="#services">محاضرات مجانية</a></li>
-              <li class="scroll-to-section"><a href="/login">تسجيل الدخول</a></li> 
-              <li class="scroll-to-section"><a href="#"></a></li> 
-              <% } %>
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+<%- include("partials/preloader.ejs") -%>
+<%- include("partials/preheader.ejs") -%>
+<%- include("partials/navbar.ejs") -%>
 
   <div class="main-banner hero-overly wow fadeIn border border-danger" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
@@ -218,96 +130,13 @@
       </div>
     </div>
 
-<!-- 
-  <div id="about" class="about section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="/assets/images/about-dec-v3.png" alt="">
-              </div>
-            </div>
-            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-              <div class="about-right-content">
-                <div class="section-heading">
-                  <h6>عن المنصة</h6>
-                  <h4>ما هي منصة <em>الفيزياء</em></h4>
-                  <div class="line-dec"></div>
-                </div>
-                <p>مع منصتنا هتضمن حاجات كتير اوي اوي اوي</p>
-                <div class="row">
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-                      <div class="progress" data-percentage="90">
-                        <span class="progress-left">
-                          <span class="progress-bar"></span>
-                        </span>
-                        <span class="progress-right">
-                          <span class="progress-bar"></span>
-                        </span>
-                        <div class="progress-value">
-                          <div>
-                            90%<br>
-                            <span>الأول الثانوي</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="skill-item second-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-                      <div class="progress" data-percentage="80">
-                        <span class="progress-left">
-                          <span class="progress-bar"></span>
-                        </span>
-                        <span class="progress-right">
-                          <span class="progress-bar"></span>
-                        </span>
-                        <div class="progress-value">
-                          <div>
-                            80%<br>
-                            <span>الثاني الثانوي</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="skill-item third-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-                      <div class="progress" data-percentage="80">
-                        <span class="progress-left">
-                          <span class="progress-bar"></span>
-                        </span>
-                        <span class="progress-right">
-                          <span class="progress-bar"></span>
-                        </span>
-                        <div class="progress-value">
-                          <div>
-                            80%<br>
-                            <span>الثالث الثانوي</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <div id="services" class="services section">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
             <!-- <h6>السنوات الدراسية</h6> -->
-            <h4>السنوات <em>الدراسية</em></h4>
+            <h4>محاضرات مجانية لمختلف السنوات <em>الدراسية</em></h4>
             <div class="line-dec"></div>
           </div>
         </div>
@@ -435,167 +264,6 @@
   </div>
 
 
-  <!-- <div id="portfolio" class="our-portfolio section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
-            <h6>Our Portofolio</h6>
-            <h4>See Our Recent <em>Projects</em></h4>
-            <div class="line-dec"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid wow fadeIn portLeftToRight" data-wow-duration="1s" data-wow-delay="0.7s">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="loop owl-carousel">
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="/assets/images/portfolio-01.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <h4>Website Builder</h4>
-                  <span>Marketing</span>
-                </div>
-              </div>
-              </a>  
-            </div>
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="/assets/images/portfolio-01.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <h4>Website Builder</h4>
-                  <span>Marketing</span>
-                </div>
-              </div>
-              </a>  
-            </div>
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="/assets/images/portfolio-02.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <h4>Website Builder</h4>
-                  <span>Marketing</span>
-                </div>
-              </div>
-              </a>  
-            </div>
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="/assets/images/portfolio-03.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <h4>Website Builder</h4>
-                  <span>Marketing</span>
-                </div>
-              </div>
-              </a>  
-            </div>
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="/assets/images/portfolio-04.jpg" alt="">
-                </div>
-                <div class="down-content">
-                  <h4>Website Builder</h4>
-                  <span>Marketing</span>
-                </div>
-              </div>
-              </a>  
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-<!--   
-  <div id="blog" class="blog">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 offset-lg-4  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
-          <div class="section-heading">
-            <h6>Recent News</h6>
-            <h4>Check Our Blog <em>Posts</em></h4>
-            <div class="line-dec"></div>
-          </div>
-        </div>
-        <div class="col-lg-6 show-up wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-          <div class="blog-post">
-            <div class="thumb">
-              <a href="#"><img src="/assets/images/blog-post-01.jpg" alt=""></a>
-            </div>
-            <div class="down-content">
-              <span class="category">SEO Analysis</span>
-              <span class="date">03 August 2021</span>
-              <a href="#"><h4>Lorem Ipsum Dolor Sit Amet, Consectetur Adelore
-                Eiusmod Tempor Incididunt</h4></a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers itii eiumod deis tempor incididunt ut labore.</p>
-              <span class="author"><img src="/assets/images/author-post.jpg" alt="">By: Andrea Mentuzi</span>
-              <div class="border-first-button"><a href="#">Discover More</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-          <div class="blog-posts">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="post-item">
-                  <div class="thumb">
-                    <a href="#"><img src="/assets/images/blog-post-02.jpg" alt=""></a>
-                  </div>
-                  <div class="right-content">
-                    <span class="category">SEO Analysis</span>
-                    <span class="date">24 September 2021</span>
-                    <a href="#"><h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4></a>
-                    <p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="post-item">
-                  <div class="thumb">
-                    <a href="#"><img src="/assets/images/blog-post-03.jpg" alt=""></a>
-                  </div>
-                  <div class="right-content">
-                    <span class="category">SEO Analysis</span>
-                    <span class="date">24 September 2021</span>
-                    <a href="#"><h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4></a>
-                    <p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="post-item last-post-item">
-                  <div class="thumb">
-                    <a href="#"><img src="/assets/images/blog-post-04.jpg" alt=""></a>
-                  </div>
-                  <div class="right-content">
-                    <span class="category">SEO Analysis</span>
-                    <span class="date">24 September 2021</span>
-                    <a href="#"><h4>Lorem Ipsum Dolor Sit Amei Eiusmod Tempor</h4></a>
-                    <p>Lorem ipsum dolor sit amet, cocteturi adipiscing eliterski.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>   -->
 
   <div id="contact" class="contact-us section">
     <div class="container">
@@ -617,8 +285,7 @@
               </div>
               <div class="col-lg-5">
                 <div id="map">
-                  <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="636px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54655.82265754734!2d30.86224289162128!3d31.110040098550943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f7ab78f233021f%3A0xc2cdebb004a208f8!2sKafr%20El-Shaikh%2C%20Qism%20Kafr%20El-Shaikh%2C%20Kafr%20el-Sheikh%2C%20Gharbia%20Governorate%2C%20Egypt!5e0!3m2!1sen!2sus!4v1690606671572!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </div>
               </div>
               <div class="col-lg-7">
                 <div class="fill-form">
@@ -627,7 +294,7 @@
                       <div class="info-post">
                         <div class="icon">
                           <img src="/assets/images/phone-icon.png" alt="">
-                          <a href="#">010-020-0340</a>
+                          <a href="#">رقم موبايل المستر</a>
                         </div>
                       </div>
                     </div>
@@ -635,7 +302,7 @@
                       <div class="info-post">
                         <div class="icon">
                           <img src="/assets/images/email-icon.png" alt="">
-                          <a href="#">our@email.com</a>
+                          <a href="#">إيميل المستر</a>
                         </div>
                       </div>
                     </div>
@@ -643,7 +310,7 @@
                       <div class="info-post">
                         <div class="icon">
                           <img src="/assets/images/location-icon.png" alt="">
-                          <a href="#">123 Rio de Janeiro</a>
+                          <a href="#">عنوان السنتر</a>
                         </div>
                       </div>
                     </div>
@@ -678,25 +345,11 @@
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © Sir Mohamed Ramadan <script>document.write(new Date().getFullYear());</script> . All Rights Reserved. </p>
-          <p>Powered by Noormed </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-  <!-- Scripts -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/owl-carousel.js"></script>
-  <script src="/assets/js/animation.js"></script>
-  <script src="/assets/js/imagesloaded.js"></script>
-  <script src="/assets/js/custom.js"></script>
-
-</body>
-</html>
+  <%- include("partials/footer.ejs") -%>
+  <!-- write here custom js scripts to handle events... 
+    /
+    /
+    /
+  if any error happend try to change the order and write your script below the jsScripts -->
+  <%- include("partials/jsScripts.ejs") -%>
+  

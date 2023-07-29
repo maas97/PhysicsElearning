@@ -36,7 +36,7 @@ const Schema = new mongoose.Schema({
   },
   courseDayId:{
     type: Number,
-    ref: "daysOfCourse",
+    ref: "courseDetails",
     required: [true , "A lesson must have a course day"],
   }
 })

@@ -11,7 +11,7 @@ mongoose.set("strictQuery", false);
 // const login = require("./Routes/loginRoute");
 const adminRoute = require("./Route/adminRoute");
 const studentRoute = require("./Route/studentRoute");
-const dayOfCourseRoute = require("./Route/daysOfCourseRoute");
+const dayOfCourseRoute = require("./Route/courseDetailsRoute");
 const contentOfCourseRoute = require("./Route/contentOfCourseRoute");
 const productRoute = require("./Route/productRoute");
 const quizRoute = require("./Route/quizRoute");

@@ -1,0 +1,580 @@
+<%- include("partials/htmlHead.ejs") -%>
+
+<title>كورساتي</title>
+
+    <link rel="stylesheet" href="/assets/css/myCoursesStyle.css">
+
+    
+
+</head>
+
+<body>
+  
+
+<%- include("partials/preloader.ejs") -%>
+<%- include("partials/preheader.ejs") -%>
+<%- include("partials/navbar.ejs") -%>
+
+
+
+
+  <% if (user.isSubscriped) {%>
+  <div id="portfolio" class="our-portfolio section">
+    <div class="container" >
+      <div class="row" style="direction: rtl;">
+        <div class="col-lg-5">
+          <div class="section-heading wow fadeInLeft border border-danger"  data-wow-duration="1s" data-wow-delay="0.3s">
+            <!-- <h6>اخر ما تمت</h6> -->
+            <h4 style="direction: rtl;"> آخر ما تمت <em>مشاهدته</em></h4>
+            <!-- <div class="line-dec"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid wow fadeIn portLeftToRight" data-wow-duration="1s" data-wow-delay="0.7s">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="loop owl-carousel">
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="/assets/images/portfolio-01.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>1</h4>
+                  <span>Marketing</span>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="/assets/images/portfolio-01.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>2</h4>
+                  <span>Marketing</span>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="/assets/images/portfolio-02.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>3</h4>
+                  <span>Marketing</span>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="/assets/images/portfolio-03.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>4</h4>
+                  <span>Marketing</span>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="/assets/images/portfolio-04.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>5</h4>
+                  <span>Marketing</span>
+                </div>
+              </div>
+              </a>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="blog" class="blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="section-heading">
+            <!-- <h6>Recent News</h6> -->
+            <h4>دروسي و <em>كويزاتي</em></h4>
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-6 show-up wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="blog-post">
+            <div class="thumb">
+              <a href="#"><img src="/assets/images/blog-post-01.jpg" alt=""></a>
+            </div>
+            <div class="down-content">
+              <span class="category"><a href="/courseList">ترم ثان </a></span>
+              <span class="date">04 August 2021</span>
+              <a href="#"><h4>Lorem Ipsum Dolor Sit Amet, Consectetur Adelore
+                Eiusmod Tempor Incididunt</h4></a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers itii eiumod deis tempor incididunt ut labore.</p>
+              <span class="author"><img src="/assets/images/author-post.jpg" alt="">By: Andrea Mentuzi</span>
+              <div class="border-first-button"><a href="#">محتوى الترم</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 show-up wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="blog-post">
+            <div class="thumb">
+              <a href="#"><img src="/assets/images/blog-post-01.jpg" alt=""></a>
+            </div>
+            <div class="down-content">
+              <span class="category"><a href="/courseList">ترم أول </a></span>
+              <span class="date">03 August 2021</span>
+              <a href="#"><h4>Lorem Ipsum Dolor Sit Amet, Consectetur Adelore
+                Eiusmod Tempor Incididunt</h4></a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers itii eiumod deis tempor incididunt ut labore.</p>
+              <span class="author"><img src="/assets/images/author-post.jpg" alt="">By: Andrea Mentuzi</span>
+              <div class="border-first-button"><a href="#">محتوى الترم</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        <% } else { %>
+          <!-- to show list of courses if user is not subscribed yet -->
+
+          <div id="portfolio" class="our-portfolio section">
+            <div class="container" >
+              <div class="row" style="direction: rtl;">
+                <div class="col-lg-5">
+                  <div class="section-heading wow fadeInLeft"  data-wow-duration="1s" data-wow-delay="0.3s">
+                    <!-- <h6>اخر ما تمت</h6> -->
+                    <h4 style="direction: rtl;">أنت حاليا غير مشترك في أي من الكورسات <br> <em>اختر كورس من الكورسات للحجز</em></h4>
+                    <!-- <div class="line-dec"></div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+        <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+
+          <div style="margin: 0px auto; width: 70%; display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center;">
+            <!-- flip-card-container -->
+            <div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+
+              <div class="flip-card-container" style="--hue: 220">
+                <div class="flip-card">
+              
+                  <div class="card-front">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-1.jpg" alt="Brohm Lake">
+                      <figcaption>أولى ثانوي/ترم ثاني</figcaption>
+                    </figure>
+              
+                    <ul class="ulCourses">
+                      <li class="liCourses courseName">Course name</li>
+                      <li class="liCourses courseDescription">Course Description</li>
+                      <li class="liCourses CourseLevel">Educational Level</li>
+                      <li class="liCourses CourseSemester">Semester</li>
+                      <li class="liCourses coursePrice">Price</li>
+                    </ul>
+                  </div>
+              
+                  <div class="card-back">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-1.jpg" alt="Brohm Lake">
+                    </figure>
+              
+                    <button class="buttonCourses course-content">محتوى الكورس</button>
+                    <button class="buttonCourses course-subs">احجز الآن</button>
+              
+                    <div class="design-container">
+                      <span class="design design--1"></span>
+                      <span class="design design--2"></span>
+                      <span class="design design--3"></span>
+                      <span class="design design--4"></span>
+                      <span class="design design--5"></span>
+                      <span class="design design--6"></span>
+                      <span class="design design--7"></span>
+                      <span class="design design--8"></span>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            <!-- /flip-card-container -->
+            
+            <!-- flip-card-container -->
+            <div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+
+              <div class="flip-card-container" style="--hue: 170">
+                <div class="flip-card">
+              
+                  <div class="card-front">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-1.jpg" alt="Image 2">
+                      <figcaption>أولى ثانوي/ترم أول</figcaption>
+                    </figure>
+              
+                    <ul class="ulCourses">
+                      <li class="liCourses courseName">Course name 1</li>
+                      <li class="liCourses courseDescription">Course Description 1</li>
+                      <li class="liCourses CourseLevel">Educational Level 1</li>
+                      <li class="liCourses CourseSemester">Semester</li>
+                      <li class="liCourses coursePrice">Price</li>
+                    </ul>
+                  </div>
+              
+                  <div class="card-back">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-1.jpg" alt="image-2">
+                    </figure>
+              
+                    <button class="buttonCourses course-content">محتوى الكورس</button>
+                    <button class="buttonCourses course-subs">احجز الآن</button>
+
+                    <div class="design-container">
+                      <span class="design design--1"></span>
+                      <span class="design design--2"></span>
+                      <span class="design design--3"></span>
+                      <span class="design design--4"></span>
+                      <span class="design design--5"></span>
+                      <span class="design design--6"></span>
+                      <span class="design design--7"></span>
+                      <span class="design design--8"></span>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            <!-- /flip-card-container -->
+            
+            <!-- flip-card-container -->
+            <div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+
+              <div class="flip-card-container" style="--hue: 350">
+                <div class="flip-card">
+              
+                  <div class="card-front">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-2.jpg" alt="Brohm Lake">
+                      <figcaption>ثانية ثانوي/ترم ثاني</figcaption>
+                    </figure>
+              
+                    <ul class="ulCourses">
+                      <li class="liCourses courseName">Course name 2</li>
+                      <li class="liCourses courseDescription">Course Description</li>
+                      <li class="liCourses CourseLevel">Educational Level</li>
+                      <li class="liCourses CourseSemester">Semester</li>
+                      <li class="liCourses coursePrice">Price</li>
+                    </ul>
+                  </div>
+              
+                  <div class="card-back">
+                    <!-- only if the image is necessary -->
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-2.jpg" alt="Brohm Lake">
+                    </figure>
+              
+
+                    <button class="buttonCourses course-content">محتوى الكورس</button>
+                    <button class="buttonCourses course-subs">احجز الآن</button>
+
+                    <!-- can add svg here and remove these eight spans -->
+                    <div class="design-container">
+                      <span class="design design--1"></span>
+                      <span class="design design--2"></span>
+                      <span class="design design--3"></span>
+                      <span class="design design--4"></span>
+                      <span class="design design--5"></span>
+                      <span class="design design--6"></span>
+                      <span class="design design--7"></span>
+                      <span class="design design--8"></span>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            <!-- /flip-card-container -->
+            
+            <div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+
+              <div class="flip-card-container" style="--hue: 220">
+                <div class="flip-card">
+              
+                  <div class="card-front">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-2.jpg" alt="Brohm Lake">
+                      <figcaption>ثانية ثانوي/ترم أول</figcaption>
+                    </figure>
+              
+                    <ul class="ulCourses">
+                      <li class="liCourses courseName">Course name 3</li>
+                      <li class="liCourses courseDescription">Course Description</li>
+                      <li class="liCourses CourseLevel">Educational Level</li>
+                      <li class="liCourses CourseSemester">Semester</li>
+                      <li class="liCourses coursePrice">Price</li>
+                    </ul>
+                  </div>
+              
+                  <div class="card-back">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-2.jpg" alt="Brohm Lake">
+                    </figure>
+              
+
+                    <button class="buttonCourses course-content">محتوى الكورس</button>
+                    <button class="buttonCourses course-subs">احجز الآن</button>
+
+                    <div class="design-container">
+                      <span class="design design--1"></span>
+                      <span class="design design--2"></span>
+                      <span class="design design--3"></span>
+                      <span class="design design--4"></span>
+                      <span class="design design--5"></span>
+                      <span class="design design--6"></span>
+                      <span class="design design--7"></span>
+                      <span class="design design--8"></span>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            <!-- /flip-card-container -->
+            
+            <!-- flip-card-container -->
+            <div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+
+              <div class="flip-card-container" style="--hue: 170">
+                <div class="flip-card">
+              
+                  <div class="card-front">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-3.jpg" alt="Image 2">
+                      <figcaption>ثالثة ثانوي/ترم ثاني</figcaption>
+                    </figure>
+              
+                    <ul class="ulCourses">
+                      <li class="liCourses courseName">Course Name</li>
+                      <li class="liCourses courseDescription">Course Description</li>
+                      <li class="liCourses CourseLevel">Educational Level</li>
+                      <li class="liCourses CourseSemester">Semester</li>
+                      <li class="liCourses coursePrice">Price</li>
+                    </ul>
+                  </div>
+              
+                  <div class="card-back">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-3.jpg" alt="image-2">
+                    </figure>
+              
+
+                    <button class="buttonCourses course-content">محتوى الكورس</button>
+                    <button class="buttonCourses course-subs">احجز الآن</button>            
+                    <div class="design-container">
+                      <span class="design design--1"></span>
+                      <span class="design design--2"></span>
+                      <span class="design design--3"></span>
+                      <span class="design design--4"></span>
+                      <span class="design design--5"></span>
+                      <span class="design design--6"></span>
+                      <span class="design design--7"></span>
+                      <span class="design design--8"></span>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            <!-- /flip-card-container -->
+            
+            <!-- flip-card-container -->
+            <div class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+
+              <div class="flip-card-container" style="--hue: 350">
+                <div class="flip-card">
+              
+                  <div class="card-front">
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-3.jpg" alt="Brohm Lake">
+                      <figcaption>ثالثة ثانوي/ترم أول</figcaption>
+                    </figure>
+              
+                    <ul class="ulCourses">
+                      <li class="liCourses courseName">Course Name</li>
+                      <li class="liCourses courseDescription">Course Description</li>
+                      <li class="liCourses CourseLevel">Educational Level</li>
+                      <li class="liCourses CourseSemester">Semester</li>
+                      <li class="liCourses coursePrice">Price</li>
+                    </ul>
+                  </div>
+              
+                  <div class="card-back">
+                    <!-- only if the image is necessary -->
+                    <figure>
+                      <div class="img-bg"></div>
+                      <img src="/hand-holding-number-3.jpg" alt="Brohm Lake">
+                    </figure>
+              
+
+                    <button class="buttonCourses course-content">محتوى الكورس</button>
+                    <button class="buttonCourses course-subs">احجز الآن</button>
+
+                    <!-- can add svg here and remove these eight spans -->
+                    <div class="design-container">
+                      <span class="design design--1"></span>
+                      <span class="design design--2"></span>
+                      <span class="design design--3"></span>
+                      <span class="design design--4"></span>
+                      <span class="design design--5"></span>
+                      <span class="design design--6"></span>
+                      <span class="design design--7"></span>
+                      <span class="design design--8"></span>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+            <!-- /flip-card-container -->
+            
+            
+            
+            </div>
+        </div>
+      </div>
+
+        <% } %>
+        <%- include("partials/footer.ejs") -%>
+
+        <%- include("partials/jsScripts.ejs") -%>
+        
+        <!-- write here custom js scripts to handle events... 
+          /
+          /
+          /
+        if any error happend try to change the order and write your script below the jsScripts -->
+        <script>
+          document.addEventListener('DOMContentLoaded', async function() {
+
+
+
+            const res = await fetch ("/coursedetails", {
+              method: "GET",
+              headers: {"Content-Type":"application/json"}
+            });
+            const data = await res.json();
+
+            console.log(data);
+            console.log( typeof data);
+
+//             const data = [
+//   { name: 'John', age: 25 },
+//   { name: 'Sarah', age: 30 },
+//   { name: 'Michael', age: 35 }
+// ];
+
+// Assuming there are no nested objects within the main objects
+
+const elements = document.getElementsByClassName('ulCourses');
+console.log(elements);
+
+
+
+for (let key in data) {
+  if (data.hasOwnProperty(key)) {
+    console.log("/////////////////////////////////////");
+    console.log(data[key][0]);
+    console.log(data[key][0].educationalLevel);
+    console.log(data[key][1].educationalLevel);
+    console.log(data[key][2].educationalLevel);
+    console.log(data[key][3].educationalLevel);
+    console.log(data[key][4].educationalLevel);
+    console.log(data[key][5].educationalLevel);
+    console.log("/////////////////////////////////////");
+
+    console.log(elements[0].querySelector(".CourseLevel").textContent);
+    console.log(elements[1].querySelector(".CourseLevel").textContent);
+    console.log(elements[2].querySelector(".CourseLevel").textContent);
+    console.log(elements[3].querySelector(".CourseLevel").textContent);
+    console.log(elements[4].querySelector(".CourseLevel").textContent);
+    console.log(elements[5].querySelector(".CourseLevel").textContent);
+
+    for(let i= 0; i<=5; i++){
+      elements[i].querySelector(".courseName").textContent =  data[key][i].courseName ;
+      elements[i].querySelector(".courseDescription").textContent =  data[key][i].courseDescription ;
+      // elements[i].querySelector(".courseLevel").textContent =  data[key][i].educationalLevel ;
+      elements[i].querySelector(".CourseSemester").textContent =  data[key][i].semester ;
+      elements[i].querySelector(".coursePrice").textContent =  data[key][i].price + " جنيه مصري ";
+    }
+
+  //   let li = document.createElement('li');
+  //   li.classList.add('liCourses');
+ 
+  //   console.log("****************************************");
+  //   console.log(li);
+  //   Object.values(key).forEach(value => {
+  //   let span = document.createElement('span');
+  //   span.textContent = value;
+  //   li.appendChild(span);
+        
+  //  });
+  //  elements.appendChild(li);
+
+  }
+}
+
+
+
+
+// data.forEach(obj => {
+//   let li = document.createElement('li');
+//   li.classList.add('liCourses');
+  
+//   Object.values(obj).forEach(value => {
+//     let span = document.createElement('span');
+//     span.textContent = value;
+//     li.appendChild(span);
+    
+        
+//    });
+   
+//    elements.appendChild(li);
+// });
+
+
+
+
+
+          });
+        </script>

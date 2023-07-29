@@ -17,14 +17,14 @@ process.on('uncaughtException', function (error) {
 const handleErrors = (err) => {
   console.log(err.code);
   console.log(err.message);
-  let errors = { email: '', phoneNumber: '', parentPhoneNumber: ''};
+  let errors = { email: '', password:'', phoneNumber: '', parentPhoneNumber: ''};
 
   //login errors
-  if(err.message === 'incorrect email'){
-    errors.email = "The email or password is incorrect"
+  if(err.message === 'incorrect phone number'){
+    errors.phoneNumber = "رقم الهاتف أو كلمة المرور غير صحيحة"
   }
   if(err.message === "Incorrect Password"){
-    errors.password = "The email or password is incorrect"
+    errors.password = "رقم الهاتف أو كلمة المرور غير صحيحة"
   }
   console.log("*****************************************************************************");
 
@@ -99,8 +99,18 @@ module.exports.home = (req, res) => {
 }
 
 module.exports.courses = (req, res) => {
-  res.render('courses');
+  res.render('myCourses');
 }
+module.exports.courseList = (req, res) => {
+  res.render('courseList');
+}
+module.exports.freeExams = (req, res) => {
+  res.render('freeExams');
+}
+module.exports.profile = (req, res) => {
+  res.render('profile');
+}
+
 
 module.exports.signup_post = (req,res,next)=>{
   new studentSchema({
@@ -169,15 +179,15 @@ module.exports.signup_post = (req,res,next)=>{
 // }
 
 module.exports.login_post = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { phoneNumber, password } = req.body;
 
   try {
-    const student = await Student.login(email, password);
+    const student = await Student.login(phoneNumber, password);
     const token = createToken(student._id);
     res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
     res.status(200).json({ student: student._id });
     console.log(student._id);
-    console.log(email, password);
+    console.log(phoneNumber, password);
 
 
   } catch (err) {

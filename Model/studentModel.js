@@ -8,6 +8,7 @@ process.on('uncaughtException', function (error) {
 const validGovernates = ['Cairo', 'Alexandria', 'Giza', 'Kafr El Sheikh', 'Al Dakahlia']; // Add more if needed
 const validCities = ['Qallin', "El Hamool", "El Reyad", "Desouk", "Metoubes", "Fuwa", "Sidi Salem"]; // Add more if needed
 const validEducationalLevel = ["1st Seconadary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
+const validSemester = ["1st", "2nd"];
 
 
 const studentSchema = new mongoose.Schema({
@@ -82,6 +83,11 @@ const studentSchema = new mongoose.Schema({
         enum: validEducationalLevel,
         // required: [true, "Educational Level is required"],
     },
+    semester:{
+      type:String,
+      enum: validSemester,
+      // required: [true, "Semester is required"],
+  },
     location: {
         governate: {// المحافظة
           type: String,
@@ -105,12 +111,16 @@ const studentSchema = new mongoose.Schema({
       },
       isActive:{
         type: Boolean,
+        default: true
+      },
+      isSubscriped:{
+        type: Boolean,
         default: false
       },
 })
 
-studentSchema.statics.login = async function(email,password){
-  const student = await this.findOne({email});
+studentSchema.statics.login = async function(phoneNumber,password){
+  const student = await this.findOne({phoneNumber});
   if (student){
       const authenticate = await bcrypt.compare(password, student.password);
     if(authenticate){
@@ -118,7 +128,7 @@ studentSchema.statics.login = async function(email,password){
     }
     throw Error ("Incorrect Password");
   }
-  throw Error("incorrect email");
+  throw Error("incorrect phone number");
 };
 
 const Student =mongoose.model("student",studentSchema); //new name for model

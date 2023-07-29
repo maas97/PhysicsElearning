@@ -7,7 +7,10 @@ router.get('/', authController.home);
 router.get('/signup', authController.signup_get);
 router.get('/login', authController.login_get);
 router.get('/logout', authController.logout_get);
-router.get('/courses', requireAuth  ,authController.courses);
+router.get('/myCourses', requireAuth  ,authController.courses);
+router.get('/courseList', requireAuth  ,authController.courseList);
+router.get('/freeExams'  ,authController.freeExams);
+router.get('/profile'  ,authController.profile);
 router.post('/signup', authController.signup_post);
 router.post('/login', authController.login_post);
 
