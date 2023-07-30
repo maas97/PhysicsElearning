@@ -1,0 +1,42 @@
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav ">
+            <!-- ***** Logo Start ***** -->
+            <a href="/" >
+              <a class="navbar-brand" href="/"><span class="sir logo" style="margin-right: 5px;" > Sir  </span> <span class="mohammed logo" style="margin-right: 5px;"> Mohammed  </span> <span class="ramadan logo"> Ramadan </span></a>
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav ">
+              
+              <% if(user) { %>
+              <li class="scroll-to-section"><a href="/profile" class="active">  مرحبا <%= user.firstName %> </a></li>
+              <li class="scroll-to-section"><a href="/" >الرئيسية</a></li>
+              <li class="scroll-to-section"><a href="/myCourses" >كورساتي</a></li>
+              <li class="scroll-to-section"><a href="/freeExams">امتحانات مجانية</a></li>
+              <li class="scroll-to-section"><a href="/logout">تسجيل الخروج</a></li> 
+              <li class="scroll-to-section"><a href="#"></a></li> 
+
+              <% } else { %>
+              <li class="scroll-to-section"><a href="/">الرئيسية</a></li>
+              <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
+              <li class="scroll-to-section"><a href="/freeExams">امتحانات مجانية</a></li>
+              <li class="scroll-to-section"><a href="/#services">محاضرات مجانية</a></li>
+              <li class="scroll-to-section"><a href="/login" class="active">تسجيل الدخول</a></li> 
+              <li class="scroll-to-section"><a href="#"></a></li> 
+              <% } %>
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->

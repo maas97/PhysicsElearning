@@ -7,12 +7,7 @@ const courseDetailsSchema = mongoose.model("courseDetails");
 exports.getAllCoursesDetails=(request,response,next)=>{
     courseDetailsSchema.find({})
                 .then((data)=>{
-                    response.status(200).json({data});
-                    if(data){
-                        console.log(data);
-                        response.locals.courses = data;
-                        next();
-                    }        
+                    response.status(200).json({data});      
                 })
                 .catch((error)=>{
                     next(error);
