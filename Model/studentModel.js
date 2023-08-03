@@ -7,8 +7,6 @@ process.on('uncaughtException', function (error) {
 
 const validGovernates = ['Cairo', 'Alexandria', 'Giza', 'Kafr El Sheikh', 'Al Dakahlia']; // Add more if needed
 const validCities = ['Qallin', "El Hamool", "El Reyad", "Desouk", "Metoubes", "Fuwa", "Sidi Salem"]; // Add more if needed
-const validEducationalLevel = ["1st Seconadary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
-const validSemester = ["1st", "2nd"];
 
 
 const studentSchema = new mongoose.Schema({
@@ -79,15 +77,15 @@ const studentSchema = new mongoose.Schema({
       required: true
   },
     educationalLevel:{
-        type:String,
-        enum: validEducationalLevel,
-        // required: [true, "Educational Level is required"],
+        type: Number,
+        match: [/^[123]$/,
+              `الرجاء إدخال سنة دراسية مناسبة`],
     },
     semester:{
-      type:String,
-      enum: validSemester,
-      // required: [true, "Semester is required"],
-  },
+      type: Number,
+        match: [/^[12]$/,
+              `الرجاء إدخال ترم دراسي مناسب`],
+    },
     location: {
         governate: {// المحافظة
           type: String,

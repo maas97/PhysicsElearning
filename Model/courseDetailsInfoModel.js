@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
-// const AutoIncrement = require('mongoose-sequence')(mongoose);
-const validEducationalLevel = ["1st Secondary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
-const validSemester = ["1st", "2nd"];
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+
 
 
 const Schema = new mongoose.Schema({
@@ -9,30 +8,35 @@ const Schema = new mongoose.Schema({
       type: mongoose.Types.ObjectId,
       default: () => new mongoose.Types.ObjectId() // Generate a new ObjectId as the default value
     },
+    counter:{
+      type: Number
+    },
     courseName:{
       type: String,
         required: [true, "Course Name is required"],
     },
     courseDescription:{
-      type: String,
-      required: [true, "Course Description is required"],
-  
+      type: String,  
     },
     educationalLevel:{
-        type:String,
-        enum: validEducationalLevel,
-        required: [true, "Educational Level is required"],
-    },
+      type: Number,
+      match: [/^[123]$/,
+            `الرجاء إدخال سنة دراسية مناسبة`],
+      required: [true, "Educational level is required"],
+  },
     semester:{
-      type:String,
-      enum: validSemester,
-      required: [true, "Semester is required"],
-    },
+      type: Number,
+      match: [/^[12]$/,
+            `الرجاء إدخال ترم دراسي مناسب`],
+      required: [true, "semester is required"],
+  },
     month:{
       type: Number,
       match: [/^(?:[1-9]|1[0-2])$/
       ,
      ` الرجاء إدخال شهر من 1 إلى 12`],
+     required: [true, "month is required"],
+
     },
     price :{
       type:Number,
@@ -42,13 +46,17 @@ const Schema = new mongoose.Schema({
         type:Number,
         ref: "content",
         // required: [true, "Day Number is required"],
+    },
+    createdAt:{
+      type: Date,
+      default: Date.now()
     }
 })
 
 
-// Schema.plugin(AutoIncrement,{
-//     id: 'courseDetails',
-//     inc_field: "_id"
-// });
+Schema.plugin(AutoIncrement,{
+    id: 'courseDetails',
+    inc_field: "counter"
+});
 
 mongoose.model("courseDetails",Schema); //new name for model

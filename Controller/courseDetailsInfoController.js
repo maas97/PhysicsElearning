@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-require("../Model/courseDetailsModel");
+require("../Model/courseDetailsInfoModel");
 
 //getter
 const courseDetailsSchema = mongoose.model("courseDetails");

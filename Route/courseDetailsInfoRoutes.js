@@ -1,9 +1,9 @@
 const express=require("express")
 const router = express.Router();    
-const courseDetailsValidation = require("../Core/Validation/courseDetailsValidation");
+const courseDetailsValidation = require("../Core/Validation/courseDetailsInfoValidation");
 const validateMW = require("../Core/Validation/validateMW");
-const controller = require("../Controller/courseDetailsController");
-const contentOfCourseRoute = require("./contentOfCourseRoute");
+const controller = require("../Controller/courseDetailsInfoController");
+const contentOfCourseRoute = require("./contentOfCourseRoutes");
 // const authorization = require("../Middleware/authorization");
 
 router

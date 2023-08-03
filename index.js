@@ -10,13 +10,14 @@ const port = process.env.PORT || 8080;
 mongoose.set("strictQuery", false);
 // const signRoute = require("./Routes/sign");
 // const login = require("./Routes/loginRoute");
-const adminRoute = require("./Route/adminRoute");
-const studentRoute = require("./Route/studentRoute");
-const dayOfCourseRoute = require("./Route/courseDetailsRoute");
-const contentOfCourseRoute = require("./Route/contentOfCourseRoute");
-const productRoute = require("./Route/productRoute");
-const quizRoute = require("./Route/quizRoute");
-const authRoute = require("./Route/authRoute");
+const adminRoute = require("./Route/adminRoutes");
+const studentRoute = require("./Route/studentRoutes");
+const courseDetailsInfoRoute = require("./Route/courseDetailsInfoRoutes");
+const contentOfCourseRoute = require("./Route/contentOfCourseRoutes");
+const productRoute = require("./Route/productRoutes");
+const quizRoute = require("./Route/quizRoutes");
+const authRoute = require("./Route/authRoutes");
+const viewRoute = require("./Route/viewRoutes");
 const auth = require("./Middleware/authenticationMW");
 const {checkStudent} = require("./Middleware/authenticationMW");
 
@@ -44,8 +45,8 @@ app.use(
 );
 app.use(morgan("combined"));
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname + 'views'));
-app.use(express.static(path.join(__dirname + 'public')));
+app.set('views', path.join(__dirname + '/views'));
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -53,9 +54,10 @@ app.use(cookieParser());
 
 app.get("*", checkStudent);
 app.use(authRoute);
+app.use(viewRoute);
 app.use(adminRoute);
 app.use(studentRoute);
-app.use(dayOfCourseRoute);
+app.use(courseDetailsInfoRoute);
 app.use(contentOfCourseRoute);
 app.use(productRoute);
 app.use(quizRoute);

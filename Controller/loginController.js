@@ -8,6 +8,7 @@ const salt = bcrypt.genSaltSync(saltRounds);
 const jwt = require("jsonwebtoken");
 require("cookie-parser");
 const studentSchema = mongoose.model("student");
+const {courseDetails} = require("./courseDetailsInfoController");
 
 process.on('uncaughtException', function (error) {
   console.log(error.stack);
@@ -98,12 +99,20 @@ module.exports.home = (req, res) => {
   res.render('home');
 }
 
-module.exports.courses = (req, res) => {
-  res.render('myCourses');
+module.exports.courses = async (req, res) => {
+  await fetch ("/coursedetails", {
+    method: "GET",
+    headers: {"Content-Type":"application/json"}
+  }).then(data =>{
+    res.status(200).json({data});
+    res.render('myCourses', );
+  })
 }
-module.exports.courseList = (req, res) => {
-  res.render('courseList');
+
+module.exports.courseList = async (req, res) => {
+    res.render('courseList');
 }
+
 module.exports.freeExams = (req, res) => {
   res.render('freeExams');
 }
@@ -121,6 +130,7 @@ module.exports.signup_post = (req,res,next)=>{
       age:        req.body.age,
       phoneNumber:req.body.phoneNumber,
       parentPhoneNumber:req.body.parentPhoneNumber,
+      educationalLevel:req.body.educationalLevel,
   }).save()// insertOne
   .then(student=>{
       console.log(student);
