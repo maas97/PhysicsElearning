@@ -194,6 +194,9 @@ module.exports.login_post = async (req, res, next) => {
   try {
     const student = await Student.login(phoneNumber, password);
     const token = createToken(student._id);
+    console.log("============================================================");
+    console.log(token);
+    console.log("============================================================");
     res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
     res.status(200).json({ student: student._id });
     console.log(student._id);

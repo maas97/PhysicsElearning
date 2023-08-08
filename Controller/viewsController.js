@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const Student = require("../Model/studentModel");
 const studentSchema = mongoose.model("student");
 const courseDetails = require("../Model/courseDetailsInfoModel");
+const { param } = require("../Route/viewRoutes");
 const courseDetailsSchema = mongoose.model("courseDetails");
 
 
@@ -16,6 +17,10 @@ module.exports.home = (req, res) => {
 
 module.exports.coursesInfo = async (req, res) => {
     const availableCourses = await courseDetailsSchema.find();
+    for(let availableCourse of availableCourses){
+      console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+      console.log(availableCourse.isCurrentCourseSubscribed);
+    }
     res.render('myCoursesInfo', {
         title: 'كورساتي',
         availableCourses
@@ -50,30 +55,47 @@ module.exports.subscribed = async (req, res, next) => {
             // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             // console.log(data.id);
             return studentSchema.updateOne({//Use return because use of two query actions 
-                _id:data.id
+                _id:  data.id
             },{
                 $set:{
                   isSubscriped: "true",
                 }
             })   
         }).then(async data=>{
-          let studentData = await studentSchema.findById(decodedToken.id);
-          console.log("///////************************************///////*******************////////////////")
-          console.log(studentData);
-          console.log("///////************************************/////////******************//////////////")
-          res.locals.user = studentData;
-          // res.status(200).json({data});
-          res.render('subscribedDone');
+          let counterNumber = await req.params;
+          let courseDetails = await courseDetailsSchema.findOne({counter:counterNumber.counter}).then(courseData=>{
+            if(!courseData){
+              throw new Error("Course is not found");
+          } 
+          return courseDetailsSchema.updateOne({//Use return because use of two query actions 
+            counter: courseData.counter
+          },{
+              $set:{
+                  isCurrentCourseSubscribed: "true",
+              }
+          });
+          }).then( async data =>{
+            let studentData = await studentSchema.findById(decodedToken.id);
+            console.log("///////************************************///////*******************////////////////")
+            console.log(data);
+            console.log(counterNumber);
+            console.log(studentData);
+            console.log("///////************************************/////////******************//////////////")
+            res.locals.user = studentData;
+            res.locals.counter = counterNumber.counter;
+            console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+            console.log(res.locals.counter);
+            
+            // res.status(200).json({data});
+            res.render('subscribedDone');
+          })
+          
         })
 
           next();
       }
     });
-  } 
-
-  
-
-    
+  }  
 }
 
 

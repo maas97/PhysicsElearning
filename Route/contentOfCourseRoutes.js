@@ -10,7 +10,6 @@ router
     .get(controller.getAllContent)
     .post(validateMW ,controller.addContent)
     .patch(validateMW ,controller.updateContent)
-    // upload("basicAdmin"),
     .delete(validateMW ,controller.deleteContent);
 
 router

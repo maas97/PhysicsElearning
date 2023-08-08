@@ -1,5 +1,8 @@
 const mongoose = require("mongoose")
 const AutoIncrement = require('mongoose-sequence')(mongoose);
+require('./contentOfCourseModel');
+const contentSchema = mongoose.model("content");
+
 
 
 
@@ -42,15 +45,23 @@ const Schema = new mongoose.Schema({
       type:Number,
       required: [true, "Price is required"],
     },
-    courseList:{
-        type:Number,
-        ref: "content",
-        // required: [true, "Day Number is required"],
-    },
+    isCurrentCourseSubscribed:{
+      type: Boolean,
+      default: false
+    }
+    ,
     createdAt:{
       type: Date,
       default: Date.now()
-    }
+    },
+    currentCourseListContentId:
+    [
+      {
+      type: Number,
+      ref: "content",
+      // required: [true , "A lesson must have a course day"],
+      }
+    ]
 })
 
 

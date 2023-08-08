@@ -32,7 +32,8 @@ exports.addCourseDetails=(request,response,next)=>{
         educationalLevel:request.body.educationalLevel,
         semester:request.body.semester,
         month:request.body.month,
-        price:request.body.price
+        price:request.body.price,
+        isCurrentCourseSubscribed:request.body.isCurrentCourseSubscribed
     }).save()// insertOne
     .then(data=>{
         response.status(201).json({data});
@@ -52,11 +53,13 @@ exports.updateCourseDetails=(request,response,next)=>{
         },{
             $set:{
                 courseName:request.body.courseName,
-        courseDescription:request.body.courseDescription,
-        educationalLevel:request.body.educationalLevel,
-        semester:request.body.semester,
-        month:request.body.month,
-        price:request.body.price
+                courseDescription:request.body.courseDescription,
+                educationalLevel:request.body.educationalLevel,
+                semester:request.body.semester,
+                month:request.body.month,
+                price:request.body.price,
+                isCurrentCourseSubscribed:request.body.isCurrentCourseSubscribed
+
             }
         })   
     })

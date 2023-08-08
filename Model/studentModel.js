@@ -119,6 +119,10 @@ const studentSchema = new mongoose.Schema({
 
 studentSchema.statics.login = async function(phoneNumber,password){
   const student = await this.findOne({phoneNumber});
+  console.log("----------------------------------------------------");
+  console.log(student);
+  console.log("----------------------------------------------------");
+  
   if (student){
       const authenticate = await bcrypt.compare(password, student.password);
     if(authenticate){
