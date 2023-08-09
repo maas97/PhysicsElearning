@@ -25,17 +25,22 @@ process.on('uncaughtException', function (error) {
     console.log(error.stack);
  });
 
-let str1 = "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority";
+ const DATABASE_URL = process.env.DATABASE_URL
+ const CONFIG = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+// let str1 = "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
-    .connect(str1)
+    .connect(DATABASE_URL, CONFIG)
     .then(() => {
         console.log("database connected");
         app.listen(port, () => {
             console.log("server connected.... http://localhost:8080");
         });
     })
-    .catch((error) => console.log(`DB connection error ${error}`));
+    .catch((error) => console.log(`DB connection error ${error} ${process.env}`));
 
 app.use(
     cors({
