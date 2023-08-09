@@ -33,7 +33,7 @@ process.on('uncaughtException', function (error) {
 // let str1 = "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
-    .connect(DATABASE_URL, CONFIG)
+    .connect(DATABASE_URL || "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority", CONFIG)
     .then(() => {
         console.log("database connected");
         app.listen(port, () => {
