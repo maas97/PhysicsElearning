@@ -27,13 +27,12 @@ process.on('uncaughtException', function (error) {
 
 let str1 = "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority";
 
-    // 53Kady8wLo9WyP4C
 mongoose
     .connect(str1)
     .then(() => {
         console.log("database connected");
         app.listen(port, () => {
-            console.log("server connected....");
+            console.log("server connected.... http://localhost:8080");
         });
     })
     .catch((error) => console.log(`DB connection error ${error}`));
