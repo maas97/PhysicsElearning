@@ -12,7 +12,7 @@ process.on('uncaughtException', function (error) {
 });
 
 module.exports.home = (req, res) => {
-  res.render('home.ejs');
+  res.render('home');
 }
 
 module.exports.coursesInfo = async (req, res) => {
