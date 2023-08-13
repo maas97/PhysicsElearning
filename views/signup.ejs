@@ -329,7 +329,7 @@ ageElement.addEventListener('input', function(e) {
     const phoneNumberElement = document.getElementById("phoneNumber");
     const parentPhoneNumberElement = document.getElementById("parentPhoneNumber");
     const ageElement = document.getElementById("age");
-    const eduLevelElement = document.getElementById("eduLevel");
+    // const eduLevelElement = document.getElementById("eduLevel");
 
 
     try {
@@ -346,7 +346,7 @@ ageElement.addEventListener('input', function(e) {
         else{
           const res = await fetch ("/signup", {
         method: "POST",
-        body: JSON.stringify({ firstName, lastName, email , password, age, phoneNumber, parentPhoneNumber, educationalLevel}),
+        body: JSON.stringify({ firstName, lastName, email , password, age, phoneNumber, parentPhoneNumber}),
         headers: {"Content-Type":"application/json"}
       });
         const data = await res.json();
