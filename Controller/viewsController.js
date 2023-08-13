@@ -111,3 +111,6 @@ module.exports.profile = (req, res) => {
   res.render('profile');
 }
 
+module.exports.project = (req, res) => {
+  res.render('project');
+}

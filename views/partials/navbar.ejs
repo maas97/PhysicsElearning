@@ -10,7 +10,7 @@
       <div class="navbar-nav ms-auto py-0">
 
 <% if(user) { %>
-          <a href="/logout" class="nav-item nav-link">تسجيل الخروج</a>
+          <a href="/logout" class="nav-item nav-link fw-bold">تسجيل الخروج</a>
           <a href="#services" class="nav-item nav-link">المحاضرات المجانية</a>
           <a href="#" class="nav-item nav-link">المذكرات</a>
           <a href="/myCoursesInfo" class="nav-item nav-link">كورساتي</a>
@@ -18,12 +18,12 @@
           <a href="/profile" class="nav-item nav-link active">  مرحبا <%= user.firstName %> </a>
 
 <% } else { %>
-          <a href="/login" class="nav-item nav-link">الاشتراك في المنصة</a>
-          <a href="/freeExams" class="nav-item nav-link">امتحانات مجانية</a>
-          <a href="#services" class="nav-item nav-link">المحاضرات المجانية</a>
-          <a href="#" class="nav-item nav-link">المذكرات</a>
-          <a href="/" class="nav-item nav-link active">الرئيسية</a>
-          <a href="login" class="btn btnheadstyle h-4 text-center d-flex align-self-center text-light btn-rounded py-2 ms-lg-4 ms-sm-0">تسجيل الدخول </a>
+          <a href="/login" class="nav-item nav-link fw-bold">الاشتراك في المنصة</a>
+          <a href="/freeExams" class="nav-item nav-link fw-bold">امتحانات مجانية</a>
+          <a href="#services" class="nav-item nav-link fw-bold">المحاضرات المجانية</a>
+          <a href="#" class="nav-item nav-link fw-bold">المذكرات</a>
+          <a href="/" class="nav-item nav-link active fw-bold">الرئيسية</a>
+          <a href="login" class="btn btnheadstyle h-4 text-center d-flex align-self-center text-light btn-rounded py-2 ms-lg-4 ms-sm-0 fw-bold">تسجيل الدخول </a>
 <% } %>
 
       </div>

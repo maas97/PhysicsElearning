@@ -10,5 +10,6 @@ router.get('/myCoursesInfo/:counter/subscribed', requireAuth  ,viewsController.s
 router.get('/myCoursesInfo/:counter/courseList', requireAuth  ,viewsController.courseList);
 router.get('/freeExams'  ,viewsController.freeExams);
 router.get('/profile', requireAuth  ,viewsController.profile);
+router.get('/project'  ,viewsController.project);
 
 module.exports = router;
