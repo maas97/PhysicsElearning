@@ -1,149 +1,101 @@
 <%- include("partials/htmlHead.ejs") -%>
-<!-- Write here the title of the page -->
-<title>تسجيل الدخول</title>
 
-<!-- write here the rest of the css custom style of this current page for example -->
-    <!-- <link rel="stylesheet" href="/style.css"> 
-    /
-    /
-    /
-    -->
-    <link rel="stylesheet" href="/assets/css/loginStyle.css">
-
-  </head>
+    <title>SEO Master - SEO Agency Website Template</title>
+    
+</head>
 
 <body>
+    <div class="container-fluid-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+        <!-- Spinner End -->
 
-    <%- include("partials/preloader.ejs") -%>
-    <%- include("partials/preheader.ejs") -%>
 
-
-    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="main-nav ">
-              <!-- ***** Logo Start ***** -->
-              <a href="/" >
-                <a class="navbar-brand" href="#"><span class="sir logo" style="margin-right: 5px;" > Sir  </span> <span class="mohammed logo" style="margin-right: 5px;"> Mohammed  </span> <span class="ramadan logo"> Ramadan </span></a>
-              </a>
-              <!-- ***** Logo End ***** -->
-              <!-- ***** Menu Start ***** -->
-              <ul class="nav ">
-                
-                <% if(user) { %>
-                <% } else { %>
-                <li class="scroll-to-section"><a href="/">الرئيسية</a></li>
-                <li class="scroll-to-section"><a href="/signup">الاشتراك في المنصة</a></li>
-                <li class="scroll-to-section"><a href="/freeExams">امتحانات مجانية</a></li>
-                <li class="scroll-to-section"><a href="#services">محاضرات مجانية</a></li>
-                <li class="scroll-to-section"><a href="/login" class="active">تسجيل الدخول</a></li> 
-                <li class="scroll-to-section"><a href="#"></a></li> 
-                <% } %>
-              </ul>        
-              <a class='menu-trigger'>
-                  <span>Menu</span>
-              </a>
-              <!-- ***** Menu End ***** -->
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+              <a href="" class="navbar-brand p-0">
+                <h1 class="m-0"><i class="fa fa-bolt me-2"></i>Sigma <span class="fs-5"> platform</span></h1>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+              </a>  
             </nav>
-          </div>
+
+            <div class="container-fluid-xxl py-5 hero-header mb-5">
+                <div class="container text-center my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="col-lg-9 text-center text-lg-start">
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                                <section class="wrapper">
+                                  <div class="form signup">
+                                    <header>هل تريد الاشتراك ؟</header>
+                                    <form action="post">
+                                      <input type="text" placeholder="الاسم الاول " required />
+                                      <input type="text" placeholder="الاسم الاخير " required />
+                                      <input type="text" placeholder="رقم الهاتف " required />
+                                      <input type="text" placeholder="رقم هاتف ولي الامر  " required />
+                                      <input type="text" placeholder=" السن " required />
+                                      <input type="password" placeholder=" كلمة السر  " required />
+                                      <div class="checkbox">
+                                        <input type="checkbox" id="signupCheck" />
+                                        <label for="signupCheck">البقاء متصلا</label>
+                                      </div>
+                                      <input type="submit" value="اشتراك" />
+                                    </form>
+                                  </div>
+                            
+                                  <div class="form login">
+                                    <header>هل تريد تسجيل الدخول ؟</header>
+                                    <form action="post">
+                                      <input type="text" placeholder="رقم الموبايل " required />
+                                      <input type="password" placeholder="كلمة السر " required />
+                                      <a href="#">هل نسيت كلمة السر؟</a>
+                                      <input type="submit" value="تسجيل الدخول " />
+                                    </form>
+                                  </div>
+                            
+                                  <script>
+                                    const wrapper = document.querySelector(".wrapper"),
+                                      signupHeader = document.querySelector(".signup header"),
+                                      loginHeader = document.querySelector(".login header");
+                            
+                                    loginHeader.addEventListener("click", () => {
+                                      wrapper.classList.add("active");
+                                    });
+                                    signupHeader.addEventListener("click", () => {
+                                      wrapper.classList.remove("active");
+                                    });
+                                  </script>
+                                </section>
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
-
- <div class="login-wrap">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">تسجيل الدخول</label>
-		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">نسيت كلمة المرور</label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-        <form action="/">
-          <div class="group">
-            <label for="phoneNumber" class="label">رقم الموبايل</label>
-            <input id="phoneNumber" name="phoneNumber" type="number" class="input " required>
-            <div class="errorPhone"></div>
-          </div>
-          <div class="group">
-            <label for="password" class="label">كلمة المرور</label>
-            <input id="password" name="password" type="password" class="input password error" data-type="password" required>
-            <div class="errorPassword"></div>
-          </div>
-          <div class="group">
-            <input type="submit" class="button" value="تسجيل الدخول">
-          </div>
-          <div class="hr"></div>
-          <div><span style="color: rgb(135, 176, 248);">ليس لديك حساب !! </span><a href="/signup">اشترك الآن</a></div>
-        </div>
-        </form>
-				
-
-			<div class="for-pwd-htm">
-				<div class="group">
-					<label for="user" class="label">رقم الموبايل</label>
-					<input id="user" type="text" class="input">
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="إعادة ضبط كلمة المرور">
-				</div>
-				<div class="hr"></div>
-			</div>
-		</div>
-	</div>
-</div>
+        
+        <!-- Navbar & Hero End -->
+               
+        <!-- Footer End -->
+        <%- include("partials/footer.ejs") -%>
 
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/lib/wow/wow.min.js"></script>
+    <script src="/assets/lib/easing/easing.min.js"></script>
+    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/assets/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/assets/lib/lightbox/js/lightbox.min.js"></script>
 
-
-
-
-
-<%- include("partials/footer.ejs") -%>
-
-<%- include("partials/jsScripts.ejs") -%>
-
-
-    <!-- login script -->
-    <script>
-      const form = document.querySelector('form');
-      const phoneNumber = document.querySelector('#phoneNumber');
-      const password = document.querySelector('#password');
-      const phoneError = document.querySelector('.errorPhone');
-      const passwordError = document.querySelector('.errorPassword');
-    
-     
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-    
-    // get values
-    const phoneNumber = form.phoneNumber.value;
-    const password = form.password.value;
-    console.log(phoneNumber);
-    console.log(password);
-    
-    try {
-    const res = await fetch ("/login", {
-    method: "POST",
-    body: JSON.stringify({ phoneNumber , password}),
-    headers: {"Content-Type":"application/json"}
-    });
-    const data = await res.json();
-    console.log(data);
-    console.log(data.errors);
-    if (data.errors) {
-            // emailError.textContent = data.errors.email;
-            passwordError.textContent = data.errors.password || data.errors.phoneNumber;
-          }
-    if(data.student){
-      location.assign("/");
-    }
-    
-    } catch (error) {
-        // res.status(400).JSON({error});
-        console.log(error);
-    }  });
-    </script>
-  
-
-
+    <!-- Template Javascript -->
+    <script src="/assets/js/main.js"></script>
 </body>
+
 </html>
