@@ -1,171 +1,219 @@
 <%- include("partials/htmlHead.ejs") -%>
-
+<!-- Write here the title of the page -->
 <title>كورساتي</title>
 
-    <link rel="stylesheet" href="/assets/css/myCoursesStyle.css">
+<!-- write here the rest of the css custom style of this current page for example -->
+    <!-- <link rel="stylesheet" href="/style.css"> 
+    /
+    /
+    /
+    -->
 
-    
+   <!-- Libraries Stylesheet -->
+   <link rel="stylesheet" href="/assets/css/myCoursesStyle.css">
+   
 
-</head>
+  </head>
 
 <body>
-  
-
-<%- include("partials/preloader.ejs") -%>
-<%- include("partials/preheader.ejs") -%>
-<%- include("partials/navbar.ejs") -%>
 
 
 
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("partials/preloader.ejs") -%>
+        
 
-                  <div id="portfolio" class="our-portfolio section">
-
-                      <div class="container" >
-                        <div class="row" style="direction: rtl;">
-                          <div class="col-lg-5">
-                            <% if (!user.isSubscriped) {%>
-
-                            <div class="section-heading wow fadeInLeft"  data-wow-duration="1s" data-wow-delay="0.3s">
-                              <!-- <h6>اخر ما تمت</h6> -->
-                              <h4 style="direction: rtl;">أنت حاليا غير مشترك في أي من الكورسات <br> <em>اختر كورس من الكورسات للحجز</em></h4>
-                              <!-- <div class="line-dec"></div> -->
-                            </div>
-                          <% } %>
-
-                          </div>
-                        </div>
-                      </div>
-
-
-          <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-
-            <div style="margin: 0px auto; width: 70%; display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center;">
-            <!-- flip-card-container -->
-          
-              <% if(Object.keys(availableCourses).length === 0){ %>
-                <div style="text-align: center; color:blueviolet; font-size: 3rem;"> لم يتم إنشاء كورسات بعد </div>
-                <% } else { %>
-                  <!-- <%= user.educationalLevel %> -->
-                        <% for (let availableCourse of availableCourses) { %>
-                            <% if( user.educationalLevel === availableCourse.educationalLevel ){%>
-                              
-                                  <div class="wow fadeInDown fadeEffect" data-wow-duration="1s" data-wow-delay="0.5s">
-                                  <% if (!availableCourse.isCurrentCourseSubscribed) { %>
-                                      <!-- for a course that the student did not subscribe with yet -->
-                                    <div class="flip-card-container" style="--hue: 220">
-                                      <div class="flip-card">
-                                    
-                                        <div class="card-front">
-                                          <figure>
-                                            <div class="img-bg"></div>
-                                            <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
-                                            <figcaption> سنة : <%= availableCourse.educationalLevel %> / ترم : <%= availableCourse.semester %> </figcaption>
-                                          </figure>
-                                    
-                                          <ul class="ulCourses">
-                                            <li class="liCourses courseName"> اسم الكورس :  <%= availableCourse.courseName %> </li>
-                                            <li class="liCourses courseDescription">الوصف :  <%= availableCourse.courseDescription %></li>
-                                            <li class="liCourses CourseLevel"> السنة الدراسية :  <%= availableCourse.educationalLevel %> ثانوي</li>
-                                            <li class="liCourses CourseSemester">الترم :  <%= availableCourse.semester %></li>
-                                            <li class="liCourses coursePrice">السعر :  <%=   availableCourse.price   %>     جنيه مصري    </li>
-                                            <li class="liCourses coursePrice">
-                                              <a href="/myCoursesInfo/<%=availableCourse.counter%>"> اشترك الآن</a>
-                                            </li>
-
-                                          </ul>
-                                        </div>
-                                    
-                                        <div class="card-back">
-                                          <figure>
-                                            <div class="img-bg"></div>
-                                            <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
-                                          </figure>
-                                    
-                                          <button class="buttonCourses course-content"><a href="/myCoursesInfo/<%=availableCourse.counter%>">محتوى الكورس </a></button>
-                                    
-                                          <div class="design-container">
-                                            <span class="design design--1"></span>
-                                            <span class="design design--2"></span>
-                                            <span class="design design--3"></span>
-                                            <span class="design design--4"></span>
-                                            <span class="design design--5"></span>
-                                            <span class="design design--6"></span>
-                                            <span class="design design--7"></span>
-                                            <span class="design design--8"></span>
-                                          </div>
-                                        </div>
-                                    
-                                      </div>
-
-                          
-                                    </div>
-                                <% } else { %>
-                                      <!-- for a course a student did subscribe with -->
-
-                                  <div class="flip-card-container" style="--hue: 220">
-                                    <div class="flip-card">
-                                  
-                                      <div class="card-front">
-                                        <figure>
-                                          <div class="img-bg"></div>
-                                          <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
-                                          <figcaption> سنة : <%= availableCourse.educationalLevel %> / ترم : <%= availableCourse.semester %> </figcaption>
-                                        </figure>
-                                  
-                                        <ul class="ulCourses">
-                                          <li class="liCourses courseName"> اسم الكورس :  <%= availableCourse.courseName %> </li>
-                                          <li class="liCourses courseDescription">الوصف :  <%= availableCourse.courseDescription %></li>
-                                          <li class="liCourses CourseLevel"> السنة الدراسية :  <%= availableCourse.educationalLevel %> ثانوي</li>
-                                          <li class="liCourses CourseSemester">الترم :  <%= availableCourse.semester %></li>
-                                          <li class="liCourses coursePrice">تم الاشتراك اضغط لرؤية المحتوى   </li>
-                                        </ul>
-                                      </div>
-                                  
-                                      <div class="card-back">
-                                        <figure>
-                                          <div class="img-bg"></div>
-                                          <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
-                                        </figure>
-                                  
-                                        <button class="buttonCourses course-content"><a href="/myCoursesInfo/<%=availableCourse.counter%>/courseList%>">عرض محتوى الكورس</a></button>                                  
-                                        <div class="design-container">
-                                          <span class="design design--1"></span>
-                                          <span class="design design--2"></span>
-                                          <span class="design design--3"></span>
-                                          <span class="design design--4"></span>
-                                          <span class="design design--5"></span>
-                                          <span class="design design--6"></span>
-                                          <span class="design design--7"></span>
-                                          <span class="design design--8"></span>
-                                        </div>
-                                      </div>
-                                  
-                                    </div>
-
-                        
-                                  </div>
-
-
-                                <% } %>
-
-                            <% } %>
-                    <% } %>
-                    
-                <% } %>
-            </div>
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl position-relative p-0">
             
+            <%- include("partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl py-5 hero-header mb-5">
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="container" >
+                            <div class="row" style="direction: rtl;">
+                              <div class="col-lg-5">
+                                <% if (user.isSubscriped) {%>
+    
+                                <div class="section-heading wow fadeInLeft"  data-wow-duration="1s" data-wow-delay="0.3s">
+                                  <!-- <h6>اخر ما تمت</h6> -->
+                                  <h4 class="p-2 fw-bold" style="direction: rtl;">أنت حاليا غير مشترك في أي من الكورسات</h4>
+                                  <h5 class="p-2"> <em>اختر كورس من الكورسات للحجز</em></h5>
+                                  <!-- <div class="line-dec"></div> -->
+                                </div>
+                              <% } %>
+    
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                          <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg" src="/assets/img/1 copy.png" alt="">
+                        </div>
+
+
+
+                        <div id="portfolio" class="our-portfolio section col-lg-6">
+
+                          <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                 
+                             <div style="margin: 0px auto; width: 70%; display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center;">
+                             <!-- flip-card-container -->
+                           
+                               <% if(Object.keys(availableCourses).length === 0){ %>
+                                 <div style="text-align: center; color:blueviolet; font-size: 3rem;"> لم يتم إنشاء كورسات بعد </div>
+                                 <% } else { %>
+                                   <!-- <%= user.educationalLevel %> -->
+                                         <% for (let availableCourse of availableCourses) { %>
+                                             <% if( user.educationalLevel === availableCourse.educationalLevel ){%>
+                                               
+                                                   <div class="wow fadeInDown fadeEffect" data-wow-duration="1s" data-wow-delay="0.5s">
+                                                   <% if (!availableCourse.isCurrentCourseSubscribed) { %>
+                                                       <!-- for a course that the student did not subscribe with yet -->
+                                                     <div class="flip-card-container" style="--hue: 220">
+                                                       <div class="flip-card">
+                                                     
+                                                         <div class="card-front">
+                                                           <figure>
+                                                             <div class="img-bg"></div>
+                                                             <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
+                                                             <figcaption> سنة : <%= availableCourse.educationalLevel %> / ترم : <%= availableCourse.semester %> </figcaption>
+                                                           </figure>
+                                                     
+                                                           <ul class="ulCourses">
+                                                             <li class="liCourses courseName"> اسم الكورس :  <%= availableCourse.courseName %> </li>
+                                                             <li class="liCourses courseDescription">الوصف :  <%= availableCourse.courseDescription %></li>
+                                                             <li class="liCourses CourseLevel"> السنة الدراسية :  <%= availableCourse.educationalLevel %> ثانوي</li>
+                                                             <li class="liCourses CourseSemester">الترم :  <%= availableCourse.semester %></li>
+                                                             <li class="liCourses coursePrice">السعر :  <%=   availableCourse.price   %>     جنيه مصري    </li>
+                                                             <li class="liCourses coursePrice">
+                                                               <a href="/myCoursesInfo/<%=availableCourse.counter%>"> اشترك الآن</a>
+                                                             </li>
+                 
+                                                           </ul>
+                                                         </div>
+                                                     
+                                                         <div class="card-back">
+                                                           <figure>
+                                                             <div class="img-bg"></div>
+                                                             <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
+                                                           </figure>
+                                                     
+                                                           <button class="buttonCourses course-content"><a href="/myCoursesInfo/<%=availableCourse.counter%>">محتوى الكورس </a></button>
+                                                     
+                                                           <div class="design-container">
+                                                             <span class="design design--1"></span>
+                                                             <span class="design design--2"></span>
+                                                             <span class="design design--3"></span>
+                                                             <span class="design design--4"></span>
+                                                             <span class="design design--5"></span>
+                                                             <span class="design design--6"></span>
+                                                             <span class="design design--7"></span>
+                                                             <span class="design design--8"></span>
+                                                           </div>
+                                                         </div>
+                                                     
+                                                       </div>
+                 
+                                           
+                                                     </div>
+                                                 <% } else { %>
+                                                       <!-- for a course a student did subscribe with -->
+                 
+                                                   <div class="flip-card-container" style="--hue: 220">
+                                                     <div class="flip-card">
+                                                   
+                                                       <div class="card-front">
+                                                         <figure>
+                                                           <div class="img-bg"></div>
+                                                           <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
+                                                           <figcaption> سنة : <%= availableCourse.educationalLevel %> / ترم : <%= availableCourse.semester %> </figcaption>
+                                                         </figure>
+                                                   
+                                                         <ul class="ulCourses">
+                                                           <li class="liCourses courseName"> اسم الكورس :  <%= availableCourse.courseName %> </li>
+                                                           <li class="liCourses courseDescription">الوصف :  <%= availableCourse.courseDescription %></li>
+                                                           <li class="liCourses CourseLevel"> السنة الدراسية :  <%= availableCourse.educationalLevel %> ثانوي</li>
+                                                           <li class="liCourses CourseSemester">الترم :  <%= availableCourse.semester %></li>
+                                                           <li class="liCourses coursePrice">تم الاشتراك اضغط لرؤية المحتوى   </li>
+                                                         </ul>
+                                                       </div>
+                                                   
+                                                       <div class="card-back">
+                                                         <figure>
+                                                           <div class="img-bg"></div>
+                                                           <img src="/assets/images/portfolio-01.jpg" alt="Brohm Lake">
+                                                         </figure>
+                                                   
+                                                         <button class="buttonCourses course-content"><a href="/myCoursesInfo/<%=availableCourse.counter%>/courseList%>">عرض محتوى الكورس</a></button>                                  
+                                                         <div class="design-container">
+                                                           <span class="design design--1"></span>
+                                                           <span class="design design--2"></span>
+                                                           <span class="design design--3"></span>
+                                                           <span class="design design--4"></span>
+                                                           <span class="design design--5"></span>
+                                                           <span class="design design--6"></span>
+                                                           <span class="design design--7"></span>
+                                                           <span class="design design--8"></span>
+                                                         </div>
+                                                       </div>
+                                                   
+                                                     </div>
+                 
+                                         
+                                                   </div>
+                 
+                 
+                                                 <% } %>
+                 
+                                             <% } %>
+                                     <% } %>
+                                     
+                                 <% } %>
+                             </div>
+                             
+                             </div>
+                         </div>
+                     </div>
+
+
+                        </div>
+
+                      
+
+
+
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
+        <!-- Navbar & Hero End -->
 
-        <%- include("partials/footer.ejs") -%>
+        
 
-        <%- include("partials/jsScripts.ejs") -%>
+       
+
+
         
+
+
+
+
+      
+
+
+
+
         
-        <!-- write here custom js scripts to handle events... 
-          /
-          /
-          /
-        if any error happend try to change the order and write your script below the jsScripts -->
-        
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    <%- include("partials/footer.ejs") -%>
+
+
+    <%- include("partials/jsScripts.ejs") -%>

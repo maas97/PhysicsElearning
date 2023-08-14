@@ -1,6 +1,6 @@
 <%- include("partials/htmlHead.ejs") -%>
 <!-- Write here the title of the page -->
-<title>الرئيسية</title>
+<title>Sigma Platform</title>
 
 <!-- write here the rest of the css custom style of this current page for example -->
     <!-- <link rel="stylesheet" href="/style.css"> 
@@ -28,9 +28,18 @@
             <%- include("partials/navbar.ejs") -%>
             
             <div class="container-fluid-xxl py-5 hero-header mb-5">
+                <span class="dotsUpToDown animated infinite fadeInDown"></span>
+                <span class="dotsDownToUp animated infinite fadeInUp"></span>
+                <% if(!user) { %>
+                <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
+                <% } %>  
+                
+                <span class="arrowsUp animated infinite fadeInUpBig"></span>
+                <span class="waves"></span>
                 <div class="container-fluid my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
-                        <div class="col-lg-6 text-center text-lg-start d-flex justify-content-center align-content-center flex-column">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column">
                             <p class="headtext mb-4 animated zoomIn fw-bold">مرحبا بكم في  </p>
                             <p class="headtext pb-4 animated zoomIn fw-bold">منصة سيجما للفيزياء</p>
                     <% if(!user) { %>
@@ -142,32 +151,32 @@
                 <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="col-12 text-center">
                         <ul class="list-inline mb-5" id="portfolio-flters">
-                            <li class="btn px-3 pe-4 fw-bold fs-4" data-filter="*">الصف الثالث الثانوي </li>
-                            <li class="btn px-3 pe-4 fw-bold fs-4" data-filter=".first">الصف الثاني الثانوي</li>
-                            <li class="btn px-3 pe-4 active fw-bold fs-4" data-filter=".second">الصف الاول الثانوي </li>
+                            <li class="btn px-3 pe-4 fw-bold fs-4" data-filter=".third">الصف الثالث الثانوي </li>
+                            <li class="btn px-3 pe-4 fw-bold fs-4" data-filter=".second">الصف الثاني الثانوي</li>
+                            <li class="btn px-3 pe-4 active fw-bold fs-4" data-filter=".first">الصف الاول الثانوي </li>
                         </ul>
                     </div>
                 </div>
                 <div class="row col-12 portfolio-container d-flex justify-content-center align-content-center " >
                     <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.1s" >
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الاول </small>
+                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الاول : النظام الدولي للوحدات</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة  </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn m-3" data-wow-delay="0.3s">
+                    <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.3s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-2.jpg" alt="">
+                            <img class="img-fluid w-100" src="/assets/img/colorful-image-road-with-lights-it.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-2.jpg" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/colorful-image-road-with-lights-it.jpg" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثاني </small>
+                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثاني : العجلة</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة </a>
                                 </div>
                             </div>
@@ -175,12 +184,12 @@
                     </div>
                     <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.6s">
                         <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-3.jpg" alt="">
+                            <img class="img-fluid w-100" src="/assets/img/22745545_i0ox_ffi4_211224.jpg" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-3.jpg" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/22745545_i0ox_ffi4_211224.jpg" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
+                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثالث : القوة والحركة</small>
+                                    <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة</a>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +206,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.3s">
+                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn m-3" data-wow-delay="0.3s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="/assets/img/portfolio-5.jpg" alt="">
                             <div class="portfolio-overlay">
@@ -209,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn m-3" data-wow-delay="0.6s">
+                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn m-3" data-wow-delay="0.6s">
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="/assets/img/portfolio-6.jpg" alt="">
                             <div class="portfolio-overlay">
@@ -431,19 +440,4 @@
         <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2"><i class="bi bi-arrow-up"></i></a>
     </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script defer src="https://fastly.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="/assets/lib/wow/wow.min.js"></script>
-    <script src="/assets/lib/easing/easing.min.js"></script>
-    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/assets/lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="/assets/lib/lightbox/js/lightbox.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="/assets/js/main.js"></script>
-</body>
-
-</html>
+    <%- include("partials/jsScripts.ejs") -%>
