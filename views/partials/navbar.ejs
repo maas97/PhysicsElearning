@@ -6,7 +6,7 @@
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse">
       <span class="fa fa-bars"></span>
   </button>
-  <div class="collapse navbar-collapse text-center" id="navbarCollapse">
+  <div class="collapse navbar-collapse text-center" dir="ltr" id="navbarCollapse">
       <div class="navbar-nav ms-auto py-0">
 
 <% if(user) { %>
@@ -18,11 +18,11 @@
           <a href="/profile" class="nav-item nav-link active fw-bold">  مرحبا <%= user.firstName %> </a>
 
 <% } else { %>
-          <a href="/login" class="nav-item nav-link fw-bold">الاشتراك في المنصة</a>
+          <a href="/login" class="nav-item nav-link fw-bold ">الاشتراك في المنصة</a>
           <a href="/freeExams" class="nav-item nav-link fw-bold">امتحانات مجانية</a>
           <a href="/#services" class="nav-item nav-link fw-bold">المحاضرات المجانية</a>
           <a href="#" class="nav-item nav-link fw-bold">المذكرات</a>
-          <a href="/" class="nav-item nav-link active fw-bold">الرئيسية</a>
+          <a href="/" class="nav-item nav-link  fw-bold">الرئيسية</a>
           <a href="login" class="btn btnheadstyle h-4 text-center d-flex align-self-center text-light btn-rounded py-2 ms-lg-4 ms-sm-0 fw-bold">تسجيل الدخول </a>
 <% } %>
 
