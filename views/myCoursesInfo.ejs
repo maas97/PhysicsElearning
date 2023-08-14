@@ -28,13 +28,13 @@
             
             <%- include("partials/navbar.ejs") -%>
             
-            <div class="container-fluid-xxl py-5 hero-header mb-5">
+            <div class="container-fluid-xxl py-5 hero-header-login mb-5">
                 <div class="container-fluid my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
                         <div class="container" >
                             <div class="row" style="direction: rtl;">
                               <div class="col-lg-5">
-                                <% if (user.isSubscriped) {%>
+                                <% if (!user.isSubscriped) {%>
     
                                 <div class="section-heading wow fadeInLeft"  data-wow-duration="1s" data-wow-delay="0.3s">
                                   <!-- <h6>اخر ما تمت</h6> -->

@@ -1,0 +1,65 @@
+<%- include("partials/htmlHead.ejs") -%>
+<!-- Write here the title of the page -->
+<title>بروفايلي</title>
+
+<!-- write here the rest of the css custom style of this current page for example -->
+    <!-- <link rel="stylesheet" href="/style.css"> 
+    /
+    /
+    /
+    -->
+    <link rel="stylesheet" href="/assets/css/profileStyle.css">
+
+  </head>
+
+<body>
+
+  <%- include("partials/preloader.ejs") -%>
+  <%- include("partials/navbar.ejs") -%>
+
+ <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">بروفايلي</label>
+		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+        <form action="/">
+          <div class="group">
+            <span for="phoneNumber" class="label">اسم المستخدم : </label>
+            <span><%= user.firstName %> <%= user.lastName %> </span>
+          </div>
+          <div class="group">
+            <span for="phoneNumber" class="label">الإيميل: </label>
+            <span><%= user.email %> </span>
+          </div>
+          <div class="group">
+            <span for="phoneNumber" class="label"> السنة الدراسية : </label>
+            <span><%= user.educationalLevel %> </span>
+          </div>
+          <div class="group">
+            <span for="phoneNumber" class="label"> رقم موبايل الطالب: </label>
+            <span><%= user.phoneNumber %> </span>
+          </div>
+          <div class="group">
+            <span for="phoneNumber" class="label">رقم موبايل ولي الأمر : </label>
+            <span><%= user.parentPhoneNumber %> </span>
+          </div>
+          <div class="hr"></div>
+        </div>
+        </form>
+				
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+<%- include("partials/footer.ejs") -%>
+
+<%- include("partials/jsScripts.ejs") -%>

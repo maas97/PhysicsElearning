@@ -1,69 +1,119 @@
 <%- include("partials/htmlHead.ejs") -%>
-<!-- Write here the title of the page -->
-<title>بروفايلي</title>
 
-<!-- write here the rest of the css custom style of this current page for example -->
-    <!-- <link rel="stylesheet" href="/style.css"> 
-    /
-    /
-    /
-    -->
+    <title>SEO Master - SEO Agency Website Template</title>
+    <!-- <link rel="stylesheet/less" type="text/css" href="/assets/signupSelectStyle.less" />
+    <script src="/assets/less.js" type="text/javascript"></script> -->
     <link rel="stylesheet" href="/assets/css/profileStyle.css">
 
-  </head>
+</head>
 
 <body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+        <!-- Spinner End -->
 
-  <%- include("partials/preloader.ejs") -%>
-  <%- include("partials/preheader.ejs") -%>
-  <%- include("partials/navbar.ejs") -%>
 
- <div class="login-wrap">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">بروفايلي</label>
-		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-        <form action="/">
-          <div class="group">
-            <span for="phoneNumber" class="label">اسم المستخدم : </label>
-            <span><%= user.firstName %> <%= user.lastName %> </span>
-          </div>
-          <div class="group">
-            <span for="phoneNumber" class="label">الإيميل: </label>
-            <span><%= user.email %> </span>
-          </div>
-          <div class="group">
-            <span for="phoneNumber" class="label"> السنة الدراسية : </label>
-            <span><%= user.educationalLevel %> </span>
-          </div>
-          <div class="group">
-            <span for="phoneNumber" class="label"> رقم موبايل الطالب: </label>
-            <span><%= user.phoneNumber %> </span>
-          </div>
-          <div class="group">
-            <span for="phoneNumber" class="label">رقم موبايل ولي الأمر : </label>
-            <span><%= user.parentPhoneNumber %> </span>
-          </div>
-          <div class="hr"></div>
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+           
+        <%- include("partials/preloader.ejs") -%>
+        <%- include("partials/navbar.ejs") -%>
+
+            
+
+            <div class="container-xxl py-5 hero-header-login mb-5 d-flex justify-content-around align-content-around">
+                
+              <div class="container text-center my-5 py-5 px-lg-5">
+                   
+                  <div class="row g-5 py-5">
+                      
+                      <div class="col-lg-12 text-center text-lg-start" dir="rtl">
+                        <div class="login-wrap" dir="rtl">
+                          <div class="login-html text-center border border-danger" dir="rtl">
+                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">بروفايلي</label>
+                            <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab"></label>
+                            <div class="login-form" dir="rtl">
+                              <div class="sign-in-htm" dir="rtl">
+                                <form action="/" class="text-center">
+                                  <div class="group end-100" dir="rtl">
+                                    <hr>
+                                    <br>
+                                    <span for="phoneNumber" class="label">اسم المستخدم : </label>
+                                      <br>
+                                      <br>
+                                    <span><%= user.firstName %> <%= user.lastName %> </span>
+                                  </div>
+                                  <div class="group">
+                                    <span for="phoneNumber" class="label">الإيميل: </label>
+                                      <br>
+                                      <br>
+                                    <span><%= user.email %> </span>
+                                  </div>
+                                  <div class="group">
+                                    <span for="phoneNumber" class="label"> السنة الدراسية : </label>
+                                      <br>
+                                      <br>
+                                    <span><%= user.educationalLevel %>  ثانوي </span>
+                                  </div>
+                                  <div class="group">
+                                    <span for="phoneNumber" class="label"> رقم موبايل الطالب: </label>
+                                      <br>
+                                      <br>
+                                    <span><%= user.phoneNumber %> </span>
+                                  </div>
+                                  <div class="group">
+                                    <span for="phoneNumber" class="label">رقم موبايل ولي الأمر : </label>
+                                      <br>
+                                      <br>
+                                    <span><%= user.parentPhoneNumber %> </span>
+                                  </div>
+                                </div>
+                                </form>
+                                
+                        
+                            </div>
+                        
+                          </div>
+                        </div>
+                        
+                           
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-lg-block d-none text-center text-lg-start animated lightSpeedIn" style="position: relative; top: 100px; ">
+                  <img class="img-fluid scientist" style="position: relative; top: 250px;" src="/assets/img/24784265_vif2_4m00_220302-removebg-preview.png" alt="">
+                </div>
+            </div>
         </div>
-        </form>
-				
-
-		</div>
-	</div>
-</div>
+        <!-- Navbar & Hero End -->
+               
+        <!-- Footer End -->
+        <%- include("partials/footer.ejs") -%>
 
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/lib/wow/wow.min.js"></script>
+    <script src="/assets/lib/easing/easing.min.js"></script>
+    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/assets/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/assets/lib/lightbox/js/lightbox.min.js"></script>
 
-
-
-
-
-<%- include("partials/footer.ejs") -%>
-
-<%- include("partials/jsScripts.ejs") -%>
+    <!-- Template Javascript -->
+    <script src="/assets/js/main.js"></script>
+      <script src="/assets/signupSelectStyle.js"></script>
 
 
 </body>
+
 </html>
