@@ -25,22 +25,25 @@
                 <% } %>  
                 
                 <span class="arrowsUp animated infinite fadeInUpBig"></span>
-                <span class="waves"></span>
+                <div>
+                    <span class="waves"></span>
+                </div>
                 <div class="container-fluid my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
 
                         <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
                             <p class="headtext mb-4 animated zoomIn fw-bold fs-1">مرحبا بكم في  </p>
                             <p class="headtext pb-4 animated zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animated zoomIn fw-bold btnheadstyle" dir="rtl" style="position: relative; bottom: 35px; color: #73C6D9; font-size: 2.5rem;">م/ محمد رمضان</p>
                     <% if(!user) { %>
 
-                            <a href="login" class="btn btnheadstyle py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <a href="login" class="btn btnheadstyle subscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
                             <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
                     <% } %>  
                         
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
-                            <img class="img-fluid mrimg" src="/assets/img/1 copy.png" alt="">
+                            <img class="img-fluid mrimg mrimgresponsive" src="/assets/img/1 copy.png" alt="">
                         </div>
                     </div>
                 </div>
