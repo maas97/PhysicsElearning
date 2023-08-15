@@ -130,7 +130,7 @@ module.exports.signup_post = (req,res,next)=>{
       age:        req.body.age,
       phoneNumber:req.body.phoneNumber,
       parentPhoneNumber:req.body.parentPhoneNumber,
-      // educationalLevel:req.body.educationalLevel,
+      educationalLevel:req.body.educationalLevel,
   }).save()// insertOne
   .then(student=>{
       console.log(student);
