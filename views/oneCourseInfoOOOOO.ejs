@@ -1,0 +1,134 @@
+<%- include("partials/htmlHead.ejs") -%>
+<!-- Write here the title of the page -->
+<title>كورساتي</title>
+
+<!-- write here the rest of the css custom style of this current page for example -->
+    <!-- <link rel="stylesheet" href="/style.css"> 
+    /
+    /
+    /
+    -->
+
+   <!-- Libraries Stylesheet -->
+   <link rel="stylesheet" href="/assets/css/myCoursesStyle.css">
+   
+
+  </head>
+
+<body>
+
+
+
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl position-relative p-0">
+            
+            <%- include("partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl py-5 hero-header-login mb-5">
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="container" >
+                            <div class="row" style="direction: rtl;">
+                              <div class="col-lg-5">
+                                <% if (!user.isSubscriped) {%>
+    
+                                <div class="section-heading wow fadeInLeft"  data-wow-duration="1s" data-wow-delay="0.3s">
+                                  <!-- <h6>اخر ما تمت</h6> -->
+                                  <h4 class="p-2 fw-bold" style="direction: rtl;">أنت حاليا غير مشترك في أي من الكورسات</h4>
+                                  <h5 class="p-2"> <em>اختر كورس من الكورسات للحجز</em></h5>
+                                  <!-- <div class="line-dec"></div> -->
+                                </div>
+                              <% } else { %>
+                                <div class="section-heading wow fadeInLeft"  data-wow-duration="1s" data-wow-delay="0.3s">
+                                  <!-- <h6>اخر ما تمت</h6> -->
+                                  <h5 class="p-2 fw-bold fs-2 m-3" style="position: relative; right: 20px; color: #0F2D40;"> <em>اختر كورس من الكورسات الآتية </em></h5>
+                                  <!-- <div class="line-dec"></div> -->
+                                </div>
+                                <% } %>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                          <div class="col-lg-6 text-center text-lg-start">    
+                            <img class="img-fluid mrimg" style="margin-top: -190px;" src="/assets/img/1 copy.png" alt="">
+                            <img class="img-fluid whiteBg" style="position: absolute; bottom: -35px; left: -35px; width: 50%; height:70%;" src="/assets/img/Solid_white.png" alt="">
+                          </div>
+
+
+                          
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+
+
+
+                        </div>
+
+                      
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        
+
+       
+
+
+        
+
+
+
+
+      
+
+
+
+
+        
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    <%- include("partials/footer.ejs") -%>
+
+
+    <%- include("partials/jsScripts.ejs") -%>

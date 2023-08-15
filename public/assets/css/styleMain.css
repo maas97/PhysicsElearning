@@ -28,7 +28,8 @@
     right: 45px;
     bottom: 45px;
     z-index: 99;
-    background-color:#2d92a3
+    background-color:#2d92a3;
+    color: black;
 }
 
 
@@ -82,7 +83,14 @@ h6,
 .btnheadstyle{
     background-color: #0f2d40;
     color: #FFFFFF;
+}
 
+.btnheadstyle:hover{
+    color: #ffffff;
+    background-color: #1e5678;
+    border: solid 3px  #091b27 ;
+    opacity: 1;
+    scale: 0.9;
 }
 
 .container-xxl{
@@ -142,7 +150,7 @@ h6,
     .sticky-top.navbar-light .navbar-nav .nav-link {
         padding: 10px 0;
         margin-left: 0;
-        color: var(--dark) !important;
+        color: black !important;
     }
 
     .navbar-light .navbar-brand h1 {
@@ -318,7 +326,27 @@ h6,
     .mrimg{
         display: none;
     }
+    .whiteBg{
+        display: none;
+    }
   }
+
+
+/**** Carousel ****/
+
+
+.carouselExampleCaptions{
+}
+
+.carousel-inner {
+}
+
+
+.carousel-inner img{
+    max-width: 80%;
+    min-width :20px;
+    width: 30%;
+}
 
 /*** Section Title ***/
 .section-title::before {

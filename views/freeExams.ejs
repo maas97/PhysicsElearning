@@ -13,43 +13,48 @@
 
 <body>
   
+  <div class="container-fluid-xxl bg-white p-0">
+    <%- include("partials/preloader.ejs") -%>
+    
 
-<%- include("partials/preloader.ejs") -%>
-<%- include("partials/navbar.ejs") -%>
-<!-- write your content of the page what is below your navbar ... 
-  /
-  /
-  /
--->
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-<div>loooooooool</div>
-</div>
-<%- include("partials/footer.ejs") -%>
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid-xxl position-relative mb-5 p-0" >
+        
+        <%- include("partials/navbar.ejs") -%>
+        
+        <div class="container-fluid-xxl py-5 hero-header">
+            <span class="dotsUpToDown animated infinite fadeInDown"></span>
+            <span class="dotsDownToUp animated infinite fadeInUp"></span>
+            <% if(!user) { %>
+            <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
+            <% } %>  
+            
+            <span class="arrowsUp animated infinite fadeInUpBig"></span>
+            <span class="waves"></span>
+            <div class="container-fluid my-5 py-5 px-lg-5">
+                <div class="row g-5 py-5">
 
-<%- include("partials/jsScripts.ejs") -%>
+                    <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column">
+                        <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> ....قريبا </p>
+                <% if(!user) { %>
 
-<!-- write here custom js scripts to handle events... 
-  /
-  /
-  /
-if any error happend try to change the order and write your script below the jsScripts -->
+                        <a href="login" class="btn btnheadstyle py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
+                        <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                <% } %>  
+                    
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <img class="img-fluid mrimg" src="/assets/img/1 copy.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <%- include("partials/footer.ejs") -%>
+  
+  </div>
+
+    <%- include("partials/jsScripts.ejs") -%>
+    

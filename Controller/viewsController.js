@@ -105,12 +105,12 @@ module.exports.courseList = async (req, res) => {
 }
 
 module.exports.freeExams = (req, res) => {
-  res.render('freeExams');
+  res.render('soonTemplate');
 }
 module.exports.profile = (req, res) => {
   res.render('profile');
 }
 
-module.exports.project = (req, res) => {
-  res.render('project');
+module.exports.products = (req, res) => {
+  res.render('soonTemplate');
 }

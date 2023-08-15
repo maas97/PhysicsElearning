@@ -43,32 +43,30 @@
                                   <div class="group end-100" dir="rtl">
                                     <hr>
                                     <br>
-                                    <span for="phoneNumber" class="label">اسم المستخدم : </label>
+                                    <label class="name">اسم المستخدم : </label>
                                       <br>
                                       <br>
                                     <span><%= user.firstName %> <%= user.lastName %> </span>
                                   </div>
                                   <div class="group">
-                                    <span for="phoneNumber" class="label">الإيميل: </label>
+                                    <label >الإيميل: </label>
                                       <br>
                                       <br>
-                                    <span><%= user.email %> </span>
+                                    <span class="email"><%= user.email %> </span>
                                   </div>
                                   <div class="group">
-                                    <span for="phoneNumber" class="label"> السنة الدراسية : </label>
+                                    <label for="educationalLevel" class="label"> السنة الدراسية : </label>
                                       <br>
-                                      <br>
+                                      
                                     <span><%= user.educationalLevel %>  ثانوي </span>
                                   </div>
                                   <div class="group">
-                                    <span for="phoneNumber" class="label"> رقم موبايل الطالب: </label>
-                                      <br>
+                                    <label for="phoneNumber" class="label"> رقم موبايل الطالب: </label>
                                       <br>
                                     <span><%= user.phoneNumber %> </span>
                                   </div>
                                   <div class="group">
-                                    <span for="phoneNumber" class="label">رقم موبايل ولي الأمر : </label>
-                                      <br>
+                                    <label for="parentPhoneNumber" class="label">رقم موبايل ولي الأمر : </label>
                                       <br>
                                     <span><%= user.parentPhoneNumber %> </span>
                                   </div>
