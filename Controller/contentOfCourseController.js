@@ -34,9 +34,9 @@ exports.addContent = async (request,response,next)=>{
 
     try{
         const {courseId, unitNumber, title, description, typeOfContent, LinkOfContent} = request.body;
-        console.log("/////////////////////////////////////////////");
+        // console.log("/////////////////////////////////////////////");
         // const courseId = request.body.unit[0].eachContentInsideCourse[0].courseId;
-        console.log(request.body.unit[0].eachContentInsideCourse[0]);
+        // console.log(request.body.unit[0].eachContentInsideCourse[0]);
         // console.log(description);
         
         new contentSchema({
@@ -51,8 +51,8 @@ exports.addContent = async (request,response,next)=>{
             }
             
         }).save().then(async data=>{
-            console.log("/////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$////////////////////////");
-            console.log(data._id);
+            // console.log("/////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$////////////////////////");
+            // console.log(data._id);
             // console.log("/////////////////////////////////////////////");
             // console.log(newContent);
             await courseDetailsSchema.findByIdAndUpdate(courseId, { $push: { 

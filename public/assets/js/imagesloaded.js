@@ -357,7 +357,7 @@ ImagesLoaded.prototype.progress = function( image, elem, message ) {
   }
 
   if ( this.options.debug && console ) {
-    console.log( 'progress: ' + message, image, elem );
+    // console.log( 'progress: ' + message, image, elem );
   }
 };
 

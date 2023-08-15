@@ -8,7 +8,7 @@ const courseDetailsSchema = mongoose.model("courseDetails");
 
 
 process.on('uncaughtException', function (error) {
-  console.log(error.stack);
+  // console.log(error.stack);
 });
 
 module.exports.home = (req, res) => {
@@ -18,8 +18,8 @@ module.exports.home = (req, res) => {
 module.exports.coursesInfo = async (req, res) => {
     const availableCourses = await courseDetailsSchema.find();
     for(let availableCourse of availableCourses){
-      console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-      console.log(availableCourse.isCurrentCourseSubscribed);
+      // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+      // console.log(availableCourse.isCurrentCourseSubscribed);
     }
     res.render('myCoursesInfo', {
         title: 'كورساتي',
@@ -29,9 +29,9 @@ module.exports.coursesInfo = async (req, res) => {
 
 module.exports.getOneCoursedetails = async (req, res) => {
   const oneCourseDetails = await courseDetailsSchema.findOne({counter: req.params.counter});
-  console.log("/////////////////////////////////////////////////////////")
-  console.log(oneCourseDetails)
-  console.log("/////////////////////////////////////////////////////////")
+  // console.log("/////////////////////////////////////////////////////////")
+  // console.log(oneCourseDetails)
+  // console.log("/////////////////////////////////////////////////////////")
 
   res.render('oneCourseInfo', {
       title: 'كورساتي',
@@ -76,15 +76,15 @@ module.exports.subscribed = async (req, res, next) => {
           });
           }).then( async data =>{
             let studentData = await studentSchema.findById(decodedToken.id);
-            console.log("///////************************************///////*******************////////////////")
-            console.log(data);
-            console.log(counterNumber);
-            console.log(studentData);
-            console.log("///////************************************/////////******************//////////////")
+            // console.log("///////************************************///////*******************////////////////")
+            // console.log(data);
+            // console.log(counterNumber);
+            // console.log(studentData);
+            // console.log("///////************************************/////////******************//////////////")
             res.locals.user = studentData;
             res.locals.counter = counterNumber.counter;
-            console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-            console.log(res.locals.counter);
+            // console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+            // console.log(res.locals.counter);
             
             // res.status(200).json({data});
             res.render('subscribedDone');

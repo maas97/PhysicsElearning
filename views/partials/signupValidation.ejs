@@ -1,0 +1,247 @@
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      //  document.querySelector('.invalid-feedback').style.display = 'none';
+      const form = document.querySelector('.signupData');
+      
+      const firstNameElement = document.getElementById("firstName");
+      const lastNameElement = document.getElementById("lastName");
+      const passwordElement = document.getElementById("passwordSignup");
+      const phoneNumberElement = document.getElementById("phoneNumberSignup");
+      const parentPhoneNumberElement = document.getElementById("parentPhoneNumber");
+      const ageElement = document.getElementById("age");
+      const eduLevelElement = document.getElementById("eduLevel");
+    
+      const emailError = document.querySelector('.email.error');
+      const phoneError = document.querySelector('.phoneError');
+      const parentPhoneError = document.querySelector('.parentPhoneError');
+    
+      // first name validation
+      firstNameElement.addEventListener('input', function(e) {
+      e.preventDefault();
+      const firstNameValue = firstNameElement.value;
+      // console.log(firstNameValue);
+      if(firstNameValue.trim() === ''){
+        firstNameElement.classList.remove("is-valid");
+        firstNameElement.classList.add("is-invalid", "firstNameError");
+      }else{
+        if (/[^a-zA-Z]/.test(firstNameValue)) {
+        firstNameElement.classList.remove("is-valid");
+        firstNameElement.classList.add("is-invalid", "firstNameError");
+      }else {
+        firstNameElement.classList.remove("is-invalid", "firstNameError");
+        firstNameElement.classList.add("is-valid");
+      }
+      }
+    });
+    
+    // last name validation
+    lastNameElement.addEventListener('input', function(e) {
+      e.preventDefault();
+      const lastNameValue = lastNameElement.value;
+      // console.log(lastNameValue);
+      if(lastNameValue.trim() === ''){
+        lastNameElement.classList.remove("is-valid");
+        lastNameElement.classList.add("is-invalid");
+      }else{
+      if (/[^a-zA-Z]/.test(lastNameValue)) {
+        lastNameElement.classList.remove("is-valid");
+        lastNameElement.classList.add("is-invalid");
+      } else {
+        lastNameElement.classList.remove("is-invalid");
+        lastNameElement.classList.add("is-valid");
+      }
+      }
+    });
+    
+    
+    // password validation
+    passwordElement.addEventListener('input', function(e) {
+      e.preventDefault();
+      const passwordValue = passwordElement.value;
+      // console.log(passwordValue);
+      // console.log(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(passwordValue));
+      
+      if(passwordValue.trim() === ''){
+        passwordElement.classList.remove("is-valid");
+        passwordElement.classList.add("is-invalid");
+      }else{
+        // const passwordRegex = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/";
+        if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%#?&.])[A-Za-z\d@!%#?&.]{8,}$/.test(passwordValue)) {
+          passwordElement.classList.remove("is-invalid");
+          passwordElement.classList.add("is-valid");
+        } else {
+          passwordElement.classList.remove("is-valid");
+          passwordElement.classList.add("is-invalid");
+        }
+      }
+    });
+    
+    
+    
+    // phone validation
+    phoneNumberElement.addEventListener('input', function(e) {
+      e.preventDefault();
+      const phoneValue = phoneNumberElement.value;
+      // console.log(phoneValue);
+      
+      if(phoneValue.trim() === ''){
+        phoneNumberElement.classList.remove("is-valid");
+        phoneNumberElement.classList.add("is-invalid");
+      }else{
+        if (/^(010|011|012|015)\d{8}$/.test(phoneValue)) {
+          phoneNumberElement.classList.remove("is-invalid");
+          phoneNumberElement.classList.add("is-valid");
+        } else {
+          phoneNumberElement.classList.remove("is-valid");
+          phoneNumberElement.classList.add("is-invalid");
+        }
+      }
+    });
+    
+    // parentPhone validation
+    parentPhoneNumberElement.addEventListener('input', function(e) {
+      e.preventDefault();
+      const parentPhoneValue = parentPhoneNumberElement.value;
+      // console.log(phoneValue);
+      
+      if(parentPhoneValue.trim() === ''){
+        parentPhoneNumberElement.classList.remove("is-valid");
+        parentPhoneNumberElement.classList.add("is-invalid");
+      }else{
+        if (/^(010|011|012|015)\d{8}$/.test(parentPhoneValue)) {
+          parentPhoneNumberElement.classList.remove("is-invalid");
+          parentPhoneNumberElement.classList.add("is-valid");
+        } else {
+          parentPhoneNumberElement.classList.remove("is-valid");
+          parentPhoneNumberElement.classList.add("is-invalid");
+        }
+      }
+    });
+    
+    // age validation
+    ageElement.addEventListener('input', function(e) {
+      e.preventDefault();
+      const ageValue = ageElement.value;
+      
+      if(ageValue.trim() === ''){
+        ageElement.classList.remove("is-valid");
+        ageElement.classList.add("is-invalid");
+      }else{
+        if (/^(1[0-9]|10)$/.test(ageValue)) {
+          ageElement.classList.remove("is-invalid");
+          ageElement.classList.add("is-valid");
+        } else {
+          ageElement.classList.remove("is-valid");
+          ageElement.classList.add("is-invalid");
+        }
+      }
+    });
+    
+    // at submit button and email checking
+    
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+    
+        emailError.textContent = '';
+        phoneError.textContent = '';
+        parentPhoneError.textContent = '';
+        // get values
+        // console.log(form);
+        const email = form.email.value;
+        const password = form.password.value;
+        const firstName = form.firstName.value;
+        const lastName = form.lastName.value;
+        const age = form.age.value;
+        const phoneNumber = form.phoneNumber.value;
+        const parentPhoneNumber = form.parentPhoneNumber.value;
+        const educationalLevel = form.eduLevel.value;
+    
+        const firstNameElement = document.getElementById("firstName");
+        const lastNameElement = document.getElementById("lastName");
+        const passwordElement = document.getElementById("password");
+        const phoneNumberElement = document.getElementById("phoneNumber");
+        const parentPhoneNumberElement = document.getElementById("parentPhoneNumber");
+        const ageElement = document.getElementById("age");
+        const eduLevelElement = document.getElementById("eduLevel");
+    
+    
+        try {
+          if(parentPhoneNumber === phoneNumber){
+            parentPhoneError.textContent = 'لا يمكن لرقم ولي الأمر ورقم الطالب أن يكونوا متطابقين';
+          }else{
+            if(email === '' || password === '' || firstName === '' || lastName === '' || age === '' || phoneNumber === '' || parentPhoneNumber === '' ){
+              parentPhoneError.textContent = 'برجاء مليء كافة البيانات';
+            }
+            if(firstNameElement.classList.contains('invalid-feedback') || lastNameElement.classList.contains('invalid-feedback') || passwordElement.classList.contains('invalid-feedback') || 
+            phoneNumberElement.classList.contains('invalid-feedback') || parentPhoneNumberElement.classList.contains('invalid-feedback') || ageElement.classList.contains('invalid-feedback') ){
+              parentPhoneError.textContent = 'برجاء التحقق من كافة البيانات';
+            }
+            else{
+              const res = await fetch ("/signup", {
+            method: "POST",
+            body: JSON.stringify({ firstName, lastName, email , password, age, phoneNumber, parentPhoneNumber, educationalLevel}),
+            headers: {"Content-Type":"application/json"}
+          });
+            const data = await res.json();
+            // console.log(data);
+            
+            //validation for incorrect email
+            if (data.message) {
+              // console.log(data);
+              // console.log(data.errors);
+              // console.log(data.message);
+              emailError.textContent = data.message;
+              phoneError.textContent = data.message;
+              parentPhoneError.textContent = data.message;
+              }
+    
+            //validation for duplicated email
+            if (data.errors) {
+                // console.log(data);
+                // console.log(educationalLevel);
+
+                emailError.textContent = data.errors.email;
+                phoneNumberElement.classList.remove("is-invalid");
+                phoneError.textContent = '';
+                phoneError.textContent = data.errors.phoneNumber;
+                // console.log(data.errors.phoneNumber);
+                parentPhoneNumberElement.classList.remove("is-invalid");
+                parentPhoneError.textContent = '';
+                parentPhoneError.textContent = data.errors.phoneNumber;
+                // console.log(data.errors.parentPhoneError);
+                // passwordError.textContent = data.errors.password;
+              }
+    
+              // //validation for invalid last name
+              // if (data.message) {
+              // // console.log(data);
+              // // console.log(data.errors);
+              // // console.log(data);
+              // lastNameError.textContent = data;
+              // }
+    
+            if(data.student){
+    
+              // to signup manually by updating the cookie to be empty and have very very short time expiration 
+    
+              location.assign("/login");
+            }
+    
+    
+            }
+            
+          }
+    
+          
+    
+    }   catch (error) {
+      
+    }
+    
+      });
+    
+    
+    });
+    </script>

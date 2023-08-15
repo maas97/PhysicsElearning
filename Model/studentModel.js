@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 process.on('uncaughtException', function (error) {
-  console.log(error.stack);
+  // console.log(error.stack);
 });
 
 const validGovernates = ['Cairo', 'Alexandria', 'Giza', 'Kafr El Sheikh', 'Al Dakahlia']; // Add more if needed
@@ -119,9 +119,9 @@ const studentSchema = new mongoose.Schema({
 
 studentSchema.statics.login = async function(phoneNumber,password){
   const student = await this.findOne({phoneNumber});
-  console.log("----------------------------------------------------");
-  console.log(student);
-  console.log("----------------------------------------------------");
+  // console.log("----------------------------------------------------");
+  // console.log(student);
+  // console.log("----------------------------------------------------");
   
   if (student){
       const authenticate = await bcrypt.compare(password, student.password);

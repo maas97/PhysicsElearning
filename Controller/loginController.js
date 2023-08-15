@@ -11,13 +11,13 @@ const studentSchema = mongoose.model("student");
 const {courseDetails} = require("./courseDetailsInfoController");
 
 process.on('uncaughtException', function (error) {
-  console.log(error.stack);
+  // console.log(error.stack);
 });
 
 // // handle errors
 const handleErrors = (err) => {
-  console.log(err.code);
-  console.log(err.message);
+  // console.log(err.code);
+  // console.log(err.message);
   let errors = { email: '', password:'', phoneNumber: '', parentPhoneNumber: ''};
 
   //login errors
@@ -27,11 +27,11 @@ const handleErrors = (err) => {
   if(err.message === "Incorrect Password"){
     errors.password = "رقم الهاتف أو كلمة المرور غير صحيحة"
   }
-  console.log("*****************************************************************************");
+  // console.log("*****************************************************************************");
 
-  console.log(err.message);
+  // console.log(err.message);
 
-  console.log("*****************************************************************************");
+  // console.log("*****************************************************************************");
 
   // duplicate email error
   if (err.code === 11000) {
@@ -46,7 +46,7 @@ const handleErrors = (err) => {
       errors.email = 'هذا الإيميل لديه أكونت مسبقا على منصتنا برجاء تسجيل الدخول';
     }
     
-    console.log(errors);
+    // console.log(errors);
     // console.log(errors.email);
     
     return errors;
@@ -54,14 +54,14 @@ const handleErrors = (err) => {
 
 
   // validation errors
-  console.log("////////////////////////////////////////////////////////////////////////////");
+  // console.log("////////////////////////////////////////////////////////////////////////////");
 
-  console.log(err);
+  // console.log(err);
 
-  console.log("////////////////////////////////////////////////////////////////////////////");
+  // console.log("////////////////////////////////////////////////////////////////////////////");
 
   if (err.message.includes('student validation failed')) {
-    console.log(err);
+    // console.log(err);
     Object.values(err.errors).forEach(({ properties }) => {
       // console.log(val);
       // console.log(properties);
@@ -82,10 +82,6 @@ const createToken = (id)=>{
 // controller actions
 
 
-module.exports.signup_get = (req, res) => {
-  res.render('signup');
-}
-
 module.exports.login_get = (req, res) => {
   res.render('login');
 }
@@ -95,9 +91,7 @@ module.exports.logout_get = (req, res) => {
   res.redirect('/');
 }
 
-module.exports.home = (req, res) => {
-  res.render('home');
-}
+
 
 module.exports.courses = async (req, res) => {
   await fetch ("/coursedetails", {
@@ -133,9 +127,9 @@ module.exports.signup_post = (req,res,next)=>{
       educationalLevel:req.body.educationalLevel,
   }).save()// insertOne
   .then(student=>{
-      console.log(student);
+      // console.log(student);
       const token = createToken(student._id);
-      console.log(student._id);
+      // console.log(student._id);
       res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
       res.status(201).json({student: student._id});
   })
@@ -160,7 +154,7 @@ module.exports.signup_post = (req,res,next)=>{
     // else{
       // console.log("*****************************************************************************");
 
-      console.log(errors);
+      // console.log(errors);
       res.status(400).json({ errors });
     // }
     // next(error)
@@ -194,13 +188,13 @@ module.exports.login_post = async (req, res, next) => {
   try {
     const student = await Student.login(phoneNumber, password);
     const token = createToken(student._id);
-    console.log("============================================================");
-    console.log(token);
-    console.log("============================================================");
+    // console.log("============================================================");
+    // console.log(token);
+    // console.log("============================================================");
     res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
     res.status(200).json({ student: student._id });
-    console.log(student._id);
-    console.log(phoneNumber, password);
+    // console.log(student._id);
+    // console.log(phoneNumber, password);
 
 
   } catch (err) {

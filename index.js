@@ -22,7 +22,7 @@ const auth = require("./Middleware/authenticationMW");
 const {checkStudent} = require("./Middleware/authenticationMW");
 
 process.on('uncaughtException', function (error) {
-    console.log(error.stack);
+    // console.log(error.stack);
  });
 
  const dev_db_url = "mongodb+srv://javaheros43:53Kady8wLo9WyP4C@physics.khdpimd.mongodb.net/?retryWrites=true&w=majority";
