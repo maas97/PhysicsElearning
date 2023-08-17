@@ -236,6 +236,8 @@ h6,
 
 
 
+
+
 /*** Hero Header ***/
 .hero-header {
     position: relative;        
@@ -387,6 +389,16 @@ h6,
     }
   }
 
+  .welcome{
+    position: relative;
+    bottom: 120px;
+}
+
+.headtext{
+    color: #0f2d40;
+    text-align: center;
+    font-size: 2rem;    
+}
 
   /*** intro ******/
 
@@ -508,10 +520,6 @@ h6,
 
 }
 
-.carousel-indicators{
-    /* border: solid blue 5px; */
-
-}
 
 .carousel-inner{
     position: absolute;
@@ -575,9 +583,6 @@ h6,
     z-index: 101;
 }
 
-.mrImgAbout{
-    /* border: 3px solid green; */
-}
 
 .thirdImg{
     top: 39px;
@@ -648,7 +653,25 @@ h6,
     
 }
 
+/*** free lectures ***/
 
+.freeLec{
+    /* border: 3px green solid; */
+    height: auto;
+    min-height: 90vh;
+    background-color:#77BCC6;
+}
+
+.soonFreeLec{
+    border: 3px green solid;
+    text-align: center;
+    position: relative;
+    top: 80px;
+}
+
+.soonFreeLec h3{
+    font-size: 3rem;
+}
 
 /*** Section Title ***/
 .section-title::before {
@@ -658,7 +681,7 @@ h6,
     height: 4px;
     bottom: 0;
     left: 0;
-    background: var(--dark);
+    background: #0f2d40;
 }
 
 .section-title::after {
@@ -668,7 +691,7 @@ h6,
     height: 4px;
     bottom: 0;
     left: 50px;
-    background: var(--dark);
+    background: #0f2d40;
 }
 
 .section-title.text-center::before {
@@ -681,33 +704,7 @@ h6,
     margin-left: 25px;
 }
 
-.section-title h6::before,
-.section-title h6::after {
-    position: absolute;
-    content: "";
-    width: 10px;
-    height: 10px;
-    top: 2px;
-    left: 0;
-    background: rgba(49, 245, 245, 0.5);
-}
 
-.section-title h6::after {
-    top: 5px;
-    left: 3px;
-}
-
-.headtext{
-    color: #0f2d40;
-    text-align: center;
-    font-size: 2rem;
-    
-}
-
-.welcome{
-    position: relative;
-    bottom: 120px;
-}
 
 /*** Service ***/
 .service-item {
@@ -796,7 +793,7 @@ h6,
     bottom: -1px;
     border-left: 20px solid transparent;
     border-right: 0 solid transparent;
-    border-bottom: 50px solid #FFFFFF;
+    border-bottom: 50px solid #77BCC6;
 }
 
 #portfolio-flters .btn:hover,
@@ -919,7 +916,12 @@ h6,
     padding-right: 0;
     border-right: none;
 }
-/**login */
+
+
+
+/*** login ***/
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
