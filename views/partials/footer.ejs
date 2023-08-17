@@ -19,8 +19,9 @@
               <h5 class="text-white mb-4 fs-4">الروابط الشائعة </h5>
               <a class=" btn text-light" href="/#services" dir="rtl">المحاضرات المجانية </a>
               <a class="btn text-light" href="/products" dir="rtl"> المذكرات </a>
-              <a class="btn text-light" href="/login" dir="rtl">الاشتراك</a>
-            
+            <% if(!user) { %>
+                <a class="btn text-light" href="/login" dir="rtl">الاشتراك</a>
+            <% } %>
           </div>
       </div>
       </div>
