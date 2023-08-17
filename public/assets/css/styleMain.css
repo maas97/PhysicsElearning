@@ -669,8 +669,9 @@ h6,
     top: 80px;
 }
 
-.soonFreeLec h3{
+.soonFreeLec span{
     font-size: 3rem;
+    color: #0F2D40;
 }
 
 /*** Section Title ***/
