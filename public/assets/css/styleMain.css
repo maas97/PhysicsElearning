@@ -83,6 +83,7 @@ h6,
 .btnheadstyle{
     background-color: #0f2d40;
     color: #FFFFFF;
+    transition: 0.7s ease-in-out;
 }
 
 .btnheadstyle:hover{
@@ -223,8 +224,7 @@ h6,
 }
 
 .mrName{
-    background-color: white;
-    color: #73c6d9;
+    color: #0F2D40;
 }
 
 .scientist{
@@ -233,6 +233,9 @@ h6,
     margin-top: -50px;
     margin-left: 50px;
 }
+
+
+
 /*** Hero Header ***/
 .hero-header {
     position: relative;        
@@ -241,6 +244,7 @@ h6,
     overflow-y: hidden;
     overflow-x: hidden;
     height: 100vh;
+    z-index: 50;
 }
 
 .hero-header-login{
@@ -253,10 +257,13 @@ h6,
 
 .dotsUpToDown{
     background: url(../img/bg-dot.png);
+    /* border: 20px solid green; */
     width: 100%;
     height: 100%;
     position: absolute;
-    background-position: 10px 10px;
+    bottom: 0;
+    left: 0;
+    background-position: bottom -65px left 0px;
     background-repeat: no-repeat;
 
 }
@@ -266,8 +273,11 @@ h6,
     width: 100%;
     height: 100%;
     position: absolute;
-    background-position: bottom 280px right 10px;
+    background-position: bottom 0px right 2px;
     background-repeat: no-repeat;
+    --animate-delay: 280ms;
+
+
 }
 
 
@@ -322,7 +332,7 @@ h6,
     background-position: left 0% bottom 47px;
     }
     .mrimg{
-    margin-top: -160px;
+    margin-top: -210px;
 
     }
   }
@@ -336,12 +346,18 @@ h6,
     }
   } */
 
+  .subscBtn{
+    scale: 1.5;
+    margin-bottom: 15px;
+  }
+
   @media only screen and (max-width: 1100px) {
     .mrimgresponsive{
         position: relative;
         scale: 2.5;
         bottom: 145px;
         border-radius: 50%;
+        /* filter: drop-shadow(3px 5px 7px black); */
     }
     .mrimgsoon{
         position: relative;
@@ -354,9 +370,17 @@ h6,
     }
     .subscBtn{
         position: relative;
-        bottom: 20px;
-        z-index: 999;
+        top: 10px;
+        scale: 1.5;
+        margin-top: 10px;
+        font-weight: bolder;
     }
+    .mainSubscBtn{
+        position: relative;
+        bottom: 40px;
+        z-index: 999;
+        scale: 1;
+        }
     .welcome{
         position: absolute;
         top: -250px;
@@ -364,21 +388,267 @@ h6,
   }
 
 
+  /*** intro ******/
+
+.intro-header{
+    position: relative;        
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 120vh;
+    bottom: 0px;
+    z-index: 50; 
+    /* border: solid green 5px; */
+    border-bottom: #77BCC6 solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-right: #77BCC6 solid 1px ; */
+}
+
+
+
+.introTopRight{
+    display: inline-block;
+    background-image: url(../img/bg1.png);
+    /* border: 3px green solid; */
+    position: absolute;
+    background-position: left 0px top 0px;
+    top: 0px;
+    right: 0px;
+    width: 126px;
+    height: 100%;
+    background-repeat: no-repeat;
+    z-index: 21;
+}
+
+.introBottomLeft{
+    display: inline-block;
+    background-image: url(../img/bg2.png);
+    /* border: 3px green solid; */
+    position: absolute;
+    background-position: left 0px bottom 0px;
+    bottom: 0px;
+    Left: 0px;
+    width: 180px;
+    height: 100%;
+    background-repeat: no-repeat;
+    z-index: 990;
+
+}
+
+.dotsDownToUpIntro{
+    background: url(../img/bg-dot.png);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: top -100px right 0px;
+    background-repeat: no-repeat;
+    top:0px;
+}
+
+
+.introHeadline{ 
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    right: 200px;
+    font-size: 4.5rem;
+    text-align: right;
+    color: #0F2D40;
+    z-index: 100;
+}
+
+
+
+@media only screen and (max-width: 1100px) {
+    
+    .introHeadline{
+        position: absolute;
+        /* border: 3px solid rgb(195, 255, 0); */
+        width: 100%;
+        right: 0px;
+        top: 80px;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .introTopRight{
+        scale: 0.4;
+        position: absolute;
+        top: -350px;
+        right: -40px;
+        /* border: solid green 2px; */
+    }
+    .intro-header{
+    border: #77BCC6 solid 1px ;
+    }
+    .introBottomLeft{
+        position: absolute;
+        bottom: -5px;
+        left: -5ps;
+    }
+}
 /**** Carousel ****/
 
+.carouselIntro{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* border: yellow solid 2px; */
+    
+}
+#myCarousel{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    /* border: solid green 5px; */
 
-.carouselExampleCaptions{
 }
 
-.carousel-inner {
+.carousel-indicators{
+    /* border: solid blue 5px; */
+
 }
 
+.carousel-inner{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    /* border: solid blueviolet 5px; */
+    /* border-radius: 30%; */
+    width: 95%;
+        /* filter: drop-shadow(3px 5px 7px black); */
+    }
+
+.carousel-item{
+    /* border: solid red 5px; */
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-content: center; */
+    /* border-radius: 30%; */
+    text-align: center;
+
+}
+
+.carousel-item .container {
+    /* border: solid 5px rgb(22, 255, 1); */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 70%;
+    width: 50%;
+}
 
 .carousel-inner img{
-    max-width: 80%;
-    min-width :20px;
-    width: 30%;
+    /* border: 3px solid brown; */
+    width: auto;
+    height: 100%;
+    position: relative;
+    left: 150px;
+    z-index: 20;
+    /* border: rgb(155, 42, 61) solid 10px; */
 }
+
+.carousel-caption{
+    color: #0F2D40;
+    /* border: solid 3px rgb(0, 166, 255); */
+    width: 85%;
+    height: 65%;
+    /* background-color: rgb(0, 0, 0,0.7); */
+    position: absolute;
+    top: 20%;
+    display: block;
+    left: 0px;
+}
+
+.thirdCption{
+    top:0px;
+    z-index: 101;
+}
+
+.secondCaption{
+    top: 0px;
+    z-index: 101;
+}
+
+.mrImgAbout{
+    /* border: 3px solid green; */
+}
+
+.thirdImg{
+    top: 39px;
+}
+.secondImg {
+    top: 69px;
+}
+
+
+
+
+@media only screen and (max-width: 1100px) {
+    .carouselIntro{
+        height: 100%;
+        top: 150px;
+        /* border: red solid 1px; */
+
+    }
+    .carousel-inner {
+        position: relative;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        /* border: yellow solid 1px; */
+
+    }
+    .carousel-caption{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.5rem;
+        /* border: #091b27 solid 1px; */
+        width: 100%;
+        padding: 10px;
+    }
+    .carousel-item .container {
+        height: 30%;
+        z-index: 151;
+        width: 100%;
+        top: 50px;
+        /* border: blue solid 1px; */
+
+    }
+    .carousel-inner img{
+        position: absolute;
+        bottom: 450px;
+        left: 0px;
+        height: auto;
+        width: 100%;
+    }
+    .firstImg{
+        position: absolute;
+        top: 230px;
+        scale: 1.5;
+    }
+    .secondImg{
+        position: relative;
+        top: 270px;
+    }
+    .thirdImg{
+        position: absolute;
+        top: 340px;
+    }
+    .introBottomLeft{
+        z-index: 990;
+    }
+    
+    
+}
+
+
 
 /*** Section Title ***/
 .section-title::before {
@@ -436,7 +706,7 @@ h6,
 
 .welcome{
     position: relative;
-    bottom: 40px;
+    bottom: 120px;
 }
 
 /*** Service ***/
@@ -508,77 +778,6 @@ h6,
 .service-item:hover a.btn::before {
     width: 100%;
     background: var(--light);
-}
-
-
-/*** Testimonial ***/
-.newsletter,
-.testimonial {
-    background:
-        url(../img/bg-top.png),
-        url(../img/bg-bottom.png);
-    background-position:
-        left top,
-        right bottom;
-    background-repeat: no-repeat;
-}
-
-.testimonial-carousel .owl-item .testimonial-item,
-.testimonial-carousel .owl-item.center .testimonial-item * {
-    transition: .5s;
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item {
-    background: var(--light) !important;
-    border-color: var(--light);
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item * {
-    color: #888888;
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item i {
-    color: var(--primary) !important;
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item h6 {
-    color: var(--dark) !important;
-}
-
-
-/*** Team ***/
-.team-item {
-    position: relative;
-    transition: .5s;
-    z-index: 1;
-}
-
-.team-item::after {
-    position: absolute;
-    content: "";
-    top: 3rem;
-    right: 3rem;
-    bottom: 0;
-    left: 0;
-    border-radius: 10px;
-    background: #FFFFFF;
-    box-shadow: 0 0 45px rgba(0, 0, 0, .1);
-    transition: .5s;
-    z-index: -1;
-}
-
-.team-item:hover::after {
-    background: var(--primary);
-}
-
-.team-item h5,
-.team-item small {
-    transition: .5s;
-}
-
-.team-item:hover h5,
-.team-item:hover small {
-    color: var(--light);
 }
 
 

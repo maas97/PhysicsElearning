@@ -7,24 +7,24 @@
 <body>
 
 
-
+    <!-- container of website -->
     <div class="container-fluid-xxl bg-white p-0">
         <%- include("partials/preloader.ejs") -%>
         
 
         <!-- Navbar & Hero Start -->
-        <div class="container-fluid-xxl position-relative mb-5 p-0">
+        <div class="container-fluid-xxl position-relative mb-sm-0 p-0">
             
             <%- include("partials/navbar.ejs") -%>
             
             <div class="container-fluid-xxl py-5 hero-header">
-                <span class="dotsUpToDown animated infinite fadeInDown"></span>
-                <span class="dotsDownToUp animated infinite fadeInUp"></span>
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
                 <% if(!user) { %>
-                <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
                 <% } %>  
                 
-                <span class="arrowsUp animated infinite fadeInUpBig"></span>
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
                 <div>
                     <span class="waves"></span>
                 </div>
@@ -32,18 +32,18 @@
                     <div class="row g-5 py-5">
 
                         <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
-                            <p class="headtext mb-4 animated zoomIn fw-bold fs-1">مرحبا بكم في  </p>
-                            <p class="headtext pb-4 animated zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
-                            <p class="headtext animated zoomIn fw-bold btnheadstyle" dir="rtl" style="position: relative; bottom: 35px; color: #73C6D9; font-size: 2.5rem;">م/ محمد رمضان</p>
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
                     <% if(!user) { %>
 
-                            <a href="login" class="btn btnheadstyle subscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <a href="login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
                             <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
                     <% } %>  
                         
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
-                            <img class="img-fluid mrimg mrimgresponsive" src="/assets/img/1 copy.png" alt="">
+                            <img class="img-fluid mrimg mrimgresponsive " src="/assets/img/1 copy.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -52,53 +52,82 @@
         <!-- Navbar & Hero End -->
 
 
-        <!-- Full Screen Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content" style="background: rgba(17, 17, 17, 0.7);">
-                    <div class="modal-header border-0">
-                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex align-items-center justify-content-center">
-                        <div class="input-group" style="max-width: 600px;">
-                            <input type="text" class="form-control bg-transparent border-light p-3" placeholder="Type search keyword">
-                            <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Full Screen Search End -->
+    <!-- intro -->
 
-        <!-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner border border-danger">
-              <div class="carousel-item active " data-bs-interval="5000">
-                <img src="/assets/img/1 copy.png" class="d-block  border border-danger w-25" alt="...">
-                <div class=""> 
-                    <p class=" border border-primary">منصة مستر / محمد رمضان الطنطاوي </p>
-                    <p class="">تخرج من كلية التربية - قسم علوم- جامعة طنطا </p>
-                </div> 
-              </div>
-              <div class="carousel-item" data-bs-interval="2000">
-                <img src="/backg2.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="/assets/img/physicshero.png" class="d-block w-100" alt="...">
-              </div>
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header">
+            <span class="introTopRight d-xl-none d-xxl-block"></span>
+            <span class="introBottomLeft "></span>
+            <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
+              
+            <!-- data-wow-delay="0.6s" -->
+            <p class="introHeadline mb-4 wow animate__animated animate__backInDown fw-bold" data-wow-offset="350" > عن المنصة </p>
+            
+            <div class="carouselIntro wow animate__animated animate__backInDown fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    <div class="carousel-indicators ">
+                      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+                      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg> -->
+                            <img class="mrImgAbout firstImg" src="/assets/img/1 copy.png" alt="">
+                            <div class="container text-center">
+                              <div class="carousel-caption firstCaption text-center">
+                                <h1>منصة مستر / محمد رمضان الطنطاوي </h1>
+                                <p class="fs-5">تخرج من كلية التربية - قسم علوم- جامعة طنطا </p>
+                                <% if(!user) { %>
+                                    <p><a class="btn btnheadstyle subscBtn fw-bolder" href="/login">اشترك الآن</a></p>
+                                <% } %>
+                            </div>
+                            </div>
+                          </div>
+                        <div class="carousel-item ">
+                        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg> -->
+                        <img class="animated secondImg" src="/assets/img/8610200_5891.jpg" alt="">
+                        <div class="container">
+                          <div class="carousel-caption text-center secondCaption">
+                            <h1>معنا النجاح مضمون</h1>
+                            <p class="fs-5">المنصة بتقدم كل الوسائل اللي ممكن تساعدك ولحد عندك</p>
+                        <% if(!user) { %>
+                            <p><a class="btn btnheadstyle subscBtn fw-bolder" href="/login">اشترك الآن</a></p>
+                        <% } %>    
+                          </div>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="animated thirdImg" src="/assets/img/13146648_Students watching webinar on computer.jpg" alt="">
+                        <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg> -->
+                        <div class="container d-flex justify-content-center align-content-center">
+                          <div class="carousel-caption text-center thirdCption">
+                            <h1>ومش بس كدا</h1>
+                            <p class="fs-5">وكمان بنقدم محاضرات وامتحانات مجانية</p>
+                            <p><a class="btn btnheadstyle subscBtn fw-bolder" href="/#services">المحاضرات المجانية</a></p>
+                            <p><a class="btn btnheadstyle subscBtn fw-bolder" href="/freeExams">الامتحانات المجانية</a></p>                         
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" style="z-index: 999;" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" style="z-index: 999;" data-bs-target="#myCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div> -->
+
+            
+        </div>
+    </div>
+
         
 
-
-        <!-- Portfolio Start -->
+        <!-- Free Lectures Start -->
         <div class="container-fluid-xxxl py-5 " id="services">
             <div class="container-fluid col-12">
                 <br>
