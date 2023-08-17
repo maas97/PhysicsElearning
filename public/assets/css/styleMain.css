@@ -663,7 +663,7 @@ h6,
 }
 
 .soonFreeLec{
-    border: 3px green solid;
+    /* border: 3px green solid; */
     text-align: center;
     position: relative;
     top: 80px;
