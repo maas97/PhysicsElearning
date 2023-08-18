@@ -13,11 +13,11 @@
         
 
         <!-- Navbar & Hero Start -->
-        <div class="container-fluid-xxl position-relative mb-sm-0 p-0">
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
             
             <%- include("partials/navbar.ejs") -%>
             
-            <div class="container-fluid-xxl py-5 hero-header">
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
                 <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
                 <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
                 <% if(!user) { %>
@@ -25,9 +25,7 @@
                 <% } %>  
                 
                 <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
-                <div>
-                    <span class="waves"></span>
-                </div>
+                <span class="waves"></span>
                 <div class="container-fluid my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
 
@@ -37,13 +35,13 @@
                             <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
                     <% if(!user) { %>
 
-                            <a href="login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
                             <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
                     <% } %>  
                         
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
-                            <img class="img-fluid mrimg mrimgresponsive " src="/assets/img/1 copy.webp" alt="">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -56,12 +54,12 @@
 
     <div class="container-fluid-xxl position-relative mb-0 p-0">
         <div class="container-fluid-xxl py-5 intro-header">
-            <span class="introTopRight d-xl-none d-xxl-block"></span>
+            <span class="introTopRight d-xxl-block" style="z-index: 1000;"></span>
             <span class="introBottomLeft "></span>
             <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
               
             <!-- data-wow-delay="0.6s" -->
-            <p class="introHeadline mb-4 wow animate__animated animate__backInDown fw-bold" data-wow-offset="350" > عن المنصة </p>
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" > عن المنصة </p>
             
             <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
                 <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
@@ -134,7 +132,7 @@
                 <div class="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h2 class="mt-2">المحاضرات المجانية </h2>
                 </div>
-
+                
                 <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="col-12 text-center">
                         <ul class="list-inline mb-5" id="portfolio-flters">
@@ -147,48 +145,70 @@
                 <div class="soonFreeLec">
                     <span>قريبا</span>
                 </div>
-                <!-- <div class="row col-12 portfolio-container d-flex justify-content-center align-content-center" >
-                    <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.1s" >
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الاول : النظام الدولي للوحدات</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة  </a>
+
+                <!-- <div class=" portfolio-container d-flex justify-content-around flex-wrap" >
+                    <div class="firstGradeContainer">
+                        <div class=" portfolio-item first wow zoomIn " data-wow-delay="0.3s">
+                            
+                            <div class="portfolio-item-container rounded overflow-hidden">
+                                <img class="img-fluid" src="/assets/img/colorful-image-road-with-lights-it.webp" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-light" href="/assets/img/colorful-image-road-with-lights-it.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                    <div class="mt-auto">
+                                        <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثاني : العجلة</small>
+                                        <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة </a>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="portfolio-item-container rounded overflow-hidden">
+                                <img class="img-fluid" src="/assets/img/22745545_i0ox_ffi4_211224.webp" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-light" href="/assets/img/22745545_i0ox_ffi4_211224.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                    <div class="mt-auto">
+                                        <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثالث : القوة والحركة</small>
+                                        <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="portfolio-item-container rounded overflow-hidden">
+                                <img class="img-fluid w-100" src="/assets/img/colorful-image-road-with-lights-it.webp" alt="">
+                                <div class="portfolio-overlay">
+                                    <a class="btn btn-light" href="/assets/img/colorful-image-road-with-lights-it.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                    <div class="mt-auto">
+                                        <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
+                                        <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" portfolio-item first wow zoomIn " data-wow-delay="0.6s">
+                            
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.3s">
-                        <div class="position-relative rounded overflow-hidden">
+                    
+                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn " data-wow-delay="0.1s">
+                        
+                    </div>
+                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
+                        <div class="portfolio-item-container rounded overflow-hidden">
                             <img class="img-fluid w-100" src="/assets/img/colorful-image-road-with-lights-it.webp" alt="">
                             <div class="portfolio-overlay">
                                 <a class="btn btn-light" href="/assets/img/colorful-image-road-with-lights-it.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثاني : العجلة</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة </a>
+                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
+                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item first wow zoomIn m-3" data-wow-delay="0.6s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/22745545_i0ox_ffi4_211224.webp" alt="">
+                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn" data-wow-delay="0.3s">
+                        <div class="portfolio-item-container rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="/assets/img/colorful-image-road-with-lights-it.webp" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/22745545_i0ox_ffi4_211224.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>الدرس الثالث : القوة والحركة</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">اضغط للمشاهدة</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn m-3" data-wow-delay="0.1s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-4.webp" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-4.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/colorful-image-road-with-lights-it.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
@@ -196,11 +216,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn m-3" data-wow-delay="0.3s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-5.webp" alt="">
+                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn" data-wow-delay="0.6s">
+                        <div class="portfolio-item-container rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-5.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
@@ -208,11 +228,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item second wow zoomIn m-3" data-wow-delay="0.3s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-5.webp" alt="">
+                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn" data-wow-delay="0.6s">
+                        <div class="portfolio-item-container rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-5.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
@@ -220,11 +240,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn m-3" data-wow-delay="0.6s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-6.webp" alt="">
+                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn" data-wow-delay="0.6s">
+                        <div class="portfolio-item-container rounded overflow-hidden">
+                            <img class="img-fluid w-100" src="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-6.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="/assets/img/SI-Landing-graphic__ResizedImageWzYwMCw2MDBd.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
@@ -232,33 +252,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn m-3" data-wow-delay="0.6s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-6.webp" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-6.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 portfolio-item third wow zoomIn m-3" data-wow-delay="0.6s">
-                        <div class="position-relative rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="/assets/img/portfolio-6.webp" alt="">
-                            <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="/assets/img/portfolio-6.webp" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
-                                <div class="mt-auto">
-                                    <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
-                                    <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                </div>-->
+
             </div>
-        </div>
+        </div> 
         <!-- Portfolio End -->
 
 
