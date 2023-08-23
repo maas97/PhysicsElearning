@@ -1,10 +1,11 @@
-<%- include("partials/htmlHead.ejs") -%>
+    <%- include("partials/htmlHead.ejs") -%>
 
-    <title>Hyper Physics</title>
+    <title>المذكرات</title>
     
 </head>
 
 <body>
+
 
     <!-- container of website -->
     <div class="container-fluid-xxl bg-white p-0">
@@ -12,8 +13,7 @@
         
 
         <!-- Navbar & Hero Start -->
-        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
-            
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">  
             <%- include("partials/navbar.ejs") -%>
             
             <div class="container-fluid-xxl w-100 py-5 hero-header">
@@ -29,39 +29,53 @@
                     <div class="row g-5 py-5">
 
                         <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
-                            
-                        <p class="headtext mb-4 animate__animated animate__flash fw-bold fs-1"> تم حجز الكورس بنجاح</p>
-                        <p class="headtext mb-4 animate__animated animate__flash fw-bold fs-1"> برجاء مراجعة الادمن لدفع الكورس</p>
-                        <p class="headtext mb-4 animate__animated animate__flash fw-bold fs-1">جاري العودة للصفحة الرئيسية</p>
+
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1"> مذكراتي</p>
+
+                            <% if(!user) { %>
+                              <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                              <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                            <% } %>  
                         
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
                         </div>
-                    <button type="button" aria-label="redirectBtn"><a id="redirect" href="/" aria-label="redirect" style="visibility: hidden;"></a></button>
-
                     </div>
                 </div>
             </div>
         </div>
         <!-- Navbar & Hero End -->
-        
+
+        <div class="container-fluid-xxl position-relative mb-0 p-0">
+            <div class="container-fluid-xxl py-5 intro-header">
+                <span class="introTopRight d-xxl-block" style="z-index: 1000;"></span>
+                <span class="introBottomLeft "></span>
+                <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
+                  
+                <!-- data-wow-delay="0.6s" -->
+                <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" > عن المنصة </p>
+                
+                
+    
+                
+            </div>
+        </div>
+
+
+        <%- include("partials/footer.ejs") -%>
+
         <!-- Back to Top -->
         <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
     </div>
 
     <%- include("partials/jsScripts.ejs") -%>
 
-    <script>
 
-        window.onload = function() {
-          const redirect = document.getElementById('redirect');
-  
-          const timeoutId = setTimeout(() => {
-          // console.log('Timeout - Code executed after 5 seconds');
-          window.location.href = redirect.href;
-        }, 5000);
-  
-        };
-  
-  </script>
+
+
+
+
+
+
+

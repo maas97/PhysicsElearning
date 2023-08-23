@@ -1,8 +1,11 @@
+const { request } = require("express");
 const mongoose=require("mongoose");
 require("../Model/courseDetailsInfoModel");
+require("../Model/studentModel");
 
 //getter
 const courseDetailsSchema = mongoose.model("courseDetails");
+const studentSchema = mongoose.model("student");
 
 exports.getAllCoursesDetails=(request,response,next)=>{
     courseDetailsSchema.find({})
@@ -33,7 +36,6 @@ exports.addCourseDetails=(request,response,next)=>{
         semester:request.body.semester,
         month:request.body.month,
         price:request.body.price,
-        isCurrentCourseSubscribed:request.body.isCurrentCourseSubscribed
     }).save()// insertOne
     .then(data=>{
         response.status(201).json({data});
@@ -58,8 +60,6 @@ exports.updateCourseDetails=(request,response,next)=>{
                 semester:request.body.semester,
                 month:request.body.month,
                 price:request.body.price,
-                isCurrentCourseSubscribed:request.body.isCurrentCourseSubscribed
-
             }
         })   
     })
@@ -77,3 +77,16 @@ exports.deleteCourseDetails=(request,response,next)=>{
     })
     .catch(error=>next(error));
 }
+
+
+// exports.courseSubscribe = (request,response,next)=>{
+//     studentSchema.findOne({_id:request.body.id}).then(data=>{
+//         return studentSchema.updateOne({_id: request.body.id}, { $set:{
+//                 coursesSubscribedTo: request.params.counter
+//             }
+//         })
+//     }).then(data=>{
+//         response.status(200).json({data});
+//     })
+//     .catch(error=>next(error));
+// }

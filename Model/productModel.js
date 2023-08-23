@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const validEducationalLevel = ["1st Secondary", "2nd Secondary", "3rd Secondary"]; // Add more if needed
+const validEducationalLevel = ["1", "2", "3"]; // Add more if needed
 const validSemester = ["1st", "2nd"];
 
 const Schema = new mongoose.Schema({
@@ -21,19 +21,18 @@ const Schema = new mongoose.Schema({
       required: [true, "Product description is required"],    
     },
     educationalLevel:{
-      type: String,
-      enum: validEducationalLevel,
+      type: Number,
+      match: [/^[123]$/,
+            `الرجاء إدخال سنة دراسية مناسبة`],
       required: [true, "Educational level is required"],
     },
-    semester :{
-      type: String,
-      enum: validSemester,
+    semester:{
+      type: Number,
+      match: [/^[12]$/,
+            `الرجاء إدخال ترم دراسي مناسب`],
       required: [true, "semester is required"],
   },
-  image:{
-    type: String,
-    default: "default.jpg"
-  }
+  
 })
 
 

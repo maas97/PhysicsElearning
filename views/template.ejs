@@ -33,31 +33,12 @@
                             <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
                             <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
                             <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
-                   
-                            <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> فاتورة الكورس </p>
-                    
-                    <table class="table text-center table-info table-striped">
-                      <thead>
-                        <tr class="fw-bolder fs-5">
-                          <th scope="col">#</th>
-                          <th scope="col">اسم الكورس</th>
-                          <th scope="col">السنة الدراسة</th>
-                          <th scope="col">السعر</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td><%= oneCourseDetails.courseName %></td>
-                          <td><%= oneCourseDetails.educationalLevel %> ثانوي</td>
-                          <td><%= oneCourseDetails.price%> جنيه</td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>            
-                    <!-- <button class="btn btnheadstyle py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="z-index: 2000;"><b>احجز الآن</b> </button> -->
-                    <a href="/myCoursesInfo/<%=oneCourseDetails.counter%>/subscribed" class="btn btnheadstyle" style="z-index: 2000;">احجز الآن</a>
+                    <% if(!user) { %>
 
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                    <% } %>  
+                        
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
@@ -67,6 +48,38 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header">
+            <span class="introTopRight d-xxl-block" style="z-index: 1000;"></span>
+            <span class="introBottomLeft "></span>
+            <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
+              
+            <!-- data-wow-delay="0.6s" -->
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" > عن المنصة </p>
+            
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    
+
+
+
+
+
+
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+        
+
+
         
 
         <%- include("partials/footer.ejs") -%>

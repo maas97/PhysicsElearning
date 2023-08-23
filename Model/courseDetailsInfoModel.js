@@ -39,17 +39,16 @@ const Schema = new mongoose.Schema({
       ,
      ` الرجاء إدخال شهر من 1 إلى 12`],
      required: [true, "month is required"],
-
     },
     price :{
       type:Number,
       required: [true, "Price is required"],
     },
-    isCurrentCourseSubscribed:{
-      type: Boolean,
-      default: false
-    }
-    ,
+    // isCurrentCourseSubscribed:{
+    //   type: Boolean,
+    //   default: false
+    // }
+    // ,
     createdAt:{
       type: Date,
       default: Date.now()

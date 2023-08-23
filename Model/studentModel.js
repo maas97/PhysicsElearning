@@ -111,10 +111,27 @@ const studentSchema = new mongoose.Schema({
         type: Boolean,
         default: true
       },
-      isSubscriped:{
+      isSubscribed:{
         type: Boolean,
         default: false
       },
+      coursesSubscribedTo:[
+            {
+              counter:{
+                type: Number,
+                ref: "courseDetails"
+              },
+              isRequested:{
+                type: Boolean,
+                default: false
+              },
+              isConfirmed:{
+                type: Boolean,
+                default: false
+              }
+            }
+            ]
+          
 })
 
 studentSchema.statics.login = async function(phoneNumber,password){
