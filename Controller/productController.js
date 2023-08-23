@@ -32,7 +32,6 @@ exports.addProduct=(request,response,next)=>{
         productDescription:request.body.productDescription,
         educationalLevel: request.body.educationalLevel,
         semester: request.body.semester,
-        image: request.body.image,
         
     }).save()// insertOne
     .then(data=>{
@@ -57,7 +56,6 @@ exports.updateProduct=(request,response,next)=>{
                 productDescription:request.body.productDescription,
                 educationalLevel: request.body.educationalLevel,
                 semester: request.body.semester,
-                image: request.body.image,
             }
         })   
     })

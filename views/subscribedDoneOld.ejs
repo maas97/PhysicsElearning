@@ -1,0 +1,67 @@
+<%- include("partials/htmlHead.ejs") -%>
+
+<title>جاري التحويل</title>
+
+   
+
+  </head>
+
+<body>
+  
+  <div class="container-fluid-xxl bg-white p-0">
+    <%- include("partials/preloader.ejs") -%>
+    
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid-xxl position-relative mb-5 p-0" >
+        
+        <%- include("partials/navbar.ejs") -%>
+        
+        <div class="container-fluid-xxl py-5 hero-header">
+            <span class="dotsUpToDown animated infinite fadeInDown"></span>
+            <span class="dotsDownToUp animated infinite fadeInUp"></span>
+            <% if(!user) { %>
+            <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
+            <% } %>  
+            
+            <span class="arrowsUp animated infinite fadeInUpBig"></span>
+            <span class="waves"></span>
+            <div class="container-fluid my-5 py-5 px-lg-5">
+                <div class="row g-5 py-5">
+
+                    <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column">
+                        <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> تم حجز الكورس بنجاح</p>
+                        <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> برجاء مراجعة الادمن لدفع الكورس</p>     
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <img class="img-fluid mrimg" src="/assets/img/1 copy.webp" alt="">
+                    </div>
+                    <button type="button" aria-label="redirectBtn"><a id="redirect" href="/" aria-label="redirect" style="visibility: hidden;"></a></button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <%- include("partials/footer.ejs") -%>
+  
+  </div>
+
+    <%- include("partials/jsScripts.ejs") -%>
+    
+    <script>
+
+      window.onload = function() {
+        const redirect = document.getElementById('redirect');
+
+        const timeoutId = setTimeout(() => {
+        // console.log('Timeout - Code executed after 5 seconds');
+        window.location.href = redirect.href;
+      }, 5000);
+
+      };
+
+      
+    
+</script>

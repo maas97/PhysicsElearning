@@ -1,55 +1,140 @@
 <%- include("partials/htmlHead.ejs") -%>
-<title>كورساتي</title>
 
-  
-
-  </head>
+    <title>كورساتي</title>
+    
+</head>
 
 <body>
-  
-  <div class="container-fluid-xxl bg-white p-0">
-    <%- include("partials/preloader.ejs") -%>
-    
 
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid-xxl position-relative mb-5 p-0" >
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("partials/preloader.ejs") -%>
         
-        <%- include("partials/navbar.ejs") -%>
-        
-        <div class="container-fluid-xxl py-5 hero-header">
-            <span class="dotsUpToDown animated infinite fadeInDown"></span>
-            <span class="dotsDownToUp animated infinite fadeInUp"></span>
-            <% if(!user) { %>
-            <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
-            <% } %>  
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
             
-            <span class="arrowsUp animated infinite fadeInUpBig"></span>
-            <span class="waves"></span>
-            <div class="container-fluid my-5 py-5 px-lg-5">
-                <div class="row g-5 py-5">
-
-                    <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column">
-                        <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> ....قريبا </p>
+            <%- include("partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
                 <% if(!user) { %>
-
-                        <a href="login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
-                        <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
                 <% } %>  
-                    
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-start">
-                        <img class="img-fluid mrimg mrimgsoon" src="/assets/img/1 copy.webp" alt="">
-                    </div>
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
 
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
+                        <% if(subscribedCourseDetails.length === 0 && allCourses.length > 0){  %>
+                                <div class="section-heading wow fadeInLeft mb-3"  data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-3" dir="rtl">أنت حاليا غير مشترك في أي من الكورسات <br> <em>اختر كورس من الكورسات للحجز</em></p>
+                                  <!-- <div class="line-dec"></div> -->
+                                </div>
+                        <%} if(allCourses.length === 0) {%>
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl"> <em>قريبا...</em></p>
+                        <% } else { %> 
+                            <p class="headtext mb-4 animate__animated animate__zoomIn mb-5 fw-bold fs-3" dir="rtl"> <em>الكورسات المتاحة حاليا</em></p>
+                        <% } %>
+                    
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+    <!-- intro -->
+    <%if(allCourses.length > 0) {%>
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header d-flex justify-content-center align-content-center" style="height: 100%; width: 100%;">
+            <span class="introTopRight d-xxl-block" style="z-index: 1000;"></span>
+            <span class="introBottomLeft "></span>
+            <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
+              
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold col-12 mb-5" style="width: 80%; min-height: 65vh; position: relative; left: 0%;" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center col-12 align-content-center d-flex justify-content-around align-content-around flex-wrap mb-5" style="width: 100%; min-height: 65vh; position: relative; left: 0%;"  data-bs-ride="carousel">
+
+                    <% if (allCourses[0] === '') {%>
+                    <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1"> ....قريبا </p>
+                    <% } %>
+
+                    <% for (let subscribedCourseDetail of subscribedCourseDetails) { %>
+                            <% if(subscribedCourseDetail && user.coursesSubscribedTo[0].isRequested === false) { %>
+                                <% if(user.educationalLevel === subscribedCourseDetail.educationalLevel ){ %>
+                                <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
+                                    <img src="/assets/img/1 copy.webp" class="card-img-top" style="border-bottom: 1px solid black;" alt="...">
+                                    <div class="card-body">
+                                    <h5 class="card-title"><%= subscribedCourseDetail.courseName %> </h5>
+                                    <p class="card-text"><%= subscribedCourseDetail.courseDescription %></p>
+                                    <p class="card-text"><%= subscribedCourseDetail.educationalLevel %> ثانوي</p>
+                                    <p class="card-text">تم الاشتراك اضغط لرؤية المحتوى </p>
+                                    <p class="card-text"></p>
+                                    <a href="/myCoursesInfo/<%=subscribedCourseDetail.counter%>/courseList%>" class="btn btn-primary">عرض محتوى الكورس</a>
+                                    </div>
+                                </div>
+                                <% } %>
+                            <% } %>
+                    <% } %>
+
+
+                    <% for (let unSubscribedCourseDetail of unSubscribedCourseDetails) { %>
+                        <% if(unSubscribedCourseDetail ) { %>
+                            <% if(user.educationalLevel === unSubscribedCourseDetail.educationalLevel){ %>
+                                <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
+                                    <img src="/assets/img/1 copy.webp" style="border-bottom: 1px solid black;" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%= unSubscribedCourseDetail.courseName %> </h5>
+                                      <p class="card-text"><%= unSubscribedCourseDetail.courseDescription %></p>
+                                      <p class="card-text"><%= unSubscribedCourseDetail.educationalLevel %> ثانوي</p>
+                                      <p class="card-text"> <%= unSubscribedCourseDetail.price %>  جنيه مصري </p>
+                                      <a href="/myCoursesInfo/<%=unSubscribedCourseDetail.counter%>" class="btn btn-primary">اشترك الآن</a>
+                                    </div>
+                                  </div>    
+                            <% } %>
+                        
+                        <% } %>
+                    <% } %>
+
+                    <% for (let requestedCourseDetail of requestedCourseDetails) { %>
+                        <% if(requestedCourseDetail) { %>
+                            <% if(user.educationalLevel === requestedCourseDetail.educationalLevel){ %>
+                                <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
+                                    <img src="/assets/img/1 copy.webp" style="border-bottom: 1px solid black;" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%= requestedCourseDetail.courseName %> </h5>
+                                      <p class="card-text"><%= requestedCourseDetail.courseDescription %></p>
+                                      <p class="card-text"><%= requestedCourseDetail.educationalLevel %> ثانوي</p>
+                                      <p class="card-text"> <%= requestedCourseDetail.price %>  جنيه مصري </p>
+                                      <p class="card-text">تم حجز الكورس الرجاء متابعة الادمن</p>
+                                    </div>
+                                </div>    
+                            <% } %>
+                        
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
+    <% } %>
 
-    <%- include("partials/footer.ejs") -%>
-  
-  </div>
+        
+
+        <%- include("partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
 
     <%- include("partials/jsScripts.ejs") -%>
-    

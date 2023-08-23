@@ -103,16 +103,7 @@ module.exports.courses = async (req, res) => {
   })
 }
 
-module.exports.courseList = async (req, res) => {
-    res.render('courseList');
-}
 
-module.exports.freeExams = (req, res) => {
-  res.render('freeExams');
-}
-module.exports.profile = (req, res) => {
-  res.render('profile');
-}
 
 
 module.exports.signup_post = (req,res,next)=>{
