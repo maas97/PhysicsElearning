@@ -43,7 +43,7 @@
                               <thead>
                                 <tr class="fw-bolder fs-5">
                                   <th scope="col">#</th>
-                                  <th scope="col">اسم الكورس</th>
+                                  <th scope="col">اسم المذكرة</th>
                                   <th scope="col">السنة الدراسة</th>
                                   <th scope="col">السعر</th>
                                 </tr>
@@ -82,14 +82,10 @@
 
                 <form class="p-5 mt-4 g-3" dir="rtl" style="width: 80%;"> 
                     
-                            <select class="form-select form-select-lg mb-2 mt-5" aria-label="Default select example">
-                                <option selected>اختر المذكرة من هنا</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            
                         
-                            <input type="text" class="form-control mb-3" placeholder="سعر المذكرة" disabled id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" class="form-control mb-3" placeholder="اسم المذكرة" value="<%=oneProductDetails.productName%>" disabled id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" class="form-control mb-3" placeholder="سعر المذكرة" value="<%oneProductDetails.productPrice%>" disabled id="exampleInputEmail1" aria-describedby="emailHelp">
                        
                     <div class="row mb-3">
                         <div class="col">
