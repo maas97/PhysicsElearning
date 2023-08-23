@@ -11,7 +11,9 @@ router.get('/myCoursesInfo/:counter/subscribed', requireAuth  , viewsController.
 router.get('/myCoursesInfo/:counter/courseList', requireAuth  , viewsController.courseList);
 router.get('/freeExams'  , viewsController.freeExams);
 router.get('/profile', requireAuth  , viewsController.profile);
-router.get('/products'  , viewsController.products);
+router.get('/myProductsInfo'  , viewsController.products);
+router.get('/myProductsInfo/:counter'  ,viewsController.getOneProductDetails);
+
 
 
 module.exports = router;

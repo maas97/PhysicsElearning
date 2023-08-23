@@ -37,6 +37,27 @@
                               <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
                               <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
                             <% } %>  
+                            <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> تفاصيل المذكرة </p>
+                    
+                            <table class="table text-center table-info table-striped">
+                              <thead>
+                                <tr class="fw-bolder fs-5">
+                                  <th scope="col">#</th>
+                                  <th scope="col">اسم الكورس</th>
+                                  <th scope="col">السنة الدراسة</th>
+                                  <th scope="col">السعر</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td><%= oneProductDetails.productName %></td>
+                                  <td><%= oneProductDetails.educationalLevel %> ثانوي</td>
+                                  <td><%= oneProductDetails.productPrice %> جنيه</td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>    
                         
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
@@ -96,7 +117,7 @@
 
                     </div>
                     <div class="row mb-3">
-                        <div class="col col-lg-6 col-md-12">
+                        <div class="col col-lg-6 col-md-12" style="z-index: 99999;">
                             <select class="form-select form-select-lg mb-2" aria-label="Default select example">
                                 <option selected>محافظة</option>
                                 <option value="1">كفر الشيخ</option>
@@ -137,7 +158,7 @@
                         <input type="text" class="form-control" id="exampleInputPassword1">
                     </div>
                     <%}%>
-                    <button type="submit" class="btn btn-lg btn-primary">احجز الآن</button>
+                    <button type="submit" class="btn btn-lg btn-primary" style="z-index: 99999;">احجز الآن</button>
                   </form>
                 
     

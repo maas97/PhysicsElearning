@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const validEducationalLevel = ["1", "2", "3"]; // Add more if needed
 const validSemester = ["1st", "2nd"];
@@ -32,8 +33,18 @@ const Schema = new mongoose.Schema({
             `الرجاء إدخال ترم دراسي مناسب`],
       required: [true, "semester is required"],
   },
+  counter:{
+    type: Number
+  }
   
 })
 
 
-mongoose.model("product",Schema); //new name for model
+Schema.plugin(AutoIncrement,{
+  id: 'product',
+  inc_field: "counter"
+});
+
+
+const Product = mongoose.model("product",Schema); //new name for model
+module.exports = Product;

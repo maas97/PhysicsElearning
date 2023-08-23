@@ -3,11 +3,13 @@ const mongoose=require("mongoose");
 const jwt = require('jsonwebtoken');
 const Student = require("../Model/studentModel");
 const studentSchema = mongoose.model("student");
+const product = require("../Model/productModel");
 const Product = require("../Model/studentProductModel");
+const productSchema = mongoose.model("product");
 const productRequest = mongoose.model("productRequest");
 const courseDetails = require("../Model/courseDetailsInfoModel");
-const { param } = require("../Route/viewRoutes");
 const courseDetailsSchema = mongoose.model("courseDetails");
+const { param } = require("../Route/viewRoutes");
 
 
 process.on('uncaughtException', function (error) {
@@ -153,6 +155,7 @@ module.exports.requestCourse = async (req, res, next) => {
 }
 
 module.exports.courseList = async (req, res) => {
+  
   res.render('courseList');
 }
 
@@ -160,9 +163,80 @@ module.exports.courseList = async (req, res) => {
 
 /* Products */
 
-module.exports.products = (req, res) => {
-  res.render('products');
-}
+module.exports.products = async(req, res) => {
+
+const products = await productSchema.find() ;
+console.log(products)
+
+      // let subscribedCourseDetails =[];
+      // student.coursesSubscribedTo.forEach( async element => {
+      //   if(element.isConfirmed === true){
+      //     subscribedCourseDetails.push(await courseDetailsSchema.findOne( {counter: element.counter}) );
+      //   }      
+      // });
+
+      // let requestedCourseDetails = [];
+      // student.coursesSubscribedTo.forEach( async element => {
+      //   if(element.isRequested === true){
+      //     requestedCourseDetails.push(await courseDetailsSchema.findOne( {counter: element.counter}) );
+      //   }      
+      // });
+
+      // let allCourses = await courseDetailsSchema.find();
+      // let allCounter = await courseDetailsSchema.find({},{counter:1,_id:0});
+    
+      // const subscribedCounterArray = subscribedCourseDetails.map(object => object.counter);
+      // const requestedCounterArray = requestedCourseDetails.map(object => object.counter);
+
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+      // console.log("sub counter")
+      // console.log(subscribedCounterArray)
+      // console.log("req counter")
+      // console.log(requestedCounterArray)
+
+      // const allCounterArray = allCounter.map(obj => obj.counter);
+      // console.log("all counter")
+      // console.log(allCounterArray)
+
+      // const preUnsubscribedCounterArray = allCounterArray.filter(item => !requestedCounterArray.includes(item));
+      // const unsubscribedCounterArray = preUnsubscribedCounterArray.filter(item=> !subscribedCounterArray.includes(item));
+      // console.log("unsub counter")
+      // console.log(unsubscribedCounterArray)
+
+      // let unSubscribedCourseDetails =[];
+      // unsubscribedCounterArray.forEach(async element=>{
+      // unSubscribedCourseDetails.push(await courseDetailsSchema.findOne({counter: element}))
+
+      // });
+      // setTimeout(()=>{
+      //   console.log("///////////////////////////****************///////////////////////////////")
+      //   console.log("student data")
+      //   console.log(student)
+      //   console.log("Requested Course Details")
+      //   console.log(requestedCourseDetails)
+      //   console.log("subscribed courses")
+      //   console.log(subscribedCourseDetails)
+      //   console.log("all courses")
+      //   console.log(allCourses)
+      //   console.log("unsubscribed courses")
+      //   console.log(unSubscribedCourseDetails)
+      
+        res.render('productsListInfo', {
+          title: 'مذكراتي',
+          products
+        });
+      // },3000);       
+  
+  }
+
+  module.exports.getOneProductDetails = async (req, res) => {
+    const oneProductDetails = await productSchema.findOne({counter: req.params.counter});
+    res.render('oneProductRequest', {
+        title: 'مذكراتي',
+        oneProductDetails
+      });
+  }
+  
 
 module.exports.requestProduct = (req,res,next)=>{
   new productRequestSchema({
