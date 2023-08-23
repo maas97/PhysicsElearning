@@ -1,11 +1,15 @@
 
 const mongoose = require("mongoose")
 
-const validEducationalLevel = ["1", "2", "3"]; // Add more if needed
-const validSemester = ["1st", "2nd"];
+// const validEducationalLevel = ["1", "2", "3"]; // Add more if needed
+// const validSemester = ["1st", "2nd"];
 
-const productRequestSchema = new mongoose.Schema({
-    _id: {
+process.on('uncaughtException', function (error) {
+  // console.log(error.stack);
+});
+
+const Schema = new mongoose.Schema({
+      _id: {
         type: mongoose.Types.ObjectId,
         default: () => new mongoose.Types.ObjectId() // Generate a new ObjectId as the default value
       },
@@ -18,8 +22,8 @@ const productRequestSchema = new mongoose.Schema({
         message: "الرجاء إدخال الاسم الأول بشكل صحيح",
         },
         // required: [true, "First Name is required"],
-    },
-    lastName :{
+        },
+        lastName :{
         type: String,
         // required: [true, "Last Name is required"],
         validate: {
@@ -28,7 +32,8 @@ const productRequestSchema = new mongoose.Schema({
             },
             message: "الرجاء إدخال الاسم الأخير بشكل صحيح",
         },
-    },firstPhoneNumber:{
+    },
+    firstPhoneNumber:{
         type: String,
         unique: [true, "Phone number must be unique"],
         match: [/^(010|011|012|015)\d{8}$/
@@ -37,7 +42,8 @@ const productRequestSchema = new mongoose.Schema({
                 010/011/012/015 
                 ويكون في نطاق 11 رقم`],
         required: true
-    },secondPhoneNumber:{
+    },
+    secondPhoneNumber:{
         type: String,
         unique: [true, "Phone number must be unique"],
         match: [/^(010|011|012|015)\d{8}$/
@@ -50,12 +56,10 @@ const productRequestSchema = new mongoose.Schema({
     location: {
         governate: {// المحافظة
           type: String,
-          enum: validGovernates,
           // required: true
         },
         city: {// المركز
           type: String,
-          enum: validCities,
           // required: true
         },
         area : { // باقي العنوان التفصيلي
@@ -72,11 +76,11 @@ const productRequestSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "product"
       }
-    })
+    });
 
-    const productRequest =mongoose.model("productRequest", productRequestSchema); //new name for model
+    const ProductRequest = mongoose.model("productRequest", Schema); //new name for model
 
-    module.exports = productRequest;
+    module.exports = ProductRequest;
 
 
 

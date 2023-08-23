@@ -5,7 +5,7 @@ const validateMW = require("../Core/Validation/validateMW");
 const controller = require("../Controller/productController");
 
 router
-    .route("/products")
+    .route("/product")
     // .all(authorization.checkRoot)
     .get(controller.getAllProducts)
     .post(validateMW ,controller.addProduct)

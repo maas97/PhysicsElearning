@@ -3,7 +3,8 @@ const mongoose=require("mongoose");
 const jwt = require('jsonwebtoken');
 const Student = require("../Model/studentModel");
 const studentSchema = mongoose.model("student");
-const productRequestSchema = mongoose.model("productRequestSchema");
+const Product = require("../Model/studentProductModel");
+const productRequest = mongoose.model("productRequest");
 const courseDetails = require("../Model/courseDetailsInfoModel");
 const { param } = require("../Route/viewRoutes");
 const courseDetailsSchema = mongoose.model("courseDetails");
@@ -141,7 +142,6 @@ module.exports.requestCourse = async (req, res, next) => {
             res.locals.counter = req.params.counter;
             // console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             // console.log(res.locals.counter);
-            
             // res.status(200).json({data});
             res.render('subscribedDone');
           })
@@ -158,35 +158,32 @@ module.exports.courseList = async (req, res) => {
 
 
 
-
 /* Products */
 
 module.exports.products = (req, res) => {
-  res.render('soonTemplate');
+  res.render('products');
 }
 
-// module.exports.requestProduct = (req,res,next)=>{
-//   new productRequestSchema({
-//       firstName:  req.body.firstName,
-//       lastName:   req.body.lastName,
-//       firstPhoneNumber:   req.body.firstPhoneNumber,
-//       secondPhoneNumber:      req.body.secondPhoneNumber,
-//       location: {
-//         governate: req.body.governate,
-//         city:req.body.city,
-//         area:req.body.area,
-//       },   
-//       productId:req.body.productId,
-//   }).save()// insertOne
-//   .then(productRequest=>{
- 
-//       res.status(201).json();
-//   })
-//   .catch((error)=>{
-//       res.status(400).json({ error });
-//   });
-// }
-
+module.exports.requestProduct = (req,res,next)=>{
+  new productRequestSchema({
+      firstName:  req.body.firstName,
+      lastName:   req.body.lastName,
+      firstPhoneNumber:   req.body.firstPhoneNumber,
+      secondPhoneNumber:  req.body.secondPhoneNumber,
+      location: {
+        governate: req.body.governate,
+        city:req.body.city,
+        area:req.body.area,
+      },   
+      productId:req.body.productId,
+  }).save()// insertOne
+  .then(productRequest=>{
+      res.status(201).json();
+  })
+  .catch((error)=>{
+      res.status(400).json({ error });
+  });
+}
 
 
 module.exports.freeExams = (req, res) => {

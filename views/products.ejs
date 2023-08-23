@@ -31,6 +31,7 @@
                         <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
 
                             <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1"> مذكراتي</p>
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1"> الرجاء ملئ البيانات بالاسفل</p>
 
                             <% if(!user) { %>
                               <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
@@ -54,8 +55,90 @@
                 <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
                   
                 <!-- data-wow-delay="0.6s" -->
-                <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" > عن المنصة </p>
+                <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" > البيانات</p>
                 
+
+
+                <form class="p-5 g-3" dir="rtl" style="width: 80%;"> 
+                    
+                            <select class="form-select form-select-lg mb-2 mt-5" aria-label="Default select example">
+                                <option selected>اختر المذكرة من هنا</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        
+                            <input type="text" class="form-control mb-3" placeholder="سعر المذكرة" disabled id="exampleInputEmail1" aria-describedby="emailHelp">
+                       
+                    <div class="row mb-3">
+                        <div class="col">
+                            <% if(user){ %>
+                        <input type="text" class="form-control" value="<%= user.firstName %>" disabled placeholder="الاسم الأول" aria-label="First name">
+                            <%}%>
+                        </div>
+                        <div class="col">
+                            <% if(user){ %>
+                                <input type="text" class="form-control" value="<%= user.lastName %>" disabled placeholder="الاسم الأول" aria-label="First name">
+                            <%}%>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <% if(!user){ %>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="الاسم الأول" aria-label="First name">
+                        </div>
+                        <%}%>
+                        <% if(!user){ %>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="الاسم الاخير" aria-label="Last name">
+                        </div>
+                        <%}%>
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col col-lg-6 col-md-12">
+                            <select class="form-select form-select-lg mb-3" aria-label="Default select example">
+                                <option selected>محافظة</option>
+                                <option value="1">كفر الشيخ</option>
+                                <!-- <option value="2">Two</option>
+                                <option value="3">Three</option> -->
+                            </select>                        
+                        </div>
+                        <div class="col col-lg-6 col-md-12">
+                            <select class="form-select form-select-lg mb-3" aria-label="Default select example">
+                                <option selected>مركز</option>
+                                <option value="1">قلين</option>
+                                <!-- <option value="2">Two</option>
+                                <option value="3">Three</option> -->
+                            </select>                         
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                      <label for="exampleInputEmail1" class="form-label">العنوان التفصيلي</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <% if(user){%>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">رقم الموبايل الأساسي</label>
+                            <input type="text" class="form-control" value="<%= user.phoneNumber %>" disabled id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">رقم الموبايل الاحتياطي</label>
+                            <input type="text" class="form-control" value="<%= user.parentPhoneNumber %>" disabled id="exampleInputPassword1">
+                        </div>
+                    <%}%>
+                    <% if(!user){%>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">رقم الموبايل الأساسي</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">رقم الموبايل الاحتياطي</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <%}%>
+                    <button type="submit" class="btn btn-lg btn-primary">احجز الآن</button>
+                  </form>
                 
     
                 
