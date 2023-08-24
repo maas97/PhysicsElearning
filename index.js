@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const fs = require("fs");
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 3099;
 mongoose.set("strictQuery", false);
 // const signRoute = require("./Routes/sign");
 // const login = require("./Routes/loginRoute");
