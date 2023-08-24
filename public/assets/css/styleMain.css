@@ -324,6 +324,7 @@ h6,
     height: 93.5%;
     position: absolute;
     /* border: 1px solid red; */
+    margin-top: 2px;
     background-position: left 0% bottom 0%;
     background-size:contain;
     background-repeat: no-repeat;
