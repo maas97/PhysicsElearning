@@ -1,10 +1,12 @@
 const { Router } = require('express');
 const viewsController = require('../Controller/viewsController');
+const refresh = require("../Middleware/refresh")
 const {requireAuth} = require("../Middleware/authenticationMW")
 const router = Router();
 
 
 router.get('/', viewsController.home);
+router.get('/refresh', refresh);
 router.get('/myCoursesInfo', requireAuth  ,viewsController.coursesInfo);
 router.get('/myCoursesInfo/:counter', requireAuth  ,viewsController.getOneCoursedetails);
 router.get('/myCoursesInfo/:counter/subscribed', requireAuth  , viewsController.requestCourse);
