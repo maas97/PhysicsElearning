@@ -12,7 +12,6 @@ mongoose.set("strictQuery", false);
 // const signRoute = require("./Routes/sign");
 // const login = require("./Routes/loginRoute");
 const adminRoute = require("./Route/adminRoutes");
-// const refreshRoute = require("./Route/refreshRoute");
 const studentRoute = require("./Route/studentRoutes");
 const courseDetailsInfoRoute = require("./Route/courseDetailsInfoRoutes");
 const contentOfCourseRoute = require("./Route/contentOfCourseRoutes");
@@ -64,7 +63,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get("*", checkStudent);
-// app.get(refreshRoute);
 app.use(authRoute);
 app.use(viewRoute);
 app.use(adminRoute);
