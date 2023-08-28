@@ -1,142 +1,174 @@
 <%- include("partials/htmlHead.ejs") -%>
 
-    <title>تسجيل الدخول/ الاشتراك</title>
+  <title>تسجيل الدخول/ الاشتراك</title>
+    
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
-       
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("partials/preloader.ejs") -%>
+        
+
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-              <a href="/" class="navbar-brand p-0 animated flash">
-                <h1 class="m-0 "><i class="fa fa-lightbulb me-2 "></i>Hyper <span class="fs-5"> Physics</span></h1>
-              </a>  
-            </nav>
-
-            
-
-            <div class="container-xxl py-5 hero-header-login mb-5 d-flex justify-content-around align-content-around">
-                
-              <div class="container text-center my-5 py-5 px-lg-5">
-                   
-                  <div class="row g-5 py-5">
-                      
-                      <div class="col-lg-9 text-center text-lg-start">
-                      
-                                <section class="wrapper col-sm-3 col-xl-12 animated fadeInDownBig">
-                                  <div class="form signup ">
-                                    <header>هل تريد الاشتراك ؟</header>
-                                    <form action="/" class="signupData" dir="rtl">
-                                      <input type="text" placeholder="الاسم الاول " id="firstName" name="firstName" class="input form-control" maxlength="20"  pattern="[A-Za-z]+" required />
-                                      <div class="invalid-feedback firstNameError">
-                                        الرجاء إدخال الاسم الأول بشكل صحيح محتويا على حروف فقط
-                                      </div>  
-                                      
-                                      <input type="text" placeholder="الاسم الاخير " id="lastName" name="lastName" class="input form-control" maxlength="20" pattern="[A-Za-z]+" required />
-                                      <div class="invalid-feedback lastnameNameError">
-                                        الرجاء إدخال الاسم الأخير بشكل صحيح محتويا على حروف فقط
-                                      </div>  
-                                      
-                                      <input id="email" name="email" placeholder="الإيميل" type="text" class="input" maxlength="30" required>
-                                      <div class="email error"></div>
-
-                                      <input type="password" placeholder=" كلمة السر  " id="passwordSignup" name="password" type="password" class="input form-control" minlength="8" maxlength="30" required />
-                                      <div class="password error"></div>
-                                      <div class="invalid-feedback passwordError">
-                                      الرجاء إدخال كلمة المرور بحد أدنى 8 خانات وحد أقصى 30 خانة متضمنة على الأقل: حرف واحد، رقم واحد، رمز واحد
-                                      </div>
-
-                                      <input type="text" placeholder=" السن " id="age" name="age" class="input form-control" min="10" max="19" minlength="2" maxlength="2" required />
-                                      <div class="invalid-feedback ageError">
-                                        الرجاء إدخال عمر مناسب من 10 إلى 19 سنة
-                                      </div>
-
-                                      
-
-                                      <select class="form-select eduLevel" name="characters eduLevel" id="eduLevel" required aria-label="Default select example">
-                                        <option selected>اختر السنة الدراسية</option>
-                                        <option value="1">الصف الأول الثانوي</option>
-                                        <option value="2">الصف الثاني الثانوي</option>
-                                        <option value="3">الصف الثالث الثانوي</option>
-                                      </select>
-
-                                      <input type="text" placeholder="رقم الهاتف " id="phoneNumberSignup" name="phoneNumber" class="input form-control" pattern="^(010|011|012|015)\d{8}$" maxlength="11" required />
-                                      <div class="invalid-feedback phoneError">
-                                        الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
-                                     </div>
-                                     <div class="phoneError" style="color: rgb(222,56,69);">
-                                     </div>
-
-                                      <input type="text" placeholder="رقم هاتف ولي الامر  " id="parentPhoneNumber" name="parentPhoneNumber" class="input form-control" pattern="^(010|011|012|015)\d{8}$" maxlength="11" required />
-                                      <div class="invalid-feedback parentPhoneError">
-                                        الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
-                                        </div>
-                                        <div class="parentPhoneError" style="color: rgb(222,56,69);">
-                                        </div>  
-
-                                      <div class="checkbox">
-                                        <input type="checkbox" id="signupCheck" />
-                                        <label for="signupCheck">البقاء متصلا</label>
-                                      </div>
-                                      <input type="submit" value="اشتراك" />
-                                    </form>
-                                  </div>
-                            
-                                  <div class="form login" id="login">
-                                    <header class="fs-4">لتسجيل الدخول اضغط هنا</header>
-                                    <form action="/"class="loginData">
-                                      <input type="text" id="phoneNumber" name="phoneNumber" placeholder="رقم الموبايل " required />
-                                      <div class="errorPhone"></div>
-                                      <input type="password" placeholder="كلمة السر " id="password" name="password" class="input password error" data-type="password" required />
-                                      <div class="errorPassword text-danger"></div>
-                                      <a href="#">هل نسيت كلمة السر؟</a>
-                                      <input type="submit" class="button" value="تسجيل الدخول">
-
-                                    </form>
-                                  </div>
-                            
-                                  <script>
-                                    const wrapper = document.querySelector(".wrapper"),
-                                      signupHeader = document.querySelector(".signup header"),
-                                      loginHeader = document.querySelector(".login header");
-                            
-                                    loginHeader.addEventListener("click", () => {
-                                      wrapper.classList.add("active");
-                                    });
-                                    signupHeader.addEventListener("click", () => {
-                                      wrapper.classList.remove("active");
-                                    });
-                                  </script>
-                                </section>
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
                         
-                        </div>
-                        <div class="col-lg-6 text-center text-lg-start">
-                        </div>
+            <div class="container-fluid-xxl w-100 py-5 hero-header" style="min-height: 160vh;">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+                <% if(!user) { %>
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
+                <% } %>  
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <!-- <span class="waves"></span> -->
+              
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                          <div class="col-lg-9 text-center text-lg-start">
+                            
+                            <section class="wrapper col-sm-3 col-xl-12 animated fadeInDownBig">
+                              <div class="form signup ">
+                                <header>هل تريد الاشتراك ؟</header>
+                                <form action="/" class="signupData" dir="rtl">
+                                  <input type="text" placeholder="الاسم الاول " id="firstName" name="firstName" class="input form-control" maxlength="20"  pattern="[A-Za-z]+" required />
+                                  <div class="invalid-feedback firstNameError">
+                                    الرجاء إدخال الاسم الأول بشكل صحيح محتويا على حروف فقط
+                                  </div>  
+                                  
+                                  <input type="text" placeholder="الاسم الاخير " id="lastName" name="lastName" class="input form-control" maxlength="20" pattern="[A-Za-z]+" required />
+                                  <div class="invalid-feedback lastnameNameError">
+                                    الرجاء إدخال الاسم الأخير بشكل صحيح محتويا على حروف فقط
+                                  </div>  
+                                  
+                                  <input id="email" name="email" placeholder="الإيميل" type="text" class="input" maxlength="30" required>
+                                  <div class="email error"></div>
+
+                                  <input type="password" placeholder=" كلمة السر  " id="passwordSignup" name="password" type="password" class="input form-control" minlength="8" maxlength="30" required />
+                                  <div class="password error"></div>
+                                  <div class="invalid-feedback passwordError">
+                                  الرجاء إدخال كلمة المرور بحد أدنى 8 خانات وحد أقصى 30 خانة متضمنة على الأقل: حرف واحد، رقم واحد، رمز واحد
+                                  </div>
+
+                                  <input type="text" placeholder=" السن " id="age" name="age" class="input form-control" min="10" max="19" minlength="2" maxlength="2" required />
+                                  <div class="invalid-feedback ageError">
+                                    الرجاء إدخال عمر مناسب من 10 إلى 19 سنة
+                                  </div>
+
+                                  
+
+                                  <select class="form-select eduLevel" name="characters eduLevel" id="eduLevel" required aria-label="Default select example">
+                                    <option selected>اختر السنة الدراسية</option>
+                                    <option value="1">الصف الأول الثانوي</option>
+                                    <option value="2">الصف الثاني الثانوي</option>
+                                    <option value="3">الصف الثالث الثانوي</option>
+                                  </select>
+
+                                  <input type="text" placeholder="رقم الهاتف " id="phoneNumberSignup" name="phoneNumber" class="input form-control" pattern="^(010|011|012|015)\d{8}$" maxlength="11" required />
+                                  <div class="invalid-feedback phoneError">
+                                    الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+                                 </div>
+                                 <div class="phoneError" style="color: rgb(222,56,69);">
+                                 </div>
+
+                                  <input type="text" placeholder="رقم هاتف ولي الامر  " id="parentPhoneNumber" name="parentPhoneNumber" class="input form-control" pattern="^(010|011|012|015)\d{8}$" maxlength="11" required />
+                                  <div class="invalid-feedback parentPhoneError">
+                                    الرجاء إدخال رقم الموبايل بشكل صحيح متضمنا 11 خانة
+                                    </div>
+                                    <div class="parentPhoneError" style="color: rgb(222,56,69);">
+                                    </div>  
+
+                                  <div class="checkbox">
+                                    <input type="checkbox" id="signupCheck" />
+                                    <label for="signupCheck">البقاء متصلا</label>
+                                  </div>
+                                  <input type="submit" value="اشتراك" />
+                                </form>
+                              </div>
+                        
+                              <div class="form login" id="login">
+                                <header class="fs-4">لتسجيل الدخول اضغط هنا</header>
+                                <form action="/"class="loginData">
+                                  <input type="text" id="phoneNumber" name="phoneNumber" placeholder="رقم الموبايل " required />
+                                  <div class="errorPhone"></div>
+                                  <input type="password" placeholder="كلمة السر " id="password" name="password" class="input password error" data-type="password" required />
+                                  <div class="errorPassword text-danger"></div>
+                                  <a href="#">هل نسيت كلمة السر؟</a>
+                                  <input type="submit" class="button" value="تسجيل الدخول">
+
+                                </form>
+                              </div>
+                        
+                              <script>
+                                const wrapper = document.querySelector(".wrapper"),
+                                  signupHeader = document.querySelector(".signup header"),
+                                  loginHeader = document.querySelector(".login header");
+                        
+                                loginHeader.addEventListener("click", () => {
+                                  wrapper.classList.add("active");
+                                });
+                                signupHeader.addEventListener("click", () => {
+                                  wrapper.classList.remove("active");
+                                });
+                              </script>
+                            </section>
+                    
                     </div>
-                </div>
-                <div class="col-lg-6 d-lg-block d-none text-center text-lg-start animated lightSpeedIn" style="position: relative; top: 100px; ">
-                  <img class="img-fluid scientist" style="position: relative; top: 250px;" src="/assets/img/24784265_vif2_4m00_220302-removebg-preview.webp" alt="">
+                        </div>
+
+
+
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive d-md-none d-lg-block animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+
+
+
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Navbar & Hero End -->
-               
-        <!-- Footer End -->
+
+
+
+        
+
+
+        
+
         <%- include("partials/footer.ejs") -%>
 
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
 
-        <%- include("partials/jsScripts.ejs") -%>
-   
+  <!-- Login validation -->    
+  <%- include("partials/loginValidation.ejs") -%>
 
-    <!-- Login validation -->    
-    <%- include("partials/loginValidation.ejs") -%>
+  <!-- signup validation -->
+  <%- include("partials/signupValidation.ejs") -%>
 
-    <!-- signup validation -->
-    <%- include("partials/signupValidation.ejs") -%>
 
-      <script src="/assets/signupSelectStyle.js"></script>
+    <%- include("partials/jsScripts.ejs") -%>
 
-</body>
+    <script src="/assets/signupSelectStyle.js"></script>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
