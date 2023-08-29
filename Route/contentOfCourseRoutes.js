@@ -5,15 +5,19 @@ const validateMW = require("../Core/Validation/validateMW");
 const controller = require("../Controller/contentOfCourseController");
 
 router
-    .route("/contents")
+    .route("/days")
     // .all(authorization.checkRoot)
-    .get(controller.getAllContent)
-    .post(validateMW ,controller.addContent)
-    .patch(validateMW ,controller.updateContent)
-    .delete(validateMW ,controller.deleteContent);
+    .get(controller.getAllDays)
+    .post(validateMW ,controller.addDay)
+    .patch(validateMW ,controller.updateDay)
+    .delete(validateMW ,controller.deleteDay);
+
+router
+    .route("/addContentToDay")
+    .post(controller.addContentToDay);
 
 router
     .route("/contents/:id")
-    .get(controller.getContentById);
+    .get(controller.getDayById);
 
 module.exports = router;

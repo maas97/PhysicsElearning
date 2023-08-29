@@ -1,94 +1,134 @@
 <%- include("partials/htmlHead.ejs") -%>
 
-  <title>كورساتي</title>  
-
+    <title>كورساتي</title>
+    
 </head>
 
 <body>
-  
-  <div class="container-fluid-xxl bg-white p-0">
 
-    <%- include("partials/preloader.ejs") -%>
-    
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid-xxl position-relative mb-5 p-0" >
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("partials/preloader.ejs") -%>
         
-        <%- include("partials/navbar.ejs") -%>
-        
-        <div class="container-fluid-xxl py-5 hero-header">
-            <span class="dotsUpToDown animated infinite fadeInDown"></span>
-            <span class="dotsDownToUp animated infinite fadeInUp"></span>
-            <% if(!user) { %>
-            <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
-            <% } %>  
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
             
-            <span class="arrowsUp animated infinite fadeInUpBig"></span>
-            <span class="waves"></span>
-            <div class="container-fluid my-5 py-5 px-lg-5">
-                <div class="row g-5 py-5">
-
-                    <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column">
-                        <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> اسم الكورس </p>
+            <%- include("partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
                 <% if(!user) { %>
-
-                        <a href="login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
-                        <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
                 <% } %>  
-                    
-                    </div>
-                    <div class="col-lg-6 text-center text-lg-start">
-                        <img class="img-fluid mrimg" src="/assets/img/24784265_vif2_4m00_220302-removebg-preview.webp" style="margin-top: -70px;" alt="">
-                    </div>
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
 
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
+                    <% if(!user) { %>
+
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                    <% } %>  
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Navbar & Hero End -->
+        <!-- Navbar & Hero End -->
 
-    <div class="container-fluid-xxl position-relative mb-5 p-0 d-flex justify-content-center" >
-      <div class="accordion col-10" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                Accordion Item #1
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header"  >
+            <span class="introTopRight d-xxl-block" style="z-index: 1000;"></span>
+            <span class="introBottomLeft "></span>
+            <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
+              
+            <!-- data-wow-delay="0.6s" -->
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold mb-5" data-wow-offset="350"> <%= currentCourseList.courseName %> </p>
+            
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    
+
+                  <div class="container-fluid-xxl position-relative mb-5 p-0 d-flex justify-content-center p-5 mt-5 mb-5 " style="width: 80%; overflow-y: scroll;" dir="rtl">
+                    <div class="accordion col-10" id="accordionPanelsStayOpenExample">
+                      
+                    <% for (let day of daysOfCourseArray) { %>
+
+                      
+                      <div class="accordion-item ">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                             الدرس   <%= day.day.dayNumber%>    
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                              <% for( let dayContent of day.day.eachContentInsideDay){ %>
+                              <li style="list-style: none; margin: 10px;">
+                                <% if(dayContent.typeOfContent === 'file' ) { %>
+                                  <li class="fa fa-file mx-3"></li>
+                                <% } if(dayContent.typeOfContent === 'video') { %>
+                                  <li class="fa fa-video mx-3"></li>
+                                <% } %>
+                                <% if(dayContent.typeOfContent === 'test') { %>
+                                  <li class="fa fa-question mx-3"></li>
+                                <% } %>
+                                <strong><a href="https://<%= dayContent.LinkOfContent%>" target="_blank" style="text-decoration: none; list-style: none; width: 80%; font-size: 1.2rem;"><%= dayContent.title%></a></strong>
+                                <br>
+                                <span style="font-size: smaller; font-weight: lighter; display: inline-block; margin-right: 20px;"><%= dayContent.description%></span>
+                              </li>
+                              <br>
+                              <% } %>
+                            </div>
+                          </div>
+                        </div>
+
+                        <% } %>
+                        
+
+                      </div>
+                  </div>
+
+
+
+
+
+
+                  </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                Accordion Item #2
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Accordion Item #3
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
+
+            
         </div>
     </div>
-    <%- include("partials/footer.ejs") -%>
-  
-  </div>
+
+        
+
+
+        
+
+        <%- include("partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+ 
 
     <%- include("partials/jsScripts.ejs") -%>
-    
+

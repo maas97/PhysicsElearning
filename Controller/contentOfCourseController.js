@@ -6,7 +6,7 @@ require("../Model/courseDetailsInfoModel");
 const courseDetailsSchema = mongoose.model("courseDetails");
 const contentSchema = mongoose.model("content");
 
-exports.getAllContent=(request,response)=>{
+exports.getAllDays=(request,response)=>{
     contentSchema.find({})
                 .then((data)=>{
                     response.status(200).json({data});        
@@ -16,7 +16,7 @@ exports.getAllContent=(request,response)=>{
                 })
 }
 
-exports.getContentById=(request,response,next)=>{
+exports.getDayById=(request,response,next)=>{
     contentSchema.findOne({_id:request.params.id})
         .then((data)=>{
         if(!data)
@@ -30,51 +30,56 @@ exports.getContentById=(request,response,next)=>{
 
 
 
-exports.addContent = async (request,response,next)=>{
-
-    try{
-        const {courseId, unitNumber, title, description, typeOfContent, LinkOfContent} = request.body;
-        // console.log("/////////////////////////////////////////////");
-        // const courseId = request.body.unit[0].eachContentInsideCourse[0].courseId;
-        // console.log(request.body.unit[0].eachContentInsideCourse[0]);
-        // console.log(description);
-        
+exports.addDay = async (request,response,next)=>{
         new contentSchema({
-            unit:{
-                unitNumber: request.body.unit[0].unitNumber,
-                eachContentInsideCourse: {
-                    title: request.body.unit[0].eachContentInsideCourse[0].title,
-                    description: request.body.unit[0].eachContentInsideCourse[0].description,
-                    typeOfContent: request.body.unit[0].eachContentInsideCourse[0].typeOfContent,
-                    LinkOfContent: request.body.unit[0].eachContentInsideCourse[0].LinkOfContent
-                }
-            }
-            
+            day:{
+                dayNumber: request.body.day.dayNumber,
+                educationalLevel: request.body.day.educationalLevel,
+                eachContentInsideDay: [{
+                    title: request.body.day.eachContentInsideDay[0].title,
+                    description: request.body.day.eachContentInsideDay[0].description,
+                    typeOfContent: request.body.day.eachContentInsideDay[0].typeOfContent,
+                    LinkOfContent: request.body.day.eachContentInsideDay[0].LinkOfContent
+                }]
+            }  
         }).save().then(async data=>{
-            // console.log("/////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$////////////////////////");
-            // console.log(data._id);
-            // console.log("/////////////////////////////////////////////");
-            // console.log(newContent);
-            await courseDetailsSchema.findByIdAndUpdate(courseId, { $push: { 
-                currentCourseListContentId: data._id
-             } });
-        })
-
-        
-         contentSchema.find({}).then((data)=>{
-        if(!data)
-            throw new Error("Id not found")
-        else
-            response.status(200).json({data}); 
-        })
-        .catch ((error)=> {next(error)});
-        // response.status(201).json({ message: 'New content added to this course successfully' });
-    }catch{
-        // response.status(500).json({ error: 'Internal server error' });
-    }
+            console.log(data)
+            response.status(201).json({data}); 
+            })
+            .catch(error=>next(console.log(error)));
 }
 
-exports.updateContent=(request,response,next)=>{
+
+
+exports.addContentToDay = async (request,response,next)=>{
+
+    const newContent = await request.body.day.eachContentInsideDay; // Content to add
+    console.log(newContent);
+    console.log(request.body._id);
+      
+        try{
+        const day = await contentSchema.findOne({_id:request.body._id});
+        const result = await contentSchema.updateOne({//Use return because use of two query actions 
+            _id:request.body._id
+        },{
+            $push:{"day.eachContentInsideDay": newContent}
+                
+        })
+        // console.log("////////////////////////////////////////////")
+        // console.log(day)
+        // console.log(result)
+        response.status(200).json({ message: 'Content added successfully', result });
+
+        }catch{
+            next(console.log(error))
+        }
+        
+}
+
+
+
+
+exports.updateDay=(request,response,next)=>{
     contentSchema.findOne({
         _id:request.body.id
     }).then((data)=>{
@@ -85,15 +90,16 @@ exports.updateContent=(request,response,next)=>{
             _id:request.body.id
         },{
             $set:{
-                unit:{
-                        unitNumber: request.body.unit[0].unitNumber,
-                        eachContentInsideCourse: {
-                            title: request.body.unit[0].eachContentInsideCourse[0].title,
-                            description: request.body.unit[0].eachContentInsideCourse[0].description,
-                            typeOfContent: request.body.unit[0].eachContentInsideCourse[0].typeOfContent,
-                            LinkOfContent: request.body.unit[0].eachContentInsideCourse[0].LinkOfContent
-                    }
+                day:{
+                    dayNumber: request.body.day.dayNumber,
+                    eachContentInsideDay: [{
+                        title: request.body.day.eachContentInsideDay[0].title,
+                        description: request.body.day.eachContentInsideDay[0].description,
+                        typeOfContent: request.body.day.eachContentInsideDay[0].typeOfContent,
+                        LinkOfContent: request.body.day.eachContentInsideDay[0].LinkOfContent
+                    }]
                 }
+                
             }
         })   
     })
@@ -103,7 +109,7 @@ exports.updateContent=(request,response,next)=>{
         .catch(error=>next(error));
 }
 
-exports.deleteContent=(request,response,next)=>{
+exports.deleteDay=(request,response,next)=>{
     contentSchema.deleteOne({
         _id:request.body.id,
     }).then(data=>{

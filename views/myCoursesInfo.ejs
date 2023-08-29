@@ -70,7 +70,7 @@
                     <% } %>
 
                     <% for (let subscribedCourseDetail of subscribedCourseDetails) { %>
-                            <% if(subscribedCourseDetail && user.coursesSubscribedTo[0].isRequested === false) { %>
+                            <% if(subscribedCourseDetail) { %>
                                 <% if(user.educationalLevel === subscribedCourseDetail.educationalLevel ){ %>
                                 <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
                                     <img src="/assets/img/1 copy.webp" class="card-img-top" style="border-bottom: 1px solid black;" alt="...">

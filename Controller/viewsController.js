@@ -9,6 +9,9 @@ const productSchema = mongoose.model("product");
 const productRequest = mongoose.model("productRequest");
 const courseDetails = require("../Model/courseDetailsInfoModel");
 const courseDetailsSchema = mongoose.model("courseDetails");
+const day = require("../Model/contentOfCourseModel");
+const daySchema = mongoose.model("content");
+
 const { param } = require("../Route/viewRoutes");
 
 
@@ -155,8 +158,42 @@ module.exports.requestCourse = async (req, res, next) => {
 }
 
 module.exports.courseList = async (req, res) => {
+  const currentCourseList = await courseDetailsSchema.findOne({counter: req.params.counter});
+  console.log(currentCourseList);
+  console.log(currentCourseList.currentCourseListContentId);
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+  // console.log(await daySchema.findOne( {_id: 6}));
+
+  let daysOfCourseArray = [];
+  currentCourseList.currentCourseListContentId.forEach( async element => {
+      daysOfCourseArray.push(await daySchema.findOne( {_id: element}) );
+  });
+  // console.log(daysOfCourseArray);
+
+
+  setTimeout(()=>{
+    console.log("///////////////////////////****************///////////////////////////////")
+    console.log("Course Days data")
+    console.log(daysOfCourseArray)
+    console.log("///////////////////////////****************///////////////////////////////")
+    console.log(currentCourseList)
   
-  res.render('courseList');
+    daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+    console.log(daysOfCourseArray);
+
+
+    res.render('courseList', {
+      title: 'كورساتي',
+      currentCourseList,
+      daysOfCourseArray
+    });
+  },3000); 
+
+
+
+
 }
 
 
@@ -236,6 +273,8 @@ console.log(products)
         oneProductDetails
       });
   }
+
+
   
 
 module.exports.requestProduct = (req,res,next)=>{
@@ -260,9 +299,13 @@ module.exports.requestProduct = (req,res,next)=>{
 }
 
 
+
 module.exports.freeExams = (req, res) => {
   res.render('soonTemplate');
 }
+
+
+
 
 module.exports.profile = (req, res) => {
   res.render('profile');

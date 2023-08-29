@@ -14,6 +14,11 @@ router
     .patch(courseDetailsValidation.update ,validateMW ,controller.updateCourseDetails)
     .delete(courseDetailsValidation.delete ,validateMW ,controller.deleteCourseDetails);
 
+    router
+    .route("/addDayToCourse")
+    .post(controller.addDayToCourse);
+
+
 router
     .route("/coursedetails/:id")
     .get(controller.getCourseDetailsById);
