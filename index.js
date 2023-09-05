@@ -9,14 +9,13 @@ require("dotenv").config()
 const app = express();
 const port = process.env.PORT || 8080;
 mongoose.set("strictQuery", false);
-// const signRoute = require("./Routes/sign");
-// const login = require("./Routes/loginRoute");
+
 const adminRoute = require("./Route/adminRoutes");
 const studentRoute = require("./Route/studentRoutes");
 const courseDetailsInfoRoute = require("./Route/courseDetailsInfoRoutes");
 const contentOfCourseRoute = require("./Route/contentOfCourseRoutes");
 const productRoute = require("./Route/productRoutes");
-const quizRoute = require("./Route/quizRoutes");
+const adminViewRoute = require("./Route/adminViewRoutes");
 const authRoute = require("./Route/authRoutes");
 const viewRoute = require("./Route/viewRoutes");
 const auth = require("./Middleware/authenticationMW");
@@ -64,13 +63,13 @@ app.use(cookieParser());
 
 app.get("*", checkStudent);
 app.use(authRoute);
+app.use(adminViewRoute);
 app.use(viewRoute);
 app.use(adminRoute);
 app.use(studentRoute);
 app.use(courseDetailsInfoRoute);
 app.use(contentOfCourseRoute);
 app.use(productRoute);
-app.use(quizRoute);
 
 // app.use(login); // Auth After Log in
 // app.use(auth);

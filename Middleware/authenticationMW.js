@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Student = require("../Model/studentModel")
+const Admin = require("../Model/basicAdminModel")
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -27,15 +28,31 @@ const checkStudent = (req, res, next) => {
       jwt.verify(token, 'physics is fun', async (err, decodedToken) => {
         if (err) {
           res.locals.user = null;
+          res.locals.admin = null;
           next();
         } else {
-          let student = await Student.findById(decodedToken.id);
-          res.locals.user = student;
+          let admin = await Admin.findById(decodedToken.id);
+          if(admin){
+            res.locals.admin = admin;
+            res.locals.user = null;
+
           next();
+          } else{
+            let student = await Student.findById(decodedToken.id);
+            console.log("studenttttttttttttt")
+            console.log(student)
+            res.locals.user = student;
+            res.locals.admin = null;
+
+          next();
+          }
         }
+          // next();
+
       });
     } else {
       res.locals.user = null;
+      res.locals.admin = null;
       next();
     }
   };

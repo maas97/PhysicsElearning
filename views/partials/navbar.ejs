@@ -8,15 +8,23 @@
   <div class="collapse navbar-collapse text-center" id="navbarCollapse">
       <div class="navbar-nav ms-auto py-0">
 
-<% if(user) { %>
+<% if (admin) { %>
           <a href="/logout" class="nav-item nav-link fw-bold">تسجيل الخروج</a>
-          <a href="/#services" class="nav-item nav-link fw-bold">المحاضرات المجانية</a>
-          <a href="/myProductsInfo" class="nav-item nav-link fw-bold">مذكراتي</a>
-          <a href="/myCoursesInfo" class="nav-item nav-link fw-bold">كورساتي</a>
+          <a href="/#services" class="nav-item nav-link fw-bold">المذكرات</a>
+          <a href="/adminCourses" class="nav-item nav-link fw-bold">الكورسات</a>
+          <a href="/adminStudents" class="nav-item nav-link fw-bold">الطلاب</a>
           <a href="/" class="nav-item nav-link fw-bold">الرئيسية</a>
-          <a href="/profile" class="nav-item nav-link active fw-bold">  مرحبا <%= user.firstName %> </a>
+          <a href="/profile" class="nav-item nav-link active fw-bold">  مرحبا <%= admin.firstName %> </a>
+<% } else if (user) { %>
+            <a href="/logout" class="nav-item nav-link fw-bold">تسجيل الخروج</a>
+            <a href="/#services" class="nav-item nav-link fw-bold">المحاضرات المجانية</a>
+            <a href="/myProductsInfo" class="nav-item nav-link fw-bold">مذكراتي</a>
+            <a href="/myCoursesInfo" class="nav-item nav-link fw-bold">كورساتي</a>
+            <a href="/" class="nav-item nav-link fw-bold">الرئيسية</a>
+            <a href="/profile" class="nav-item nav-link active fw-bold">  مرحبا <%= user.firstName %> </a>
+  
+  <% } else { %>
 
-<% } else { %>
           <a href="/login" class="nav-item nav-link fw-bold ">الاشتراك في المنصة</a>
           <a href="/freeExams" class="nav-item nav-link fw-bold">امتحانات مجانية</a>
           <a href="/#services" class="nav-item nav-link fw-bold">المحاضرات المجانية</a>

@@ -1,5 +1,10 @@
 const mongoose = require("mongoose")
-// const AutoIncrement = require('mongoose-sequence')(mongoose);
+const bcrypt = require("bcryptjs");
+
+process.on('uncaughtException', function (error) {
+    // console.log(error.stack);
+  });
+  
 
 const Schema = new mongoose.Schema({
     _id: {
@@ -34,25 +39,49 @@ const Schema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         match: [
-            /^\w+([\.-]?\w+)(@(gmail|hotmail|yahoo|outlook))(\.\w{2,3})+$/,
-            'الرجاء إدخال إيميل صحيح يجب ان ينتهي ب gmail/yahoo/hotmail/outlook'
-        ],
+        /^\w+([\.-]?\w+)(@(gmail|hotmail|yahoo|outlook))(\.\w{2,3})+$/,
+        `الرجاء إدخال إيميل صحيح يجب ان ينتهي ب 
+        @gmail.com
+        @yahoo.com
+        @hotmail.com
+        @outlook.com`
+    ],
     },
-    birthdate : {
-        type: Date,
-        // validate: {
-        //     validator: function (v) {
-        //     return /(^0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\d{4}$)/.test(v);
-        //     },
-        //     message: "Please enter a valid date",
-        // }, 
+    phoneNumber:{
+        type: String,
+        unique: [true, "Phone number must be unique"],
+        match: [/^(010|011|012|015)\d{8}$/
+                ,
+                `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
+                010/011/012/015 
+                ويكون في نطاق 11 رقم`],
+        required: true
     },
-    // image : { type:String },
 })
 
-// Schema.plugin(AutoIncrement,{
-//     id: 'basicAdminCounter',
-//     inc_field: "_id"
-// });
+Schema.statics.login = async function(phoneNumber,password){
+    console.log(this);
+    const admin = await this.findOne({phoneNumber});
+    console.log("-----------------schema login-----------------------------------");
+    console.log(admin);
+    console.log("----------------------------------------------------");
+    
+    if (admin){
+        const authenticate = await bcrypt.compare(password, admin.password);
+    console.log("-----------------authenticate-----------------------------------");
+        console.log(authenticate);
+    console.log("----------------------------------------------------");
 
-mongoose.model("basicAdmin",Schema); //new name for model
+      if(authenticate){
+        return admin;
+      }
+      throw Error ("Incorrect Password");
+    //   throw Error("incorrect phone number");
+    }
+  };
+
+
+
+  const Admin = mongoose.model("basicAdmin",Schema); //new name for model
+
+module.exports = Admin;

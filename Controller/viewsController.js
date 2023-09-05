@@ -32,8 +32,12 @@ module.exports.coursesInfo = async (req, res) => {
     jwt.verify(authToken, 'physics is fun', async (err, decodedToken) => {
       if (err) {
         res.locals.user = null;
+        res.locals.admin = null;
         next();
       } else {
+      console.log("##############################tokennnnnnnnnnnnn#######################################");
+        console.log(authToken);
+        console.log("##############################tokennnnnnnnnnnnn#######################################");
         console.log(authToken);
 
         const student = await studentSchema.findById(decodedToken.id);

@@ -1,5 +1,6 @@
 const mongoose=require("mongoose");
 const Student = require("../Model/studentModel");
+const Admin = require("../Model/basicAdminModel");
 const fs =require("fs") 
 const bcrypt = require("bcryptjs");
 const path = require("path");
@@ -8,6 +9,7 @@ const salt = bcrypt.genSaltSync(saltRounds);
 const jwt = require("jsonwebtoken");
 require("cookie-parser");
 const studentSchema = mongoose.model("student");
+const adminSchema = mongoose.model("basicAdmin");
 const {courseDetails} = require("./courseDetailsInfoController");
 
 process.on('uncaughtException', function (error) {
@@ -175,18 +177,28 @@ module.exports.signup_post = (req,res,next)=>{
 
 module.exports.login_post = async (req, res, next) => {
   const { phoneNumber, password } = req.body;
-
+  console.log(req.body);
   try {
-    const student = await Student.login(phoneNumber, password);
-    const token = createToken(student._id);
-    // console.log("============================================================");
-    // console.log(token);
-    // console.log("============================================================");
-    res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
-    res.status(200).json({ student: student._id });
-    // console.log(student._id);
-    // console.log(phoneNumber, password);
-
+    const admin = await Admin.login(phoneNumber, password);
+    console.log("===========================login controller admin=================================");
+      console.log(admin);
+      console.log("============================================================");
+    if(admin){
+      const token = createToken(admin._id);
+      res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
+      res.status(200).json({ admin: admin._id });
+    }else{
+      const student = await Student.login(phoneNumber, password);
+      const token = createToken(student._id);
+      console.log("===========================login controller student=================================");
+      console.log(token);
+      console.log("============================================================");
+      res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
+      res.status(200).json({ student: student._id });
+      // console.log(student._id);
+      // console.log(phoneNumber, password);
+  
+    }
 
   } catch (err) {
     const errors = handleErrors(err);

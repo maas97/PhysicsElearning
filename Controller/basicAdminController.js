@@ -40,7 +40,7 @@ exports.addBasicAdmin=(request,response,next)=>{
         lastName:request.body.lastName,
         password: bcrypt.hashSync(request.body.password, salt),
         email:request.body.email,
-        birthdate:request.body.birthdate,
+        phoneNumber:request.body.phoneNumber
     }).save()// insertOne
     .then(data=>{
         response.status(201).json({data});
@@ -50,9 +50,7 @@ exports.addBasicAdmin=(request,response,next)=>{
 
 exports.updateBasicAdmin=(request,response,next)=>{
     let password;
-    // if(request.body.password){
-    //     password = bcrypt.hashSync(request.body.password, salt);
-    // }
+   
     basicAdminSchema.findOne({
         _id:request.body.id
     }).then((data)=>{
@@ -61,10 +59,7 @@ exports.updateBasicAdmin=(request,response,next)=>{
         }else{//for basicAdmin role
             
         }
-        // if(request.file && data.image){
-        //     fs.unlinkSync(path.join(__dirname,"..","images",`${data.image}`));
-
-        // }   
+        
         return basicAdminSchema.updateOne({//Use return because use of two query actions 
             _id:request.body.id
         },{
@@ -73,8 +68,7 @@ exports.updateBasicAdmin=(request,response,next)=>{
                 lastName:request.body.lastName,
                 password: password,
                 email:request.body.email,
-                birthdate:request.body.birthdate,
-                // image:request.file?.filename ?? undefined//if no file posted, then make mongo put undefined  
+                phoneNumber:request.body.phoneNumber
             }
         })   
     })

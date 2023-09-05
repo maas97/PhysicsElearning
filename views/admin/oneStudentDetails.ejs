@@ -1,0 +1,244 @@
+<%- include("../partials/htmlHead.ejs") -%>
+
+    <title>طلابي</title>
+    
+</head>
+
+<body>
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("../partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
+            
+            <%- include("../partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+                <% if(!user) { %>
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
+                <% } %>  
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
+                    <% if(!user) { %>
+
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                    <% } %>  
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0" style="min-height: 40vh;">
+        <div class="container-fluid-xxl py-5">
+           
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" dir="rtl">الطالب: <%= oneStudentDetails.firstName %> <%= oneStudentDetails.lastName %> </p>
+           
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    <table class="table text-center table-info table-striped" style="width: 80%; margin: 70px;" dir="rtl">
+                        <thead>
+                          <tr class="fw-bolder fs-5">
+                            <th scope="col">#</th>
+                            <th scope="col">اسم الطالب</th>
+                            <th scope="col">رقم الهاتف</th>
+                            <th scope="col">رقم ولي الأمر</th>
+                            <th scope="col">المرحلة الدراسية</th>
+                            <th scope="col"> الإيميل</th>
+                            <th scope="col"> العمر </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                   
+                          <tr>
+                            <th scope="row">1</th>
+                            <td><%= oneStudentDetails.firstName %> <%= oneStudentDetails.lastName %></td>
+                            <td id="studentPhoneNumber"><%= oneStudentDetails.phoneNumber %></td>
+                            <td><%= oneStudentDetails.parentPhoneNumber %></td>
+                            <td> <%= oneStudentDetails.educationalLevel %> ثانوي </td>
+                            <td> <%= oneStudentDetails.email %> </td>
+                            <td> <%= oneStudentDetails.age %> سنة </td>
+                           
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- for confirming courses -->
+    <div class="container-fluid-xxl position-relative mb-0 p-0" style="min-height: 40vh;">
+        <div class="container-fluid-xxl py-5">
+                      
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" dir="rtl"> الكورسات المنتظر تأكيدها </p>
+
+
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    <table class="table text-center table-info table-striped" style="width: 80%; margin: 70px;" dir="rtl">
+                        <thead>
+                          <tr class="fw-bolder fs-5">
+                            <th scope="col">#</th>
+                            <th scope="col">اسم الكورس</th>
+                            <th scope="col">الشهر</th>
+                            <th scope="col"> سعر الكورس  </th>
+                            <th scope="col">  حالة الكورس </th>
+                            <th scope="col"> العمليات على الكورس </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% let i = 1%>
+                    <% for (let reqCourse of requestedCourseDetails) { %> 
+                          <tr>
+                            <th scope="row"><%= i%></th>
+                            <td><%= reqCourse.courseName %> </td>
+                            <td><%= reqCourse.month %> </td>
+                            <td><%= reqCourse.price %> جنيه</td>
+                            <td>تم الحجز بانتظار التفعيل</td>
+                            <td>
+                                <button class="btn btn-primary" id="confirmButton" value="<%= reqCourse.counter%>"> تفعيل الكورس   </button>
+                            </td>
+                          </tr>
+                          <% i++ %>
+                    <% } %>
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+
+<!-- for already subscribed courses -->
+<div class="container-fluid-xxl position-relative mb-0 p-0" style="min-height: 40vh;">
+    <div class="container-fluid-xxl py-5">
+        
+        <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" dir="rtl"> الكورسات التي تم تأكيد حجزها </p>
+                  
+        <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+            <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                <table class="table text-center table-info table-striped" style="width: 80%; margin: 70px;" dir="rtl">
+                    <thead>
+                      <tr class="fw-bolder fs-5">
+                        <th scope="col">#</th>
+                        <th scope="col">اسم الكورس</th>
+                        <th scope="col">الشهر</th>
+                        <th scope="col"> سعر الكورس  </th>
+                        <th scope="col">  حالة الكورس </th>
+                        <th scope="col"> العمليات على الكورس </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% let j = 1%>
+                <% for (let subCourse of subscribedCourseDetails) { %> 
+                      <tr>
+                        <th scope="row"><%= j %></th>
+                        <td><%= subCourse.courseName %> </td>
+                        <td><%= subCourse.month %> </td>
+                        <td><%= subCourse.price %> جنيه</td>
+                        <td>تم الاشتراك</td>
+                        <td>
+                            <button class="btn btn-danger" id="removeButton" value="<%= subCourse.counter%>">  إلغاء اشتراك الكورس  </button>
+                        </td>
+                      </tr>
+                      <% j++ %>
+                <% } %>
+                    </tbody>
+                  </table>
+              </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+
+        
+
+        <%- include("../partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+ <script>
+      const confirmButtonElement = document.getElementById("confirmButton");
+      const studentPhoneNumber = document.getElementById("studentPhoneNumber").textContent;
+      const courseCounter = confirmButtonElement.value;
+      
+      console.log(confirmButtonElement);
+      console.log(courseCounter);
+      console.log(studentPhoneNumber);
+
+
+      confirmButtonElement.addEventListener('click', async (e) => {
+        const res = await fetch ("/confirmCourseForStudent", {
+            method: "POST",
+            body: JSON.stringify({ courseCounter, studentPhoneNumber }),
+            headers: {"Content-Type":"application/json"}
+          }).then(async()=>{
+            console.log(res);
+            const data = await res.json();
+            console.log(data);
+            location.reload();
+          })
+        
+    })
+ </script>
+
+<!-- for handling removing courses from student -->
+
+<script>
+    const removeButtonElement = document.getElementById("removeButton");
+    const studentPhoneNumberToRemoveCourseFrom = document.getElementById("studentPhoneNumber").textContent;
+    const removeCourseCounter = removeButtonElement.value;
+    
+    console.log(removeButtonElement);
+    console.log(removeCourseCounter);
+    console.log(studentPhoneNumberToRemoveCourseFrom);
+
+
+    removeButtonElement.addEventListener('click', async (e) => {
+      const res = await fetch ("/removeCourseFromStudent", {
+          method: "POST",
+          body: JSON.stringify({ removeCourseCounter, studentPhoneNumberToRemoveCourseFrom }),
+          headers: {"Content-Type":"application/json"}
+        });
+      console.log(res);
+      const data = await res.json();
+      console.log(data);
+      location.reload();
+  })
+</script>
+
+
+    <%- include("../partials/jsScripts.ejs") -%>
