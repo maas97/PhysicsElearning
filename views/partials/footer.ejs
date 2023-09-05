@@ -14,14 +14,14 @@
                   <a class="btn btn-outline-light btn-social" href="https://t.me/Hyper_physics" target="_blank"><i class="fab fa-telegram"></i></a>
               </div>
           </div>
-          <div class="col-md-6 col-lg-6 d-flex justify-content-lg-start align-content-center flex-column" >
+          <div class="col-md-6 col-lg-6 d-flex justify-content-lg-start align-content-center flex-column" > 
+            <% if(user) {%>
               <h5 class="text-white text-center mb-4 fs-4">الروابط الشائعة </h5>
               <a class=" btn text-light" href="/#services" dir="rtl">المحاضرات المجانية </a>
               <a class="btn text-light" href="/products" dir="rtl"> المذكرات </a>
-            <% if(user) {%>
               <a class="btn text-light" href="/myCoursesInfo" dir="rtl"> كورساتي </a>
             <%}%>
-            <% if(!user) { %>
+            <% if(!user && !admin) { %>
                 <a class="btn text-light" href="/login" dir="rtl">الاشتراك</a>
             <% } %>
           </div>

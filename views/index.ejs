@@ -20,7 +20,7 @@
             <div class="container-fluid-xxl w-100 py-5 hero-header">
                 <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
                 <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
-                <% if(!user) { %>
+                <% if(!user && !admin) { %>
                 <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
                 <% } %>  
                 
@@ -30,13 +30,18 @@
                     <div class="row g-5 py-5">
 
                         <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                    <% if(!admin) { %>
+                            
                             <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
                             <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
                             <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
-                    <% if(!user) { %>
+                    <% } %>  
+                    <% if(admin) { %>
+                        <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا Admin   </p>
+                    <% } %>  
 
+                    <% if(!user && !admin ) { %>
                             <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
-                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
                     <% } %>  
                         
                         </div>
@@ -77,7 +82,7 @@
                                 <h1>منصة مستر / محمد رمضان الطنطاوي </h1>
                                 <p class="fs-5">تخرج من كلية العلوم - جامعة القاهرة - حاصل علي درجة الماجستير في الفيزياء  </p>
                                  
-                                <% if(!user) { %>
+                                <% if(!user && !admin) { %>
                                     <p><a class="btn btnheadstyle subscBtn fw-bolder" href="/login">اشترك الآن</a></p>
                                 <% } %>
                             </div>
@@ -91,7 +96,7 @@
                             <h1>معانا النجاح مضمون</h1>
                             <h1> مع خبرة أكثر من 5 سنوات </h1>
                             <p class="fs-5">المنصة بتقدم كل الوسائل اللي ممكن تساعدك ولحد عندك</p>
-                        <% if(!user) { %>
+                        <% if(!user && !admin) { %>
                             <p><a class="btn btnheadstyle subscBtn fw-bolder" href="/login">اشترك الآن</a></p>
                         <% } %>    
                           </div>

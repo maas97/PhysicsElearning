@@ -18,7 +18,7 @@
         <div class="container-fluid-xxl py-5 hero-header">
             <span class="dotsUpToDown animated infinite fadeInDown"></span>
             <span class="dotsDownToUp animated infinite fadeInUp"></span>
-            <% if(!user) { %>
+            <% if(!user && !admin) { %>
             <span class="circlesRotate animated infinite fadeIn d-xl-block d-sm-none"></span>
             <% } %>  
             
@@ -29,7 +29,7 @@
 
                     <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column">
                         <p class="headtext mb-4 animated zoomIn fw-bold fs-1"> ....قريبا </p>
-                <% if(!user) { %>
+                <% if(!user && !admin) { %>
 
                         <a href="login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft fs-3"><b>اشترك الان</b> </a>
                         <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
