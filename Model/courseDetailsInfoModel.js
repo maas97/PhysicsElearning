@@ -44,11 +44,10 @@ const Schema = new mongoose.Schema({
       type:Number,
       required: [true, "Price is required"],
     },
-    // isCurrentCourseSubscribed:{
-    //   type: Boolean,
-    //   default: false
-    // }
-    // ,
+    linkOfCoverOfCourse:{
+      type: String,
+    }
+    ,
     createdAt:{
       type: Date,
       default: Date.now()

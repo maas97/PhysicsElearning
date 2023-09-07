@@ -252,7 +252,7 @@ module.exports.requestProduct = (req,res,next)=>{
 
 
 module.exports.freeExams = (req, res) => {
-  res.render('soonTemplate');
+  res.render('freeExams');
 }
 
 

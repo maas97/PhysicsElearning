@@ -57,16 +57,16 @@
            
             <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" >طلابي</p>
            
-            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold w-100" style="height: 75vh; overflow: scroll;" data-wow-offset="350">
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold " style="height: 75vh; width: 100vw; overflow: scroll;" data-wow-offset="350">
                 <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
-                    <table class="table text-center table-info table-striped" style="width: 80%; margin: 70px;" dir="rtl">
+                    <table class="table text-center table-info table-striped border border-5 border-danger" style="width: 80%; margin: 70px;" dir="rtl">
                         <thead>
                           <tr class="fw-bolder fs-5">
                             <th scope="col col-sm-2">#</th>
                             <th scope="col col-sm-2">اسم الطالب</th>
-                            <th scope="col col-sm-2">رقم الهاتف</th>
-                            <th scope="col col-sm-2">رقم ولي الأمر</th>
-                            <th scope="col col-sm-2">المرحلة الدراسية</th>
+                            <th scope="col col-sm-2d-none d-lg-block">رقم الهاتف</th>
+                            <th scope="col col-sm-2 ">رقم ولي الأمر</th>
+                            <th scope="col col-sm-2 d-none d-lg-block">المرحلة الدراسية</th>
                             <th scope="col col-sm-2">العمليات على الطالب</th>
                           </tr>
                         </thead>
@@ -76,12 +76,12 @@
                           <tr>
                             <th scope="row"><%= i %></th>
                             <td><%= student.firstName %> <%= student.lastName %></td>
-                            <td><%= student.phoneNumber %></td>
-                            <td><%= student.parentPhoneNumber %></td>
-                            <td> <%= student.educationalLevel %> ثانوي </td>
+                            <td class="d-none d-lg-block"><%= student.phoneNumber %></td>
+                            <td class="d-none d-lg-block"><%= student.parentPhoneNumber %></td>
+                            <td class="d-none d-lg-block"> <%= student.educationalLevel %> ثانوي </td>
                             <td>
                                 <a href="/adminStudents/<%=student.phoneNumber%>" class="btn btn-primary">عرض الطالب </a>
-                                <button class="btn btn-danger m-3"> حظر الطالب </button>
+                                <!-- <button class="btn btn-danger m-3"> حظر الطالب </button> -->
                             </td>
                           </tr>
                           <% i++ %>

@@ -73,7 +73,7 @@
                             <% if(subscribedCourseDetail) { %>
                                 <% if(user.educationalLevel === subscribedCourseDetail.educationalLevel ){ %>
                                 <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
-                                    <img src="/assets/img/1 copy.webp" class="card-img-top" style="border-bottom: 1px solid black;" alt="...">
+                                    <img src="<%= subscribedCourseDetail.linkOfCoverOfCourse %>" class="card-img-top" style="border-bottom: 1px solid black;" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title"><%= subscribedCourseDetail.courseName %> </h5>
                                     <p class="card-text"><%= subscribedCourseDetail.courseDescription %></p>
@@ -92,7 +92,7 @@
                         <% if(unSubscribedCourseDetail ) { %>
                             <% if(user.educationalLevel === unSubscribedCourseDetail.educationalLevel){ %>
                                 <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
-                                    <img src="/assets/img/1 copy.webp" style="border-bottom: 1px solid black;" class="card-img-top" alt="...">
+                                    <img src="<%= unSubscribedCourseDetail.linkOfCoverOfCourse %>" style="border-bottom: 1px solid black;" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title"><%= unSubscribedCourseDetail.courseName %> </h5>
                                       <p class="card-text"><%= unSubscribedCourseDetail.courseDescription %></p>
@@ -110,7 +110,7 @@
                         <% if(requestedCourseDetail) { %>
                             <% if(user.educationalLevel === requestedCourseDetail.educationalLevel){ %>
                                 <div class="card m-5 col-4" style="width: 18rem;" dir="rtl">
-                                    <img src="/assets/img/1 copy.webp" style="border-bottom: 1px solid black;" class="card-img-top" alt="...">
+                                    <img src="<%= requestedCourseDetail.linkOfCoverOfCourse %>" style="border-bottom: 1px solid black;" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title"><%= requestedCourseDetail.courseName %> </h5>
                                       <p class="card-text"><%= requestedCourseDetail.courseDescription %></p>
