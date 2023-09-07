@@ -1,0 +1,161 @@
+<%- include("../partials/htmlHead.ejs") -%>
+
+    <title>طلبات توصيل الملازم</title>
+    
+</head>
+
+<body>
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("../partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
+            
+            <%- include("../partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+              
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">هذه الصفحة مخصصه </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">للقيام بالعمليات المختلفة على</p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">توصيل الملازم</p>
+                 
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <% if(combinedArray.length !== 0) { %>
+        <div class="container-fluid-xxl position-relative mb-0 p-0" style="min-height: 90vh;">
+        <div class="container-fluid-xxl py-5">
+           
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" style="width:40% ;">طلبات الملازم</p>
+            <a href="/adminProducts/showProducts" class="btn btn-success " style="width: 20%;padding: 10px; margin-left:160px; margin-bottom: 150px;"> ملزماتي </a>
+            <a href="/adminProducts/addNewProduct" class="btn btn-success " style="width: 20%;padding: 10px; margin-left:50px; margin-bottom: 150px;"> إضافة ملزمة جديدة</a>
+           
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" style="height: 75vh; overflow: scroll;" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    <table class="table text-center table-info table-striped mb-5" style="width: 80%; margin: 70px;" dir="rtl">
+                        <thead>
+                          <tr class="fw-bolder fs-5">
+                            <th scope="col">#</th>
+                            <th scope="col">اسم الطالب</th>
+                            <th scope="col">اسم الملزمة</th>
+                            <th scope="col">سعر الملزمة</th>
+                            <th scope="col">المرحلة الدراسية</th>    
+                            <th scope="col">رقم الهاتف الأساسي</th>
+                            <th scope="col">رقم الهاتف الاحتياطي</th>
+                            <th scope="col">حالة التوصيل</th>
+                            <th scope="col">المحافظة</th>
+                            <th scope="col">المركز</th>
+                            <th scope="col">العنوان التفصيلي</th>
+                            <th scope="col">العمليات على التوصيل</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                    <% let i =1 %>
+                    <% for (let product of combinedArray) { %>
+                            <tr>
+                            <th scope="row"><%= i %></th>
+                            <td><%= product._doc.firstName %> <%= product._doc.lastName %> </td>
+                            <td><%= product.productData.productName %> </td>
+                            <td><%= product.productData.productPrice %> جنيه</td>
+                            <td><%= product.productData.educationalLevel %> ثانوي</td>
+                            <td> <%= product._doc.firstPhoneNumber %> </td>
+                            <td> <%= product._doc.secondPhoneNumber %> </td>
+                            <% if (product._doc.isDelivered){ %>
+                                <td >تم التوصيل بنجاح</td>
+                            <% } else { %>
+                                <td style="color: red;">لم يتم التوصيل بعد</td>
+                            <% } %>
+                            <td> <%= product._doc.location.governate %> </td>
+                            <td> <%= product._doc.location.city %> </td>
+                            <td> <%= product._doc.location.area %> </td>
+                            
+                            <% if (product._doc.isDelivered){ %>
+                                <td>
+                                    <a href="" class="btn btn-success disabled"> تم التوصيل بنجاح </a>
+                                </td>                            
+                            <% } else { %>
+                                <td>
+                                    <button value="<%= product._doc._id %>" id="deliveryButton" class="btn btn-danger"> اذا تم التوصيل اضغط هنا</button>
+                                </td>                            
+                            <% } %>
+                        
+                          </tr>
+                          <% i++ %>
+
+د                    <% } %>
+                        </tbody>
+                      </table>
+
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+    <% } %>
+        
+        <%- include("../partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+ 
+<script>
+   const deliveryProductButtons = document.querySelectorAll("#deliveryButton");
+   console.log(deliveryProductButtons);
+   
+   deliveryProductButtons.forEach(button => {
+
+        button.addEventListener("click", async (e)=>{
+            const id = button.value
+            console.log(button);
+            console.log(id);
+
+            const deliveryReq = await fetch ("/adminProducts/delivered", {
+                method: "POST",
+                body: JSON.stringify({ id }),
+                headers: {"Content-Type":"application/json"}
+              }).then(async(response)=>{
+                console.log(response);
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+              }).then(async(data)=>{
+                console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+                console.log(data);
+                location.reload();
+              })
+        })
+    })
+
+</script>
+
+
+
+    <%- include("../partials/jsScripts.ejs") -%>

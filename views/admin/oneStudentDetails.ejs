@@ -96,7 +96,6 @@
                       
             <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" dir="rtl"> الكورسات المنتظر تأكيدها </p>
 
-
             <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
                 <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
                     <table class="table text-center table-info table-striped" style="width: 80%; margin: 70px;" dir="rtl">
@@ -111,21 +110,30 @@
                           </tr>
                         </thead>
                         <tbody>
+
+                          <% if(requestedCourseDetails.length > 0){ %>
                             <% let i = 1%>
-                    <% for (let reqCourse of requestedCourseDetails) { %> 
+                            <% for (let reqCourse of requestedCourseDetails) { %> 
+                                  <tr>
+                                    <th scope="row"><%= i%></th>
+                                    <td><%= reqCourse.courseName %> </td>
+                                    <td><%= reqCourse.month %> </td>
+                                    <td><%= reqCourse.price %> جنيه</td>
+                                    <td>تم الحجز بانتظار التفعيل</td>
+                                    <td>
+                                        <button class="btn btn-primary" id="confirmButton" value="<%= reqCourse.counter%>"> تفعيل الكورس   </button>
+                                    </td>
+                                  </tr>
+                                  <% i++ %>
+                            <% } %>
+                        <% } else { %>
                           <tr>
-                            <th scope="row"><%= i%></th>
-                            <td><%= reqCourse.courseName %> </td>
-                            <td><%= reqCourse.month %> </td>
-                            <td><%= reqCourse.price %> جنيه</td>
-                            <td>تم الحجز بانتظار التفعيل</td>
-                            <td>
-                                <button class="btn btn-primary" id="confirmButton" value="<%= reqCourse.counter%>"> تفعيل الكورس   </button>
+                            <td colspan="6">
+                            <span class="fs-2 ">لم يتم حجز كورسات حتى الآن من قبل هذا الطالب</span>
                             </td>
                           </tr>
-                          <% i++ %>
-                    <% } %>
-                        </tbody>
+                          <% } %>  
+                      </tbody>
                       </table>
                   </div>
             </div>
@@ -155,20 +163,29 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <% if(subscribedCourseDetails.length > 0){ %>
+
                         <% let j = 1%>
-                <% for (let subCourse of subscribedCourseDetails) { %> 
-                      <tr>
-                        <th scope="row"><%= j %></th>
-                        <td><%= subCourse.courseName %> </td>
-                        <td><%= subCourse.month %> </td>
-                        <td><%= subCourse.price %> جنيه</td>
-                        <td>تم الاشتراك</td>
-                        <td>
-                            <button class="btn btn-danger" id="removeButton" value="<%= subCourse.counter%>">  إلغاء اشتراك الكورس  </button>
-                        </td>
-                      </tr>
-                      <% j++ %>
-                <% } %>
+                        <% for (let subCourse of subscribedCourseDetails) { %> 
+                              <tr>
+                                <th scope="row"><%= j %></th>
+                                <td><%= subCourse.courseName %> </td>
+                                <td><%= subCourse.month %> </td>
+                                <td><%= subCourse.price %> جنيه</td>
+                                <td>تم الاشتراك</td>
+                                <td>
+                                    <button class="btn btn-danger" id="removeButton" value="<%= subCourse.counter%>">  إلغاء اشتراك الكورس  </button>
+                                </td>
+                              </tr>
+                              <% j++ %>
+                        <% } %>
+                        <% } else { %>
+                          <tr>
+                            <td colspan="6">
+                            <span class="fs-2 ">لم يتم تأكيد حجز أي من الكورسات لهذا الطالب حتى الآن</span>
+                            </td>
+                          </tr>
+                          <% } %> 
                     </tbody>
                   </table>
               </div>
@@ -190,53 +207,101 @@
     </div>
 
  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
       const confirmButtonElement = document.getElementById("confirmButton");
       const studentPhoneNumber = document.getElementById("studentPhoneNumber").textContent;
-      const courseCounter = confirmButtonElement.value;
-      
+      console.log("confirmButtonElement");
       console.log(confirmButtonElement);
-      console.log(courseCounter);
       console.log(studentPhoneNumber);
+      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 
+      if(confirmButtonElement){
+        const courseCounter = confirmButtonElement.value;
+        console.log(courseCounter);
 
-      confirmButtonElement.addEventListener('click', async (e) => {
+        confirmButtonElement.addEventListener('click', async (e) => {
         const res = await fetch ("/confirmCourseForStudent", {
             method: "POST",
             body: JSON.stringify({ courseCounter, studentPhoneNumber }),
             headers: {"Content-Type":"application/json"}
-          }).then(async()=>{
-            console.log(res);
-            const data = await res.json();
-            console.log(data);
-            location.reload();
-          })
+          }).then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            ("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            }
+            return response.json();
+        }).then(dataFromFirstRequest => {
+            // Process data from the first request
+            console.log('Data from the first request:', dataFromFirstRequest);
+            location.reload()            
+        })
+        .catch(error => {
+            // Handle errors from any of the fetch requests
+            console.error('Error:', error);
+        });
         
     })
+
+      } 
+      
+      
+
+      
+
+    });
+
+
+
+     
  </script>
 
 <!-- for handling removing courses from student -->
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    
     const removeButtonElement = document.getElementById("removeButton");
     const studentPhoneNumberToRemoveCourseFrom = document.getElementById("studentPhoneNumber").textContent;
-    const removeCourseCounter = removeButtonElement.value;
-    
     console.log(removeButtonElement);
-    console.log(removeCourseCounter);
     console.log(studentPhoneNumberToRemoveCourseFrom);
 
+    if(removeButtonElement){
+      const removeCourseCounter = removeButtonElement.value;
+      console.log(removeCourseCounter);
 
-    removeButtonElement.addEventListener('click', async (e) => {
+      removeButtonElement.addEventListener('click', async (e) => {
       const res = await fetch ("/removeCourseFromStudent", {
           method: "POST",
           body: JSON.stringify({ removeCourseCounter, studentPhoneNumberToRemoveCourseFrom }),
           headers: {"Content-Type":"application/json"}
+        }).then(response => {
+          console.log('Data from response:', response);
+
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(dataFromFirstRequest => {
+            // Process data from the first request
+            console.log('Data from the first request:', dataFromFirstRequest);
+            location.reload()            
+        })
+        .catch(error => {
+            // Handle errors from any of the fetch requests
+            console.error('Error:', error);
         });
-      console.log(res);
-      const data = await res.json();
-      console.log(data);
-      location.reload();
   })
+
+    }
+    
+ 
+
+    
+
+    });
+
+   
 </script>
 
 

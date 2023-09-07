@@ -1,0 +1,236 @@
+<%- include("../partials/htmlHead.ejs") -%>
+
+    <title>إضافة يوم جديد</title>
+    
+</head>
+
+<body>
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("../partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
+            
+            <%- include("../partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+                <% if(!user && !admin) { %>
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
+                <% } %>  
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
+                    <% if(!user && !admin) { %>
+
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                    <% } %>  
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header">
+         
+            <!-- data-wow-delay="0.6s" -->
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" >إضافة يوم جديد</p>
+            <span id="counter" style="color: red; visibility: hidden;"><%= oneCourseDetails.counter%></span>
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    
+
+            <form class="p-5 mt-4 g-3" id="addDayData" dir="rtl" style="width: 80%;"> 
+                    
+                
+                <div class="row mb-5">
+                    <div class="col">
+                      <input type="Number" id="dayNumber" disabled class="form-control" placeholder="رقم اليوم" aria-label="dayNumber">
+                    </div>
+                    <div class="col ">
+                        <select class="form-select form-select-lg mb-2" id="educationalLevel" aria-label="Default select example">
+                            <option value="<%= oneCourseDetails.educationalLevel %>"><%= oneCourseDetails.educationalLevel %> ثانوي</option>
+                        </select>                        
+                    </div>
+                </div>
+                <label for="" class="fs-1 fw-bolder m-3">محتوى اليوم</label>
+                <div class="row mb-5">
+                    <div class="col">
+                        <input type="text" class="form-control" id="title" required placeholder="عنوان المحتوى" aria-label="title">
+                      </div>
+                    <div class="col">
+                      <input type="text" class="form-control" id="description" required placeholder="وصف المحتوى" aria-label="description">
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col">
+                        <select class="form-select form-select-lg mb-2" required id="typeOfContent" aria-label="typeOfContent">
+                            <option selected>نوع المحتوى</option>
+                            <option value="video">video</option>
+                            <option value="file">file</option>
+                            <option value="test">test</option>
+                        </select>                     
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="LinkOfContent" required placeholder="لينك المحتوى" aria-label="LinkOfContent">
+                      </div>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary" style="z-index: 99999;">أضف يوم جديد</button>
+                <a href="/adminCourses/<%= oneCourseDetails.counter%>" class="btn btn-lg btn-secondary" style="z-index: 99999; text-decoration: none;">الرجوع إلى الكورس </a>
+            </form>
+
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+        
+
+        <%- include("../partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+
+    <script>
+      const form = document.getElementById('addDayData');
+      const dayNumberElement = document.getElementById("dayNumber");
+      const educationalLevelElement = document.getElementById("educationalLevel");
+
+      const titleElement = document.getElementById("title");
+      const descriptionElement = document.getElementById("description");
+      const typeOfContentElement = document.getElementById("typeOfContent");
+      const LinkOfContentElement = document.getElementById("LinkOfContent");
+      const counterElement = document.getElementById("counter");
+
+
+      console.log(form);
+      console.log(dayNumberElement);
+      console.log(educationalLevelElement);
+      console.log(titleElement);
+      console.log(descriptionElement);
+      console.log(typeOfContentElement);
+      console.log(LinkOfContentElement);
+      console.log(counterElement.textContent);
+     
+      console.log("########################################################")
+      const currentURL = window.location.href;
+      console.log(currentURL);
+
+      // Split the URL by slashes
+      const urlParts = currentURL.split('/');
+      console.log(urlParts);
+
+      // Find the last part of the URL, which should be the ID
+      const id = urlParts[urlParts.length - 1];
+      console.log(id);
+
+
+      if (id) {
+            // Find the input element by its id and set its value
+            document.getElementById('dayNumber').value = parseInt(id) + 1;
+        } else {
+            document.getElementById('dayNumber').value = 1;
+        }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const dayNumber = form.dayNumber.value;
+        const educationalLevel = form.educationalLevel.value;
+        const title = form.title.value;
+        const description = form.description.value;
+        const typeOfContent = form.typeOfContent.value;
+        const LinkOfContent = form.LinkOfContent.value;
+        
+        const counter = counterElement.textContent;
+       
+        
+
+
+
+        console.log(dayNumber);
+        console.log(educationalLevel);
+        console.log(title);
+        console.log(description);
+        console.log(typeOfContent);
+        console.log(LinkOfContent);
+
+
+        const res = await fetch ("/addDay", {
+            method: "POST",
+            body: JSON.stringify({ dayNumber, educationalLevel, title , description, typeOfContent, LinkOfContent}),
+            headers: {"Content-Type":"application/json"}
+          }).then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(dataFromFirstRequest => {
+            // Process data from the first request
+            console.log('Data from the first request:', dataFromFirstRequest);
+            const _id = dataFromFirstRequest.data._id;
+            console.log('id is:  ', _id);
+            console.log('counter is:  ', counter);
+
+            // Second fetch request that depends on data from the first request
+            return fetch('/addDayToCourse', {
+            method: 'POST',
+            body: JSON.stringify({ _id, counter }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            });
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(dataFromSecondRequest => {
+            // Process data from the second request
+            console.log('Data from the second request:', dataFromSecondRequest);
+            // location.redirect(`/adminCourses/${counter}`);
+            window.location.href = `/adminCourses/${counter}`;
+
+
+        })
+        .catch(error => {
+            // Handle errors from any of the fetch requests
+            console.error('Error:', error);
+        });
+
+
+      })
+
+
+    </script>
+ 
+
+    <%- include("../partials/jsScripts.ejs") -%>

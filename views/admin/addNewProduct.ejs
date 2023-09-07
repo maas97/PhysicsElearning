@@ -1,0 +1,173 @@
+<%- include("../partials/htmlHead.ejs") -%>
+
+    <title>إضافة ملزمة جديدة</title>
+    
+</head>
+
+<body>
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("../partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
+            
+            <%- include("../partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+                 
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
+                    <% if(!user && !admin) { %>
+
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                    <% } %>  
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header">
+         
+            <!-- data-wow-delay="0.6s" -->
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" >إضافة ملزمة جديدة</p>
+            
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    
+
+            <form class="p-5 mt-4 g-3" id="addProductData" dir="rtl" style="width: 80%;"> 
+                    
+                
+                <div class="row mb-5">
+                    <div class="col">
+                      <input type="text" id="productName" class="form-control" required placeholder="اسم الملزمة" aria-label="productName">
+                    </div>
+                    <div class="col">
+                      <input type="text" id="productDescription" class="form-control" required placeholder="وصف الملزمة" aria-label="productDescription">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col col-lg-12 col-md-12">
+                        <select class="form-select form-select-lg mb-2" id="educationalLevel" required aria-label="educationalLevel">
+                            <option selected>السنة الدراسية</option>
+                            <option value="1">أولى ثانوي</option>
+                            <option value="2">ثاني ثانوي</option>
+                            <option value="3">ثالث ثانوي</option>
+                        </select>                        
+                    </div>
+                    
+                </div>
+                <div class="row mb-5">
+                    <div class="col">
+                      <input type="number" class="form-control" id="productPrice" required placeholder="سعر الملزمة" aria-label="productPrice">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="LinkOfPhotoOfProduct" required placeholder="لينك غلاف الملزمة" aria-label="LinkOfPhotoOfProduct">
+                      </div>
+                </div>
+               
+                <button type="submit" class="btn btn-lg btn-primary" style="z-index: 99999;">أضف ملزمة</button>
+                <a href="/adminProducts" class="btn btn-lg btn-secondary" style="z-index: 99999; text-decoration: none;">الرجوع إلى صفحة الملازم </a>
+              </form>
+
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+        
+
+        <%- include("../partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+
+    <script>
+      const form = document.getElementById('addProductData');
+      const productNameElement = document.getElementById("productName");
+      const productDescriptionElement = document.getElementById("productDescription");
+      const educationalLevelElement = document.getElementById("educationalLevel");
+      const productPriceElement = document.getElementById("productPrice");
+      const LinkOfPhotoOfProductElement = document.getElementById("LinkOfPhotoOfProduct");
+
+      console.log(form);
+      console.log(productNameElement);
+      console.log(productDescriptionElement);
+      console.log(educationalLevelElement);
+      console.log(productPriceElement);
+      console.log(LinkOfPhotoOfProductElement);
+
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const productName = form.productName.value;
+        const productDescription = form.productDescription.value;
+        const educationalLevel = form.educationalLevel.value;
+        const productPrice = form.productPrice.value;
+        const LinkOfPhotoOfProduct = form.LinkOfPhotoOfProduct.value;
+       
+        console.log(productName);
+        console.log(productDescription);
+        console.log(educationalLevel);
+        console.log(productPrice);
+        console.log(LinkOfPhotoOfProduct);
+
+
+
+        const res = await fetch ("/product", {
+            method: "POST",
+            body: JSON.stringify({ productName, productDescription, educationalLevel , productPrice, LinkOfPhotoOfProduct}),
+            headers: {"Content-Type":"application/json"}
+          }).then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(dataFromFirstRequest => {
+            // Process data from the first request
+            console.log('Data from the first request:', dataFromFirstRequest);
+            window.location.href = `/adminProducts`;
+        })
+        .catch(error => {
+            // Handle errors from any of the fetch requests
+            console.error('Error:', error);
+        });
+
+         
+      })
+
+
+    </script>
+ 
+
+    <%- include("../partials/jsScripts.ejs") -%>

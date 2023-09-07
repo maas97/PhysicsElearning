@@ -14,6 +14,7 @@ router.get('/myCoursesInfo/:counter/courseList', requireAuth  , viewsController.
 router.get('/freeExams'  , viewsController.freeExams);
 router.get('/profile', requireAuth  , viewsController.profile);
 router.get('/myProductsInfo'  , viewsController.products);
+router.post('/myProductsInfo/request'  ,viewsController.requestProduct);
 router.get('/myProductsInfo/:counter'  ,viewsController.getOneProductDetails);
 
 

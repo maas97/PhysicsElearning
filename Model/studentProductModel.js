@@ -35,7 +35,7 @@ const Schema = new mongoose.Schema({
     },
     firstPhoneNumber:{
         type: String,
-        unique: [true, "Phone number must be unique"],
+        // unique: [false],
         match: [/^(010|011|012|015)\d{8}$/
                 ,
                 `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
@@ -45,7 +45,7 @@ const Schema = new mongoose.Schema({
     },
     secondPhoneNumber:{
         type: String,
-        unique: [true, "Phone number must be unique"],
+        // unique: [false],
         match: [/^(010|011|012|015)\d{8}$/
                 ,
                 `الرجاء إدخال رقم الموبايل بشكل صحيح يبدأ بأحد مزودي الخدمة 
@@ -63,14 +63,12 @@ const Schema = new mongoose.Schema({
           // required: true
         },
         area : { // باقي العنوان التفصيلي
-            type:String,
-            validate : {
-              validator : function(value) {
-                return /^[a-zA-Z0-9\s]+$/.test(value);
-              },
-              message : "Area should only contain letters, numbers, and spaces"
+            type:String
             }
-         }
+      },
+      isDelivered:{
+        type:Boolean,
+        default: false
       },
       productId:{
         type: mongoose.Types.ObjectId,
@@ -78,7 +76,7 @@ const Schema = new mongoose.Schema({
       }
     });
 
-    const ProductRequest = mongoose.model("productRequest", Schema); //new name for model
+    const ProductRequest = mongoose.model("productReq", Schema); //new name for model
 
     module.exports = ProductRequest;
 

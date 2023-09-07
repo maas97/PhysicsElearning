@@ -31,7 +31,11 @@ const Schema = new mongoose.Schema({
       type: Number,
       match: [/^[12]$/,
             `الرجاء إدخال ترم دراسي مناسب`],
-      required: [true, "semester is required"],
+      // required: [true, "semester is required"],
+  }, 
+  LinkOfPhotoOfProduct:{
+    type: String,
+    required: [true, "Link is required"]
   },
   counter:{
     type: Number

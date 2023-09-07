@@ -31,8 +31,7 @@ exports.addProduct=(request,response,next)=>{
         productPrice:request.body.productPrice,
         productDescription:request.body.productDescription,
         educationalLevel: request.body.educationalLevel,
-        semester: request.body.semester,
-        
+        LinkOfPhotoOfProduct: request.body.LinkOfPhotoOfProduct,
     }).save()// insertOne
     .then(data=>{
         response.status(201).json({data});

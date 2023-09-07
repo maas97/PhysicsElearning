@@ -3,15 +3,16 @@ const jwt = require('jsonwebtoken');
 const Student = require("../Model/studentModel");
 const studentSchema = mongoose.model("student");
 const product = require("../Model/productModel");
-const Product = require("../Model/studentProductModel");
+const productRequest = require("../Model/studentProductModel");
 const productSchema = mongoose.model("product");
-const productRequest = mongoose.model("productRequest");
+const productRequestSchema = mongoose.model("productReq");
 const courseDetails = require("../Model/courseDetailsInfoModel");
 const courseDetailsSchema = mongoose.model("courseDetails");
 const day = require("../Model/contentOfCourseModel");
 const daySchema = mongoose.model("content");
 
 const { param } = require("../Route/viewRoutes");
+const { body } = require("express-validator");
 
 process.on('uncaughtException', function (error) {
     // console.log(error.stack);
@@ -156,6 +157,7 @@ process.on('uncaughtException', function (error) {
         console.log("***********************************************");
         console.log(result);
       
+        res.status(200).json({ message: 'Content added successfully' });
 
     });
     
@@ -206,6 +208,8 @@ process.on('uncaughtException', function (error) {
           console.log("***********************************************");
           console.log(result);
         
+          res.status(200).json({ message: 'Content added successfully' });
+        
   
       })
       
@@ -226,14 +230,209 @@ process.on('uncaughtException', function (error) {
 
 
     module.exports.getOneCourse = async (req, res) => {
-      // const courses = await courseDetailsSchema.find();
-    const oneCourseDetails = await courseDetailsSchema.findOne({counter: req.params.counter});
+
+        const currentCourseList = await courseDetailsSchema.findOne({counter: req.params.counter});
+        console.log(currentCourseList);
+        console.log(currentCourseList.currentCourseListContentId);
+        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        // console.log(await daySchema.findOne( {_id: 6}));
       
-      setTimeout(()=>{
-      console.log("@########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-      console.log(oneCourseDetails);
-          res.render('admin/oneCourseDetails.ejs', {
-            oneCourseDetails
+        let daysOfCourseArray = [];
+        currentCourseList.currentCourseListContentId.forEach( async element => {
+            daysOfCourseArray.push(await daySchema.findOne( {_id: element}) );
+        });      
+      
+
+        setTimeout(()=>{
+          console.log("///////////////////////////****************///////////////////////////////")
+          console.log("Course Days data")
+          console.log(daysOfCourseArray)
+          console.log("///////////////////////////****************///////////////////////////////")
+          console.log(currentCourseList)
+        
+          daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+          console.log(daysOfCourseArray[daysOfCourseArray.length - 1])
+          let lastDayNumber
+          if(daysOfCourseArray[daysOfCourseArray.length - 1]){
+            lastDayNumber = daysOfCourseArray[daysOfCourseArray.length - 1].day.dayNumber;
+          } else {
+            lastDayNumber = 0;
+          }
+      
+          console.log(daysOfCourseArray);
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+
+          console.log(lastDayNumber);
+      
+      
+          res.render('admin/oneCourseDetails', {
+            currentCourseList,
+            daysOfCourseArray,
+            lastDayNumber
           });
         },2000); 
+
     }
+
+
+    module.exports.pageOfAddingNewCourse = async (req, res) => {
+          res.render('admin/addNewCourse', {
+          });
+    }
+
+    
+
+    module.exports.pageOfAddingNewDayToCourse = async (req, res) => {
+      const oneCourseDetails = await courseDetailsSchema.findOne({counter: req.params.counter});
+
+      res.render('admin/addNewDay', {
+        oneCourseDetails
+      });
+}
+
+
+
+module.exports.pageOfAddingNewContentToDay = async (req, res) => {
+  const oneDayDetails = await daySchema.findOne({_id: req.params._id});
+  const oneCourseDetails = await courseDetailsSchema.findOne({counter: req.params.counter});
+console.log(oneDayDetails)
+  res.render('admin/addNewContent', {
+    oneDayDetails,
+    oneCourseDetails
+  });
+}
+
+
+    module.exports.addDayFrontend = async (request,response,next)=>{
+      new daySchema({
+          day:{
+              dayNumber: request.body.dayNumber,
+              educationalLevel: request.body.educationalLevel,
+              eachContentInsideDay: [{
+                  title: request.body.title,
+                  description: request.body.description,
+                  typeOfContent: request.body.typeOfContent,
+                  LinkOfContent: request.body.LinkOfContent
+              }]
+          }  
+      }).save().then(async data=>{
+          console.log(data)
+          response.status(201).json({data}); 
+          })
+          .catch(error=>next(console.log(error)));
+    }
+
+    
+exports.addContentToDayFrontend = async (request,response,next)=>{
+
+  const newContent = await request.body.eachContentInsideDay; // Content to add
+  console.log(newContent);
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  console.log(request.body.id);
+    
+      try{
+      const day = await daySchema.findOne({_id:request.body.id});
+      console.log(day)
+      const result = await daySchema.updateOne({//Use return because use of two query actions 
+          _id:request.body.id
+      },{
+          $push:{"day.eachContentInsideDay": newContent}
+              
+      })
+      // console.log("////////////////////////////////////////////")
+      // console.log(day)
+      // console.log(result)
+      response.status(200).json({ message: 'Content added successfully', result });
+
+      }catch{
+          next(console.log(error))
+      }
+      
+}
+
+module.exports.products = async (req, res) => {
+  const productRequests = await productRequestSchema.find();
+  const dataOfProducts = [];
+
+  productRequests.forEach(async (element,index)=>{
+    dataOfProducts.push( await productSchema.findOne(element.productId));
+  })
+
+
+  setTimeout(async()=>{
+    
+    console.log("/////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~///////////////////////")
+    
+    const combinedArray = productRequests.map((item, index) => ({
+      ...item,
+      productData: dataOfProducts[index], // Assuming the property name is 'value'
+    }));
+    
+  console.log("@########################@@@@@@@@@@@@@@@@tryyyyyyyyyyyyyyyyyyyyyy@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
+    console.log(combinedArray);
+
+
+  console.log("@########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  // console.log(students);
+  console.log(productRequests);
+  // console.log(productRequests[0].productId);
+  console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  console.log(dataOfProducts);
+  console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
+      res.render('admin/productRequests', {
+        combinedArray
+      });
+    },3000); 
+}
+
+
+module.exports.productDelivered = async (req, res) => {
+
+  console.log(" id of product delivered")
+  console.log(req.body.id)
+
+  productRequestSchema.findOne({
+    _id:req.body.id
+    }).then((data)=>{
+      console.log("data")
+      console.log(data)
+        if(!data){
+            throw new Error("Request is not found");
+        }   
+        return productRequestSchema.updateOne({//Use return because use of two query actions 
+            _id:req.body.id
+        },{
+            $set:{
+              isDelivered: true,
+            }
+        })   
+    })
+    .then(data=>{
+      console.log("after delivery")
+      console.log(data)
+                res.status(201).json({data});
+               
+        })
+        .catch(error=>next(error));
+    
+}
+
+module.exports.showProducts = async (req, res) => {    
+  const products = await productSchema.find();
+  console.log(products);
+
+  res.render('admin/products', {
+    products
+  });
+}
+
+
+module.exports.addNewProducts = async (req, res) => {    
+      res.render('admin/addNewProduct', {
+      });
+}
+
+

@@ -58,7 +58,7 @@
                                 
                               </tbody>
                             </table>    
-                        
+                        <span id="productId" style="color: red; visibility: hidden;"><%= oneProductDetails.id %></span>
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
@@ -71,9 +71,6 @@
 
         <div class="container-fluid-xxl position-relative mb-0 p-0">
             <div class="container-fluid-xxl py-5 intro-header">
-                <span class="introTopRight d-xxl-block" style="z-index: 1000;"></span>
-                <span class="introBottomLeft "></span>
-                <span class="dotsDownToUpIntro animate__animated animate__infinite animate__fadeInUp"></span>
                   
                 <!-- data-wow-delay="0.6s" -->
                 <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" > البيانات</p>
@@ -84,47 +81,47 @@
                     
                             
                         
-                            <input type="text" class="form-control mb-3" placeholder="اسم المذكرة" value="<%=oneProductDetails.productName%>" disabled id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <input type="text" class="form-control mb-3" placeholder="سعر المذكرة" value="<%oneProductDetails.productPrice%>" disabled id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" class="form-control mb-3" placeholder="اسم المذكرة" value="<%=oneProductDetails.productName%>" disabled id="productName" aria-describedby="productName">
+                            <input type="text" class="form-control mb-3" placeholder="سعر المذكرة" value="<%oneProductDetails.productPrice%>" disabled id="productPrice" aria-describedby="productPrice">
                        
                     <div class="row mb-3">
                         <div class="col">
                             <% if(user){ %>
-                        <input type="text" class="form-control" value="<%= user.firstName %>" disabled placeholder="الاسم الأول" aria-label="First name">
+                        <input type="text" class="form-control" id="firstName" value="<%= user.firstName %>" disabled placeholder="الاسم الأول" aria-label="firstName">
                             <%}%>
                         </div>
                         <div class="col">
                             <% if(user){ %>
-                                <input type="text" class="form-control" value="<%= user.lastName %>" disabled placeholder="الاسم الأول" aria-label="First name">
+                                <input type="text" class="form-control" id="lastName" value="<%= user.lastName %>" disabled placeholder="الاسم الأخير" aria-label="lastName">
                             <%}%>
                         </div>
                     </div>
                     <div class="row mb-5">
                         <% if(!user){ %>
                         <div class="col">
-                          <input type="text" class="form-control" placeholder="الاسم الأول" aria-label="First name">
+                          <input type="text" class="form-control" id="firstName" required placeholder="الاسم الأول" aria-label="firstName">
                         </div>
                         <%}%>
                         <% if(!user){ %>
                         <div class="col">
-                          <input type="text" class="form-control" placeholder="الاسم الاخير" aria-label="Last name">
+                          <input type="text" class="form-control" id="lastName" required placeholder="الاسم الاخير" aria-label="lastName">
                         </div>
                         <%}%>
 
                     </div>
                     <div class="row mb-3">
                         <div class="col col-lg-6 col-md-12" style="z-index: 99999;">
-                            <select class="form-select form-select-lg mb-2" aria-label="Default select example">
-                                <option selected>محافظة</option>
-                                <option value="1">كفر الشيخ</option>
+                            <select class="form-select form-select-lg mb-2" id="governate" required aria-label="governate">
+                                <!-- <option >محافظة</option> -->
+                                <option selected value="كفر الشيخ">كفر الشيخ</option>
                                 <!-- <option value="2">Two</option>
                                 <option value="3">Three</option> -->
                             </select>                        
                         </div>
                         <div class="col col-lg-6 col-md-12" style="z-index: 99999;">
-                            <select class="form-select form-select-lg mb-2" aria-label="Default select example">
-                                <option selected>مركز</option>
-                                <option value="1">قلين</option>
+                            <select class="form-select form-select-lg mb-2" id="city" required aria-label="city">
+                                <!-- <option >مركز</option> -->
+                                <option selected value="قلين">قلين</option>
                                 <!-- <option value="2">Two</option>
                                 <option value="3">Three</option> -->
                             </select>                         
@@ -132,29 +129,34 @@
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputEmail1" class="form-label">العنوان التفصيلي</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input type="text" class="form-control" required id="area" aria-describedby="area">
                     </div>
                     <% if(user){%>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">رقم الموبايل الأساسي</label>
-                            <input type="text" class="form-control" value="<%= user.phoneNumber %>" disabled id="exampleInputPassword1">
+                            <input type="text" class="form-control" id="firstPhoneNumber" value="<%= user.phoneNumber %>" disabled aria-label="firstPhoneNumber">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">رقم الموبايل الاحتياطي</label>
-                            <input type="text" class="form-control" value="<%= user.parentPhoneNumber %>" disabled id="exampleInputPassword1">
+                            <input type="text" class="form-control" id="secondPhoneNumber" value="<%= user.parentPhoneNumber %>" disabled aria-label="secondPhoneNumber">
                         </div>
                     <%}%>
                     <% if(!user){%>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">رقم الموبايل الأساسي</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1">
+                      <input type="text" class="form-control" id="firstPhoneNumber" required id="firstPhoneNumber">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">رقم الموبايل الاحتياطي</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1">
+                        <input type="text" class="form-control" id="secondPhoneNumber" required id="secondPhoneNumber">
                     </div>
                     <%}%>
                     <button type="submit" class="btn btn-lg btn-primary" style="z-index: 99999;">احجز الآن</button>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                   </form>
                 
     
@@ -168,6 +170,67 @@
         <!-- Back to Top -->
         <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
     </div>
+
+    <script>
+
+        const productIdElement = document.getElementById('productId'); 
+        const firstNameElement = document.getElementById('firstName'); 
+        const lastNameElement = document.getElementById('lastName'); 
+        const governateElement = document.getElementById('governate'); 
+        const cityElement = document.getElementById('city'); 
+        const areaElement = document.getElementById('area'); 
+        const firstPhoneNumberElement = document.getElementById('firstPhoneNumber'); 
+        const secondPhoneNumberElement = document.getElementById('secondPhoneNumber'); 
+        const form = document.querySelector('form');
+
+        console.log(form);
+        console.log(productIdElement);
+        console.log(firstNameElement);
+        console.log(lastNameElement);
+        console.log(governateElement);
+        console.log(cityElement);
+        console.log(areaElement);
+        console.log(firstPhoneNumberElement);
+        console.log(secondPhoneNumberElement);
+
+        form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+
+            let firstName = form.firstName.value;
+            let lastName = form.lastName.value;
+            let governate = form.governate.value;
+            let city = form.city.value;
+            let area = form.area.value;
+            let firstPhoneNumber = form.firstPhoneNumber.value;
+            let secondPhoneNumber = form.secondPhoneNumber.value;
+            let productId = productIdElement.textContent;
+
+            console.log(firstName);
+            console.log(lastName);
+            console.log(governate);
+            console.log(city);
+            console.log(area);
+            console.log(firstPhoneNumber);
+            console.log(secondPhoneNumber);
+            console.log(productId);
+
+            const res = await fetch ("/myProductsInfo/request", {
+                method: "POST",
+                body: JSON.stringify({ productId, firstName, lastName, governate, city, area, firstPhoneNumber, secondPhoneNumber }),
+                headers: {"Content-Type":"application/json"}
+              }).then(async(response)=>{
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+              }).then(async(data)=>{
+                console.log(data);
+                window.location.href = '/myProductsInfo';
+              })
+
+        })
+
+    </script>
 
     <%- include("partials/jsScripts.ejs") -%>
 

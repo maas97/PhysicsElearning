@@ -1,0 +1,190 @@
+<%- include("../partials/htmlHead.ejs") -%>
+
+    <title>إضافة كورس جديد</title>
+    
+</head>
+
+<body>
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("../partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
+            
+            <%- include("../partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+                <% if(!user && !admin) { %>
+                <span class="circlesRotate animate__animated animate__infinite animate__fadeIn d-xl-block d-sm-none"></span>
+                <% } %>  
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">مرحبا بكم في  </p>
+                            <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">منصة Hyper Physics للفيزياء </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">م/ محمد رمضان</p>
+                    <% if(!user && !admin) { %>
+
+                            <a href="/login" class="btn btnheadstyle mainSubscBtn py-sm-3 px-sm-5 rounded-pill me-3 animate__animated animate__slideInLeft fs-3"><b>اشترك الان</b> </a>
+                            <!-- <a href="" class="btn btnheadstyle  py-sm-3 px-sm-5 rounded-pill animated slideInRight"> </a> -->
+                    <% } %>  
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0">
+        <div class="container-fluid-xxl py-5 intro-header">
+         
+            <!-- data-wow-delay="0.6s" -->
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" >إضافة كورس جديد</p>
+            
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    
+
+            <form class="p-5 mt-4 g-3" id="addCourseData" dir="rtl" style="width: 80%;"> 
+                    
+                
+                <div class="row mb-5">
+                    <div class="col">
+                      <input type="text" id="courseName" class="form-control" required placeholder="اسم الكورس" aria-label="courseName">
+                    </div>
+                    <div class="col">
+                      <input type="text" id="courseDescription" class="form-control" required placeholder="وصف الكورس" aria-label="courseDescription">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col col-lg-12 col-md-12">
+                        <select class="form-select form-select-lg mb-2" id="educationalLevel" required aria-label="Default select example">
+                            <option selected>السنة الدراسية</option>
+                            <option value="1">أولى ثانوي</option>
+                            <option value="2">ثاني ثانوي</option>
+                            <option value="3">ثالث ثانوي</option>
+                        </select>                        
+                    </div>
+                    
+                </div>
+                <div class="row mb-5">
+                    <div class="col">
+                        <select class="form-select form-select-lg mb-2" id="month" required aria-label="Default select example">
+                            <option selected>الشهر</option>
+                            <option value="1">يناير</option>
+                            <option value="2">فبراير</option>
+                            <option value="3">مارس</option>
+                            <option value="4">إبريل</option>
+                            <option value="5">مايو</option>
+                            <option value="6">يونيو</option>
+                            <option value="7">يوليو</option>
+                            <option value="8">أغسطس</option>
+                            <option value="9">سبتمبر</option>
+                            <option value="10">أكتوبر</option>
+                            <option value="11">نوفمبر</option>
+                            <option value="12">ديسمبر</option>
+                        </select>                     
+                    </div>
+                    <div class="col">
+                      <input type="number" class="form-control" id="price" required placeholder="سعر الكورس" aria-label="courseDescription">
+                    </div>
+                </div>
+               
+                <button type="submit" class="btn btn-lg btn-primary" style="z-index: 99999;">أضف الكورس</button>
+                <a href="/adminCourses" class="btn btn-lg btn-secondary" style="z-index: 99999; text-decoration: none;">الرجوع إلى صفحة الكورسات </a>
+              </form>
+
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+        
+
+        <%- include("../partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+
+    <script>
+      const form = document.getElementById('addCourseData');
+      const courseNameElement = document.getElementById("courseName");
+      const courseDescriptionElement = document.getElementById("courseDescription");
+      const educationalLevelElement = document.getElementById("educationalLevel");
+      const coursePriceElement = document.getElementById("price");
+      const courseMonthElement = document.getElementById("month");
+
+      console.log(form);
+      console.log(courseNameElement);
+      console.log(courseDescriptionElement);
+      console.log(educationalLevelElement);
+      console.log(coursePriceElement);
+      console.log(courseMonthElement);
+
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const courseName = form.courseName.value;
+        const courseDescription = form.courseDescription.value;
+        const educationalLevel = form.educationalLevel.value;
+        const price = form.price.value;
+        const month = form.month.value;
+       
+        console.log(courseName);
+        console.log(courseDescription);
+        console.log(educationalLevel);
+        console.log(price);
+        console.log(month);
+
+
+
+        const res = await fetch ("/coursedetails", {
+            method: "POST",
+            body: JSON.stringify({ courseName, courseDescription, educationalLevel , price, month}),
+            headers: {"Content-Type":"application/json"}
+          }).then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(dataFromFirstRequest => {
+            // Process data from the first request
+            console.log('Data from the first request:', dataFromFirstRequest);
+            window.location.href = `/adminCourses`;
+            
+        })
+        .catch(error => {
+            // Handle errors from any of the fetch requests
+            console.error('Error:', error);
+        });
+
+         
+      })
+
+
+    </script>
+ 
+
+    <%- include("../partials/jsScripts.ejs") -%>

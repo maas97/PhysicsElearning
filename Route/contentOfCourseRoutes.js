@@ -8,13 +8,13 @@ router
     .route("/days")
     // .all(authorization.checkRoot)
     .get(controller.getAllDays)
-    .post(validateMW ,controller.addDay)
+    .post(validateMW ,controller.addDayAPI)    
     .patch(validateMW ,controller.updateDay)
     .delete(validateMW ,controller.deleteDay);
 
 router
     .route("/addContentToDay")
-    .post(controller.addContentToDay);
+    .post(controller.addContentToDayAPI);
 
 router
     .route("/contents/:id")

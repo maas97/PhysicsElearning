@@ -30,7 +30,7 @@ exports.getDayById=(request,response,next)=>{
 
 
 
-exports.addDay = async (request,response,next)=>{
+exports.addDayAPI = async (request,response,next)=>{
         new contentSchema({
             day:{
                 dayNumber: request.body.day.dayNumber,
@@ -51,7 +51,7 @@ exports.addDay = async (request,response,next)=>{
 
 
 
-exports.addContentToDay = async (request,response,next)=>{
+exports.addContentToDayAPI = async (request,response,next)=>{
 
     const newContent = await request.body.day.eachContentInsideDay; // Content to add
     console.log(newContent);

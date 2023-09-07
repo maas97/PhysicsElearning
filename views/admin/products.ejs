@@ -1,0 +1,134 @@
+<%- include("../partials/htmlHead.ejs") -%>
+
+    <title>ملزماتي</title>
+    
+</head>
+
+<body>
+
+
+    <!-- container of website -->
+    <div class="container-fluid-xxl bg-white p-0">
+        <%- include("../partials/preloader.ejs") -%>
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid-xxl w-100 position-relative mb-sm-0 p-0">
+            
+            <%- include("../partials/navbar.ejs") -%>
+            
+            <div class="container-fluid-xxl w-100 py-5 hero-header">
+                <span class="dotsUpToDown animate__animated animate__infinite animate__slow animate__fadeInDown"></span>
+                <span class="dotsDownToUp animate__animated animate__infinite animate__fadeOutUp animate__delay-3s"></span>
+              
+                
+                <span class="arrowsUp animate__animated animate__infinite animate__fadeInUpBig"></span>
+                <span class="waves"></span>
+                <div class="container-fluid my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+
+                        <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
+                            <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">هذه الصفحة مخصصه </p>
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;"> لعرض الملازم</p>
+                 
+                        
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+    <!-- intro -->
+
+    <div class="container-fluid-xxl position-relative mb-0 p-0" style="min-height: 90vh;">
+        <div class="container-fluid-xxl py-5">
+            <% if(products.length > 0) { %>
+           
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" style="width:40% ;"> الملازم المتاحة الآن</p>
+        
+            <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" style="height: 75vh; overflow: scroll;" data-wow-offset="350">
+                <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
+                    <table class="table text-center table-info table-striped mb-5" style="width: 80%; margin: 70px;" dir="rtl">
+                        <thead>
+                          <tr class="fw-bolder fs-5">
+                            <th scope="col">#</th>
+                            <th scope="col">اسم الملزمة</th>
+                            <th scope="col">سعر الملزمة</th>
+                            <th scope="col">المرحلة الدراسية</th>    
+                            <th scope="col">العمليات على الملزمة</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                    <% let i =1 %>
+                    <% for (let product of products) { %>
+                          <tr>
+                            <th scope="row"><%= i %></th>
+                            <td><%= product.productName %> </td>
+                            <td><%= product.productPrice %> جنيه</td>
+                            <td><%= product.educationalLevel %> ثانوي</td>
+                            <td>
+                                <button value="<%= product._id %>" id="deleteProduct" class="btn btn-danger"> حذف ملزمة</button>
+                            </td>                            
+                          </tr>
+                          <% i++ %>
+                    <% } %>
+                        </tbody>
+                      </table>
+
+                  </div>
+            </div>
+            <% }  else { %>
+            <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" style="width:40% ;"> غير متاح ملازم حاليا</p>
+                 
+            <% } %>
+            
+        </div>
+    </div>
+
+        
+        <%- include("../partials/footer.ejs") -%>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn back-to-top btn-lg btn-lg-square  pt-2" aria-label="up"></a>
+    </div>
+
+ 
+<script>
+   const deleteProductButtons = document.querySelectorAll("#deleteProduct");
+   console.log(deleteProductButtons);
+   
+   deleteProductButtons.forEach(button => {
+
+        button.addEventListener("click", async (e)=>{
+            const id = button.value
+            console.log(button);
+            console.log(id);
+
+            const deliveryReq = await fetch ("/product", {
+                method: "DELETE",
+                body: JSON.stringify({ id }),
+                headers: {"Content-Type":"application/json"}
+              }).then(async(response)=>{
+                console.log(response);
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+              }).then(async(data)=>{
+                console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+                console.log(data);
+                location.reload();
+              })
+        })
+    })
+
+</script>
+
+
+
+    <%- include("../partials/jsScripts.ejs") -%>
