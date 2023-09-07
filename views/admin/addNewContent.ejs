@@ -116,12 +116,12 @@
       const LinkOfContentElement = document.getElementById("LinkOfContent");
       const counterElement = document.getElementById("counter");
 
-      console.log(form);
-      console.log(idElement);
-      console.log(titleElement);
-      console.log(descriptionElement);
-      console.log(typeOfContentElement);
-      console.log(LinkOfContentElement);
+    //   console.log(form);
+    //   console.log(idElement);
+    //   console.log(titleElement);
+    //   console.log(descriptionElement);
+    //   console.log(typeOfContentElement);
+    //   console.log(LinkOfContentElement);
      
 
       form.addEventListener('submit', async (e) => {
@@ -141,12 +141,12 @@
         "LinkOfContent" : LinkOfContent
        }
 
-        console.log(id);
-        console.log(title);
-        console.log(description);
-        console.log(typeOfContent);
-        console.log(LinkOfContent);
-        console.log(eachContentInsideDay);
+        // console.log(id);
+        // console.log(title);
+        // console.log(description);
+        // console.log(typeOfContent);
+        // console.log(LinkOfContent);
+        // console.log(eachContentInsideDay);
 
 
         const res = await fetch ("/addContentToDay", {
@@ -160,7 +160,7 @@
             return response.json();
         }).then(dataFromFirstRequest => {
             // Process data from the first request
-            console.log('Data from the first request:', dataFromFirstRequest);
+            // console.log('Data from the first request:', dataFromFirstRequest);
             window.location.href = `/adminCourses/${counter}`;
             
         })

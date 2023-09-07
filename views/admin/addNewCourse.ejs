@@ -135,12 +135,12 @@
       const coursePriceElement = document.getElementById("price");
       const courseMonthElement = document.getElementById("month");
 
-      console.log(form);
-      console.log(courseNameElement);
-      console.log(courseDescriptionElement);
-      console.log(educationalLevelElement);
-      console.log(coursePriceElement);
-      console.log(courseMonthElement);
+    //   console.log(form);
+    //   console.log(courseNameElement);
+    //   console.log(courseDescriptionElement);
+    //   console.log(educationalLevelElement);
+    //   console.log(coursePriceElement);
+    //   console.log(courseMonthElement);
 
 
       form.addEventListener('submit', async (e) => {
@@ -152,11 +152,11 @@
         const price = form.price.value;
         const month = form.month.value;
        
-        console.log(courseName);
-        console.log(courseDescription);
-        console.log(educationalLevel);
-        console.log(price);
-        console.log(month);
+        // console.log(courseName);
+        // console.log(courseDescription);
+        // console.log(educationalLevel);
+        // console.log(price);
+        // console.log(month);
 
 
 
@@ -171,7 +171,7 @@
             return response.json();
         }).then(dataFromFirstRequest => {
             // Process data from the first request
-            console.log('Data from the first request:', dataFromFirstRequest);
+            // console.log('Data from the first request:', dataFromFirstRequest);
             window.location.href = `/adminCourses`;
             
         })

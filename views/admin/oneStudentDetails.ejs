@@ -211,14 +211,14 @@
     document.addEventListener('DOMContentLoaded', function() {
       const confirmButtonElement = document.getElementById("confirmButton");
       const studentPhoneNumber = document.getElementById("studentPhoneNumber").textContent;
-      console.log("confirmButtonElement");
-      console.log(confirmButtonElement);
-      console.log(studentPhoneNumber);
-      console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+      // console.log("confirmButtonElement");
+      // console.log(confirmButtonElement);
+      // console.log(studentPhoneNumber);
+      // console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 
       if(confirmButtonElement){
         const courseCounter = confirmButtonElement.value;
-        console.log(courseCounter);
+        // console.log(courseCounter);
 
         confirmButtonElement.addEventListener('click', async (e) => {
         const res = await fetch ("/confirmCourseForStudent", {
@@ -233,7 +233,7 @@
             return response.json();
         }).then(dataFromFirstRequest => {
             // Process data from the first request
-            console.log('Data from the first request:', dataFromFirstRequest);
+            // console.log('Data from the first request:', dataFromFirstRequest);
             location.reload()            
         })
         .catch(error => {
@@ -263,12 +263,12 @@
     
     const removeButtonElement = document.getElementById("removeButton");
     const studentPhoneNumberToRemoveCourseFrom = document.getElementById("studentPhoneNumber").textContent;
-    console.log(removeButtonElement);
-    console.log(studentPhoneNumberToRemoveCourseFrom);
+    // console.log(removeButtonElement);
+    // console.log(studentPhoneNumberToRemoveCourseFrom);
 
     if(removeButtonElement){
       const removeCourseCounter = removeButtonElement.value;
-      console.log(removeCourseCounter);
+      // console.log(removeCourseCounter);
 
       removeButtonElement.addEventListener('click', async (e) => {
       const res = await fetch ("/removeCourseFromStudent", {
@@ -276,7 +276,7 @@
           body: JSON.stringify({ removeCourseCounter, studentPhoneNumberToRemoveCourseFrom }),
           headers: {"Content-Type":"application/json"}
         }).then(response => {
-          console.log('Data from response:', response);
+          // console.log('Data from response:', response);
 
             if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -284,7 +284,7 @@
             return response.json();
         }).then(dataFromFirstRequest => {
             // Process data from the first request
-            console.log('Data from the first request:', dataFromFirstRequest);
+            // console.log('Data from the first request:', dataFromFirstRequest);
             location.reload()            
         })
         .catch(error => {

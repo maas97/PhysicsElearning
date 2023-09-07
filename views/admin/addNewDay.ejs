@@ -129,26 +129,26 @@
       const counterElement = document.getElementById("counter");
 
 
-      console.log(form);
-      console.log(dayNumberElement);
-      console.log(educationalLevelElement);
-      console.log(titleElement);
-      console.log(descriptionElement);
-      console.log(typeOfContentElement);
-      console.log(LinkOfContentElement);
-      console.log(counterElement.textContent);
+    //   console.log(form);
+    //   console.log(dayNumberElement);
+    //   console.log(educationalLevelElement);
+    //   console.log(titleElement);
+    //   console.log(descriptionElement);
+    //   console.log(typeOfContentElement);
+    //   console.log(LinkOfContentElement);
+    //   console.log(counterElement.textContent);
      
-      console.log("########################################################")
+    //   console.log("########################################################")
       const currentURL = window.location.href;
-      console.log(currentURL);
+    //   console.log(currentURL);
 
       // Split the URL by slashes
       const urlParts = currentURL.split('/');
-      console.log(urlParts);
+    //   console.log(urlParts);
 
       // Find the last part of the URL, which should be the ID
       const id = urlParts[urlParts.length - 1];
-      console.log(id);
+    //   console.log(id);
 
 
       if (id) {
@@ -174,12 +174,12 @@
 
 
 
-        console.log(dayNumber);
-        console.log(educationalLevel);
-        console.log(title);
-        console.log(description);
-        console.log(typeOfContent);
-        console.log(LinkOfContent);
+        // console.log(dayNumber);
+        // console.log(educationalLevel);
+        // console.log(title);
+        // console.log(description);
+        // console.log(typeOfContent);
+        // console.log(LinkOfContent);
 
 
         const res = await fetch ("/addDay", {
@@ -193,10 +193,10 @@
             return response.json();
         }).then(dataFromFirstRequest => {
             // Process data from the first request
-            console.log('Data from the first request:', dataFromFirstRequest);
+            // console.log('Data from the first request:', dataFromFirstRequest);
             const _id = dataFromFirstRequest.data._id;
-            console.log('id is:  ', _id);
-            console.log('counter is:  ', counter);
+            // console.log('id is:  ', _id);
+            // console.log('counter is:  ', counter);
 
             // Second fetch request that depends on data from the first request
             return fetch('/addDayToCourse', {
@@ -215,7 +215,7 @@
         })
         .then(dataFromSecondRequest => {
             // Process data from the second request
-            console.log('Data from the second request:', dataFromSecondRequest);
+            // console.log('Data from the second request:', dataFromSecondRequest);
             // location.redirect(`/adminCourses/${counter}`);
             window.location.href = `/adminCourses/${counter}`;
 

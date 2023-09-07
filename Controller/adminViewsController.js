@@ -116,25 +116,25 @@ process.on('uncaughtException', function (error) {
 
   module.exports.confirmCourseForStudent = async (req, res) => {
     
-    console.log(req.body)
-    console.log(req.body.courseCounter)
+    // console.log(req.body)
+    // console.log(req.body.courseCounter)
     // console.log(req)
 
     const oneStudentDetails = await studentSchema.findOne({phoneNumber: req.body.studentPhoneNumber});
     // const oneCourseDetails =  studentSchema.find({phoneNumber: req.body.studentPhoneNumber});
-    console.log(oneStudentDetails);
-    console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+    // console.log(oneStudentDetails);
+    // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     // .findOne()
   
     // Replace 'yourObjectId' with the actual _id of the document you want to update
     const objectIdToUpdate = oneStudentDetails.id;
-    console.log("id")
-    console.log(objectIdToUpdate)
+    // console.log("id")
+    // console.log(objectIdToUpdate)
     
     // Replace 'counterValue' with the specific counter value you want to update
     const counterValueToUpdate = req.body.courseCounter;
-    console.log("counter value")
-    console.log(counterValueToUpdate)
+    // console.log("counter value")
+    // console.log(counterValueToUpdate)
 
     const filter = {
         _id: objectIdToUpdate,
@@ -154,8 +154,8 @@ process.on('uncaughtException', function (error) {
             return;
         }
     
-        console.log("***********************************************");
-        console.log(result);
+        // console.log("***********************************************");
+        // console.log(result);
       
         res.status(200).json({ message: 'Content added successfully' });
 
@@ -167,25 +167,25 @@ process.on('uncaughtException', function (error) {
 
     module.exports.removeCourseFromStudent = async (req, res) => {
     
-      console.log(req.body)
-      console.log(req.body.removeCourseCounter)
+      // console.log(req.body)
+      // console.log(req.body.removeCourseCounter)
       // console.log(req)
   
       const oneStudentDetails = await studentSchema.findOne({phoneNumber: req.body.studentPhoneNumberToRemoveCourseFrom});
       // const oneCourseDetails =  studentSchema.find({phoneNumber: req.body.studentPhoneNumberToRemoveCourseFrom});
-      console.log(oneStudentDetails);
-      console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+      // console.log(oneStudentDetails);
+      // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
       // .findOne()
     
       // Replace 'yourObjectId' with the actual _id of the document you want to update
       const objectIdToUpdate = oneStudentDetails.id;
-      console.log("id")
-      console.log(objectIdToUpdate)
+      // console.log("id")
+      // console.log(objectIdToUpdate)
       
       // Replace 'counterValue' with the specific counter value you want to update
       const counterValueToUpdate = req.body.removeCourseCounter;
-      console.log("counter value")
-      console.log(counterValueToUpdate)
+      // console.log("counter value")
+      // console.log(counterValueToUpdate)
   
       const filter = {
           _id: objectIdToUpdate,
@@ -205,8 +205,8 @@ process.on('uncaughtException', function (error) {
               return;
           }
       
-          console.log("***********************************************");
-          console.log(result);
+          // console.log("***********************************************");
+          // console.log(result);
         
           res.status(200).json({ message: 'Content added successfully' });
         
@@ -232,9 +232,9 @@ process.on('uncaughtException', function (error) {
     module.exports.getOneCourse = async (req, res) => {
 
         const currentCourseList = await courseDetailsSchema.findOne({counter: req.params.counter});
-        console.log(currentCourseList);
-        console.log(currentCourseList.currentCourseListContentId);
-        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        // console.log(currentCourseList);
+        // console.log(currentCourseList.currentCourseListContentId);
+        // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         // console.log(await daySchema.findOne( {_id: 6}));
       
         let daysOfCourseArray = [];
@@ -244,15 +244,15 @@ process.on('uncaughtException', function (error) {
       
 
         setTimeout(()=>{
-          console.log("///////////////////////////****************///////////////////////////////")
-          console.log("Course Days data")
-          console.log(daysOfCourseArray)
-          console.log("///////////////////////////****************///////////////////////////////")
-          console.log(currentCourseList)
+          // console.log("///////////////////////////****************///////////////////////////////")
+          // console.log("Course Days data")
+          // console.log(daysOfCourseArray)
+          // console.log("///////////////////////////****************///////////////////////////////")
+          // console.log(currentCourseList)
         
           daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
-          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-          console.log(daysOfCourseArray[daysOfCourseArray.length - 1])
+          // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+          // console.log(daysOfCourseArray[daysOfCourseArray.length - 1])
           let lastDayNumber
           if(daysOfCourseArray[daysOfCourseArray.length - 1]){
             lastDayNumber = daysOfCourseArray[daysOfCourseArray.length - 1].day.dayNumber;
@@ -260,10 +260,10 @@ process.on('uncaughtException', function (error) {
             lastDayNumber = 0;
           }
       
-          console.log(daysOfCourseArray);
-          console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+          // console.log(daysOfCourseArray);
+          // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
-          console.log(lastDayNumber);
+          // console.log(lastDayNumber);
       
       
           res.render('admin/oneCourseDetails', {
@@ -296,7 +296,7 @@ process.on('uncaughtException', function (error) {
 module.exports.pageOfAddingNewContentToDay = async (req, res) => {
   const oneDayDetails = await daySchema.findOne({_id: req.params._id});
   const oneCourseDetails = await courseDetailsSchema.findOne({counter: req.params.counter});
-console.log(oneDayDetails)
+// console.log(oneDayDetails)
   res.render('admin/addNewContent', {
     oneDayDetails,
     oneCourseDetails
@@ -317,7 +317,7 @@ console.log(oneDayDetails)
               }]
           }  
       }).save().then(async data=>{
-          console.log(data)
+          // console.log(data)
           response.status(201).json({data}); 
           })
           .catch(error=>next(console.log(error)));
@@ -327,13 +327,13 @@ console.log(oneDayDetails)
 exports.addContentToDayFrontend = async (request,response,next)=>{
 
   const newContent = await request.body.eachContentInsideDay; // Content to add
-  console.log(newContent);
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  console.log(request.body.id);
+  // console.log(newContent);
+  // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+  // console.log(request.body.id);
     
       try{
       const day = await daySchema.findOne({_id:request.body.id});
-      console.log(day)
+      // console.log(day)
       const result = await daySchema.updateOne({//Use return because use of two query actions 
           _id:request.body.id
       },{
@@ -362,25 +362,25 @@ module.exports.products = async (req, res) => {
 
   setTimeout(async()=>{
     
-    console.log("/////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~///////////////////////")
+    // console.log("/////////////////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~///////////////////////")
     
     const combinedArray = productRequests.map((item, index) => ({
       ...item,
       productData: dataOfProducts[index], // Assuming the property name is 'value'
     }));
     
-  console.log("@########################@@@@@@@@@@@@@@@@tryyyyyyyyyyyyyyyyyyyyyy@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  // console.log("@########################@@@@@@@@@@@@@@@@tryyyyyyyyyyyyyyyyyyyyyy@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
-    console.log(combinedArray);
+    // console.log(combinedArray);
 
 
-  console.log("@########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-  // console.log(students);
-  console.log(productRequests);
-  // console.log(productRequests[0].productId);
-  console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-  console.log(dataOfProducts);
-  console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  // console.log("@########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  // // console.log(students);
+  // console.log(productRequests);
+  // // console.log(productRequests[0].productId);
+  // console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  // console.log(dataOfProducts);
+  // console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
       res.render('admin/productRequests', {
         combinedArray
@@ -391,14 +391,14 @@ module.exports.products = async (req, res) => {
 
 module.exports.productDelivered = async (req, res) => {
 
-  console.log(" id of product delivered")
-  console.log(req.body.id)
+  // console.log(" id of product delivered")
+  // console.log(req.body.id)
 
   productRequestSchema.findOne({
     _id:req.body.id
     }).then((data)=>{
-      console.log("data")
-      console.log(data)
+      // console.log("data")
+      // console.log(data)
         if(!data){
             throw new Error("Request is not found");
         }   
@@ -411,8 +411,8 @@ module.exports.productDelivered = async (req, res) => {
         })   
     })
     .then(data=>{
-      console.log("after delivery")
-      console.log(data)
+      // console.log("after delivery")
+      // console.log(data)
                 res.status(201).json({data});
                
         })
@@ -422,7 +422,7 @@ module.exports.productDelivered = async (req, res) => {
 
 module.exports.showProducts = async (req, res) => {    
   const products = await productSchema.find();
-  console.log(products);
+  // console.log(products);
 
   res.render('admin/products', {
     products

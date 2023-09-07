@@ -177,12 +177,12 @@ module.exports.signup_post = (req,res,next)=>{
 
 module.exports.login_post = async (req, res, next) => {
   const { phoneNumber, password } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const admin = await Admin.login(phoneNumber, password);
-    console.log("===========================login controller admin=================================");
-      console.log(admin);
-      console.log("============================================================");
+    // console.log("===========================login controller admin=================================");
+    //   console.log(admin);
+    //   console.log("============================================================");
     if(admin){
       const token = createToken(admin._id);
       res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
@@ -190,9 +190,9 @@ module.exports.login_post = async (req, res, next) => {
     }else{
       const student = await Student.login(phoneNumber, password);
       const token = createToken(student._id);
-      console.log("===========================login controller student=================================");
-      console.log(token);
-      console.log("============================================================");
+      // console.log("===========================login controller student=================================");
+      // console.log(token);
+      // console.log("============================================================");
       res.cookie("jwt", token, {httpOnly: true, maxAge: maxAge * 1000});
       res.status(200).json({ student: student._id });
       // console.log(student._id);

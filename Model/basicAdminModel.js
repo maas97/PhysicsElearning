@@ -60,17 +60,17 @@ const Schema = new mongoose.Schema({
 })
 
 Schema.statics.login = async function(phoneNumber,password){
-    console.log(this);
+    // console.log(this);
     const admin = await this.findOne({phoneNumber});
-    console.log("-----------------schema login-----------------------------------");
-    console.log(admin);
-    console.log("----------------------------------------------------");
+    // console.log("-----------------schema login-----------------------------------");
+    // console.log(admin);
+    // console.log("----------------------------------------------------");
     
     if (admin){
         const authenticate = await bcrypt.compare(password, admin.password);
-    console.log("-----------------authenticate-----------------------------------");
-        console.log(authenticate);
-    console.log("----------------------------------------------------");
+    // console.log("-----------------authenticate-----------------------------------");
+    //     console.log(authenticate);
+    // console.log("----------------------------------------------------");
 
       if(authenticate){
         return admin;

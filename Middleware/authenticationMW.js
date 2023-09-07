@@ -39,8 +39,8 @@ const checkStudent = (req, res, next) => {
           next();
           } else{
             let student = await Student.findById(decodedToken.id);
-            console.log("studenttttttttttttt")
-            console.log(student)
+            // console.log("studenttttttttttttt")
+            // console.log(student)
             res.locals.user = student;
             res.locals.admin = null;
 

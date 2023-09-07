@@ -119,12 +119,12 @@
       const productPriceElement = document.getElementById("productPrice");
       const LinkOfPhotoOfProductElement = document.getElementById("LinkOfPhotoOfProduct");
 
-      console.log(form);
-      console.log(productNameElement);
-      console.log(productDescriptionElement);
-      console.log(educationalLevelElement);
-      console.log(productPriceElement);
-      console.log(LinkOfPhotoOfProductElement);
+    //   console.log(form);
+    //   console.log(productNameElement);
+    //   console.log(productDescriptionElement);
+    //   console.log(educationalLevelElement);
+    //   console.log(productPriceElement);
+    //   console.log(LinkOfPhotoOfProductElement);
 
 
       form.addEventListener('submit', async (e) => {
@@ -136,11 +136,11 @@
         const productPrice = form.productPrice.value;
         const LinkOfPhotoOfProduct = form.LinkOfPhotoOfProduct.value;
        
-        console.log(productName);
-        console.log(productDescription);
-        console.log(educationalLevel);
-        console.log(productPrice);
-        console.log(LinkOfPhotoOfProduct);
+        // console.log(productName);
+        // console.log(productDescription);
+        // console.log(educationalLevel);
+        // console.log(productPrice);
+        // console.log(LinkOfPhotoOfProduct);
 
 
 
@@ -155,7 +155,7 @@
             return response.json();
         }).then(dataFromFirstRequest => {
             // Process data from the first request
-            console.log('Data from the first request:', dataFromFirstRequest);
+            // console.log('Data from the first request:', dataFromFirstRequest);
             window.location.href = `/adminProducts`;
         })
         .catch(error => {

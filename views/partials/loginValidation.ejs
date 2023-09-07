@@ -12,8 +12,8 @@
       // get values
         const phoneNumber = form.phoneNumber.value;
         const password = form.password.value;
-        console.log(phoneNumber);
-        console.log(password);
+        // console.log(phoneNumber);
+        // console.log(password);
 
         try {
         const res = await fetch ("/login", {
@@ -22,9 +22,9 @@
         headers: {"Content-Type":"application/json"}
         });
         const data = await res.json();
-        console.log("**************************************************************************c");
-        console.log(data);
-        console.log(data.errors);
+        // console.log("**************************************************************************c");
+        // console.log(data);
+        // console.log(data.errors);
         if (data.errors) {
                 // emailError.textContent = data.errors.email;
                 passwordError.textContent = data.errors.password || data.errors.phoneNumber;
@@ -39,7 +39,7 @@
 
         } catch (error) {
             res.status(400).JSON({error});
-            console.log(error);
+            // console.log(error);
         }  
   });
   </script>

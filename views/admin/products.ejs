@@ -100,28 +100,28 @@
  
 <script>
    const deleteProductButtons = document.querySelectorAll("#deleteProduct");
-   console.log(deleteProductButtons);
+//    console.log(deleteProductButtons);
    
    deleteProductButtons.forEach(button => {
 
         button.addEventListener("click", async (e)=>{
             const id = button.value
-            console.log(button);
-            console.log(id);
+            // console.log(button);
+            // console.log(id);
 
             const deliveryReq = await fetch ("/product", {
                 method: "DELETE",
                 body: JSON.stringify({ id }),
                 headers: {"Content-Type":"application/json"}
               }).then(async(response)=>{
-                console.log(response);
+                // console.log(response);
                 if (!response.ok) {
                 throw new Error('Network response was not ok');
                 }
                 return response.json();
               }).then(async(data)=>{
-                console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-                console.log(data);
+                // console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+                // console.log(data);
                 location.reload();
               })
         })

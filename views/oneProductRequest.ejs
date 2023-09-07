@@ -183,15 +183,15 @@
         const secondPhoneNumberElement = document.getElementById('secondPhoneNumber'); 
         const form = document.querySelector('form');
 
-        console.log(form);
-        console.log(productIdElement);
-        console.log(firstNameElement);
-        console.log(lastNameElement);
-        console.log(governateElement);
-        console.log(cityElement);
-        console.log(areaElement);
-        console.log(firstPhoneNumberElement);
-        console.log(secondPhoneNumberElement);
+        // console.log(form);
+        // console.log(productIdElement);
+        // console.log(firstNameElement);
+        // console.log(lastNameElement);
+        // console.log(governateElement);
+        // console.log(cityElement);
+        // console.log(areaElement);
+        // console.log(firstPhoneNumberElement);
+        // console.log(secondPhoneNumberElement);
 
         form.addEventListener('submit', async (e)=>{
         e.preventDefault();
@@ -205,14 +205,14 @@
             let secondPhoneNumber = form.secondPhoneNumber.value;
             let productId = productIdElement.textContent;
 
-            console.log(firstName);
-            console.log(lastName);
-            console.log(governate);
-            console.log(city);
-            console.log(area);
-            console.log(firstPhoneNumber);
-            console.log(secondPhoneNumber);
-            console.log(productId);
+            // console.log(firstName);
+            // console.log(lastName);
+            // console.log(governate);
+            // console.log(city);
+            // console.log(area);
+            // console.log(firstPhoneNumber);
+            // console.log(secondPhoneNumber);
+            // console.log(productId);
 
             const res = await fetch ("/myProductsInfo/request", {
                 method: "POST",
@@ -224,7 +224,7 @@
                 }
                 return response.json();
               }).then(async(data)=>{
-                console.log(data);
+                // console.log(data);
                 window.location.href = '/myProductsInfo';
               })
 

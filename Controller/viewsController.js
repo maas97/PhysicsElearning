@@ -35,13 +35,13 @@ module.exports.coursesInfo = async (req, res) => {
         res.locals.admin = null;
         next();
       } else {
-      console.log("##############################tokennnnnnnnnnnnn#######################################");
-        console.log(authToken);
-        console.log("##############################tokennnnnnnnnnnnn#######################################");
-        console.log(authToken);
+      // console.log("##############################tokennnnnnnnnnnnn#######################################");
+      //   console.log(authToken);
+      //   console.log("##############################tokennnnnnnnnnnnn#######################################");
+      //   console.log(authToken);
 
         const student = await studentSchema.findById(decodedToken.id);
-      console.log("#####################################################################");
+      // console.log("#####################################################################");
            
       let subscribedCourseDetails =[];
       student.coursesSubscribedTo.forEach( async element => {
@@ -63,20 +63,20 @@ module.exports.coursesInfo = async (req, res) => {
       const subscribedCounterArray = subscribedCourseDetails.map(object => object.counter);
       const requestedCounterArray = requestedCourseDetails.map(object => object.counter);
 
-      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-      console.log("sub counter")
-      console.log(subscribedCounterArray)
-      console.log("req counter")
-      console.log(requestedCounterArray)
+      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+      // console.log("sub counter")
+      // console.log(subscribedCounterArray)
+      // console.log("req counter")
+      // console.log(requestedCounterArray)
 
       const allCounterArray = allCounter.map(obj => obj.counter);
-      console.log("all counter")
-      console.log(allCounterArray)
+      // console.log("all counter")
+      // console.log(allCounterArray)
 
       const preUnsubscribedCounterArray = allCounterArray.filter(item => !requestedCounterArray.includes(item));
       const unsubscribedCounterArray = preUnsubscribedCounterArray.filter(item=> !subscribedCounterArray.includes(item));
-      console.log("unsub counter")
-      console.log(unsubscribedCounterArray)
+      // console.log("unsub counter")
+      // console.log(unsubscribedCounterArray)
 
       let unSubscribedCourseDetails =[];
       unsubscribedCounterArray.forEach(async element=>{
@@ -84,17 +84,17 @@ module.exports.coursesInfo = async (req, res) => {
 
       });
       setTimeout(()=>{
-        console.log("///////////////////////////****************///////////////////////////////")
-        console.log("student data")
-        console.log(student)
-        console.log("Requested Course Details")
-        console.log(requestedCourseDetails)
-        console.log("subscribed courses")
-        console.log(subscribedCourseDetails)
-        console.log("all courses")
-        console.log(allCourses)
-        console.log("unsubscribed courses")
-        console.log(unSubscribedCourseDetails)
+        // console.log("///////////////////////////****************///////////////////////////////")
+        // console.log("student data")
+        // console.log(student)
+        // console.log("Requested Course Details")
+        // console.log(requestedCourseDetails)
+        // console.log("subscribed courses")
+        // console.log(subscribedCourseDetails)
+        // console.log("all courses")
+        // console.log(allCourses)
+        // console.log("unsubscribed courses")
+        // console.log(unSubscribedCourseDetails)
       
         res.render('myCoursesInfo', {
           title: 'كورساتي',
@@ -163,9 +163,9 @@ module.exports.requestCourse = async (req, res, next) => {
 
 module.exports.courseList = async (req, res) => {
   const currentCourseList = await courseDetailsSchema.findOne({counter: req.params.counter});
-  console.log(currentCourseList);
-  console.log(currentCourseList.currentCourseListContentId);
-  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+  // console.log(currentCourseList);
+  // console.log(currentCourseList.currentCourseListContentId);
+  // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
   // console.log(await daySchema.findOne( {_id: 6}));
 
   let daysOfCourseArray = [];
@@ -176,16 +176,16 @@ module.exports.courseList = async (req, res) => {
 
 
   setTimeout(()=>{
-    console.log("///////////////////////////****************///////////////////////////////")
-    console.log("Course Days data")
-    console.log(daysOfCourseArray)
-    console.log("///////////////////////////****************///////////////////////////////")
-    console.log(currentCourseList)
+    // console.log("///////////////////////////****************///////////////////////////////")
+    // console.log("Course Days data")
+    // console.log(daysOfCourseArray)
+    // console.log("///////////////////////////****************///////////////////////////////")
+    // console.log(currentCourseList)
   
     daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
-    console.log(daysOfCourseArray);
+    // console.log(daysOfCourseArray);
 
 
     res.render('courseList', {
@@ -207,7 +207,7 @@ module.exports.courseList = async (req, res) => {
 module.exports.products = async(req, res) => {
 
 const products = await productSchema.find() ;
-console.log(products)
+// console.log(products)
 
         res.render('productsListInfo', {
           title: 'مذكراتي',
@@ -240,11 +240,11 @@ module.exports.requestProduct = (req,res,next)=>{
       productId:req.body.productId,
   }).save()// insertOne
   .then(productRequest=>{
-    console.log(productRequest)
+    // console.log(productRequest)
       res.status(201).json({productRequest});
   })
   .catch((error)=>{
-    console.log(error)
+    // console.log(error)
       res.status(400).json({ error });
   });
 }

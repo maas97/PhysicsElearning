@@ -129,14 +129,14 @@
  
 <script>
    const deleteCourseButtons = document.querySelectorAll("#deleteCourse");
-   console.log(deleteCourseButtons);
+//    console.log(deleteCourseButtons);
    
    deleteCourseButtons.forEach(button => {
 
         button.addEventListener("click", async (e)=>{
             const id = button.value
-            console.log(button);
-            console.log(id);
+            // console.log(button);
+            // console.log(id);
 
             const deleteReq = await fetch ("/coursedetails", {
                 method: "DELETE",
@@ -149,7 +149,7 @@
                 }
                 return response.json();
               }).then(async(data)=>{
-                console.log(data);
+                // console.log(data);
                 location.reload();
               })
         })

@@ -43,7 +43,7 @@ exports.addDayAPI = async (request,response,next)=>{
                 }]
             }  
         }).save().then(async data=>{
-            console.log(data)
+            // console.log(data)
             response.status(201).json({data}); 
             })
             .catch(error=>next(console.log(error)));
@@ -54,8 +54,8 @@ exports.addDayAPI = async (request,response,next)=>{
 exports.addContentToDayAPI = async (request,response,next)=>{
 
     const newContent = await request.body.day.eachContentInsideDay; // Content to add
-    console.log(newContent);
-    console.log(request.body._id);
+    // console.log(newContent);
+    // console.log(request.body._id);
       
         try{
         const day = await contentSchema.findOne({_id:request.body._id});
