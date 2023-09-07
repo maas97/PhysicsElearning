@@ -9,7 +9,6 @@ router
     .get(controller.getAllBasicAdmins)
     .post(basicAdminValidation.post ,validateMW ,controller.addBasicAdmin)
     .patch(basicAdminValidation.update ,validateMW ,controller.updateBasicAdmin)
-    // upload("basicAdmin"),
     .delete(validateMW ,controller.deleteBasicAdmin);
 
 module.exports = router;

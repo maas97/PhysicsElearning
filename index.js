@@ -40,9 +40,9 @@ process.on('uncaughtException', function (error) {
 mongoose
     .connect(mongoDB , CONFIG)
     .then(() => {
-        // console.log("database connected");
+        console.log("database connected");
         app.listen(port, () => {
-            // console.log(`server connected... http://localhost:${port}`);
+            console.log(`server connected... http://localhost:${port}`);
         });
     })
     .catch((error) => console.log(`DB connection error ${error} ${process.env}`));
