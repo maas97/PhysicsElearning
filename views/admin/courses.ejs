@@ -81,6 +81,7 @@
                             <td> <%= course.price %> جنيه </td>
                             <td>
                                 <a href="/adminCourses/<%=course.counter%>" class="btn btn-primary">عرض محتوى الكورس  </a>
+                                <a href="/adminCourses/<%=course.counter%>/edit"  class="btn btn-info text-white">تعديل نبذة الكورس  </a>
                                 <button id="deleteCourse" value="<%= courses[index].id %>" class="btn btn-danger m-3" data-bs-target="#exampleModal">  حذف الكورس </button>
                                 <!-- Modal -->
                                 <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

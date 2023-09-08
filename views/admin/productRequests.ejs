@@ -26,13 +26,17 @@
                 <span class="waves"></span>
                 <div class="container-fluid my-5 py-5 px-lg-5">
                     <div class="row g-5 py-5">
-
+                        <a href="/adminProducts/showProducts" class="btn btn-success " style="width: 20%;padding: 10px; margin-left:160px; margin-bottom: 45px; z-index: 9999;"> ملزماتي </a>
+                        <a href="/adminProducts/addNewProduct" class="btn btn-success " style="width: 20%;padding: 10px; margin-left:50px; margin-bottom: 45px; z-index: 9999;"> إضافة ملزمة جديدة</a>
+                       
                         <div class="col-lg-6 text-center welcome text-lg-start d-flex justify-content-center align-content-center flex-column ">
                             <p class="headtext mb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">هذه الصفحة مخصصه </p>
                             <p class="headtext pb-4 animate__animated animate__zoomIn fw-bold fs-1" dir="rtl">للقيام بالعمليات المختلفة على</p>
                             <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">توصيل الملازم</p>
-                 
-                        
+                    <% if(combinedArray.length === 0) { %>        
+                            <p class="headtext animate__animated animate__repeat-2 animate__flash fw-bold " dir="rtl" style="position: relative; bottom: 35px; font-size: 2.5rem;">لا توجد طلبات على الملازم إلى الآن</p>
+                    <% } %>
+                    
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img class="img-fluid mrimg mrimgresponsive animate__animated animate__fadeInUp" src="/assets/img/1 copy.webp" alt="">
@@ -51,9 +55,7 @@
         <div class="container-fluid-xxl py-5">
            
             <p class="introHeadline mb-4 wow animate__animated animate__fadeInRightBig fw-bold" data-wow-offset="350" style="width:40% ;">طلبات الملازم</p>
-            <a href="/adminProducts/showProducts" class="btn btn-success " style="width: 20%;padding: 10px; margin-left:160px; margin-bottom: 150px;"> ملزماتي </a>
-            <a href="/adminProducts/addNewProduct" class="btn btn-success " style="width: 20%;padding: 10px; margin-left:50px; margin-bottom: 150px;"> إضافة ملزمة جديدة</a>
-           
+            
             <div class="carouselIntro wow animate__animated animate__fadeInUp fw-bold" style="height: 75vh; overflow: scroll;" data-wow-offset="350">
                 <div id="myCarousel" class="carousel slide d-flex justify-content-center align-content-center"  data-bs-ride="carousel">
                     <table class="table text-center table-info table-striped mb-5" style="width: 80%; margin: 70px;" dir="rtl">
@@ -76,14 +78,15 @@
                         <tbody>
                     <% let i =1 %>
                     <% for (let product of combinedArray) { %>
+                        <% if( product.productData !== null ) { %>
                             <tr>
                             <th scope="row"><%= i %></th>
                             <td><%= product._doc.firstName %> <%= product._doc.lastName %> </td>
                             <td><%= product.productData.productName %> </td>
                             <td><%= product.productData.productPrice %> جنيه</td>
                             <td><%= product.productData.educationalLevel %> ثانوي</td>
-                            <td> <%= product._doc.firstPhoneNumber %> </td>
-                            <td> <%= product._doc.secondPhoneNumber %> </td>
+                            <td><%= product._doc.firstPhoneNumber %> </td>
+                            <td><%= product._doc.secondPhoneNumber %> </td>
                             <% if (product._doc.isDelivered){ %>
                                 <td >تم التوصيل بنجاح</td>
                             <% } else { %>
@@ -106,7 +109,8 @@
                           </tr>
                           <% i++ %>
 
-د                    <% } %>
+                       <% } %>
+                    <% } %>
                         </tbody>
                       </table>
 

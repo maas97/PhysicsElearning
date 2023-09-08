@@ -105,7 +105,7 @@ module.exports.coursesInfo = async (req, res) => {
           unsubscribedCounterArray,
           unSubscribedCourseDetails
         });
-      },3000);       
+      },2000);       
       }
     })
   }
@@ -193,7 +193,7 @@ module.exports.courseList = async (req, res) => {
       currentCourseList,
       daysOfCourseArray
     });
-  },3000); 
+  },2000); 
 
 
 

@@ -64,9 +64,9 @@
                           <tr class="fw-bolder fs-5">
                             <th scope="col col-sm-2">#</th>
                             <th scope="col col-sm-2">اسم الطالب</th>
-                            <th scope="col col-sm-2d-none d-lg-block">رقم الهاتف</th>
-                            <th scope="col col-sm-2 ">رقم ولي الأمر</th>
-                            <th scope="col col-sm-2 d-none d-lg-block">المرحلة الدراسية</th>
+                            <th scope="col col-sm-2">رقم الهاتف</th>
+                            <th scope="col col-sm-2">رقم ولي الأمر</th>
+                            <th scope="col col-sm-2">المرحلة الدراسية</th>
                             <th scope="col col-sm-2">العمليات على الطالب</th>
                           </tr>
                         </thead>
@@ -76,9 +76,9 @@
                           <tr>
                             <th scope="row"><%= i %></th>
                             <td><%= student.firstName %> <%= student.lastName %></td>
-                            <td class="d-none d-lg-block"><%= student.phoneNumber %></td>
-                            <td class="d-none d-lg-block"><%= student.parentPhoneNumber %></td>
-                            <td class="d-none d-lg-block"> <%= student.educationalLevel %> ثانوي </td>
+                            <td ><%= student.phoneNumber %></td>
+                            <td ><%= student.parentPhoneNumber %></td>
+                            <td > <%= student.educationalLevel %> ثانوي </td>
                             <td>
                                 <a href="/adminStudents/<%=student.phoneNumber%>" class="btn btn-primary">عرض الطالب </a>
                                 <!-- <button class="btn btn-danger m-3"> حظر الطالب </button> -->

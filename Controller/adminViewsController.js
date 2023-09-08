@@ -276,6 +276,28 @@ process.on('uncaughtException', function (error) {
     }
 
 
+    
+    module.exports.pageOfEditOneCourse = async (req, res) => {
+
+      const currentCourseList = await courseDetailsSchema.findOne({counter: req.params.counter});
+      console.log(currentCourseList);
+      // console.log(currentCourseList.currentCourseListContentId);
+      // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+      // console.log(await daySchema.findOne( {_id: 6}));
+    
+      setTimeout(()=>{
+     
+    
+        res.render('admin/editOneCourse', {
+          currentCourseList,
+          
+        });
+      },2000); 
+
+  }
+
+    
+
     module.exports.pageOfAddingNewCourse = async (req, res) => {
           res.render('admin/addNewCourse', {
           });
@@ -369,23 +391,23 @@ module.exports.products = async (req, res) => {
       productData: dataOfProducts[index], // Assuming the property name is 'value'
     }));
     
-  // console.log("@########################@@@@@@@@@@@@@@@@tryyyyyyyyyyyyyyyyyyyyyy@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  console.log("@########################@@@@@@@@@@@@@@@@tryyyyyyyyyyyyyyyyyyyyyy@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
-    // console.log(combinedArray);
+    console.log(combinedArray);
 
 
-  // console.log("@########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-  // // console.log(students);
-  // console.log(productRequests);
-  // // console.log(productRequests[0].productId);
-  // console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-  // console.log(dataOfProducts);
-  // console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  console.log("@########################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  // console.log(students);
+  console.log(productRequests);
+  // console.log(productRequests[0].productId);
+  console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  console.log(dataOfProducts);
+  console.log("@#############!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
       res.render('admin/productRequests', {
         combinedArray
       });
-    },3000); 
+    },2000); 
 }
 
 

@@ -12,6 +12,7 @@ router.get('/adminStudents/:phoneNumber'  ,adminViewsController.getOneStudent);
 router.get('/adminCourses', adminViewsController.courses);
 router.get('/adminCourses/addNewCourse'  ,adminViewsController.pageOfAddingNewCourse);
 router.get('/adminCourses/:counter'  ,adminViewsController.getOneCourse);
+router.get('/adminCourses/:counter/edit'  ,adminViewsController.pageOfEditOneCourse);
 router.get('/adminCourses/:counter/addNewDayToCourse/addNewContentToDay/:_id' , adminViewsController.pageOfAddingNewContentToDay)
 router.get('/adminCourses/:counter/addNewDayToCourse/:lastDay'  ,adminViewsController.pageOfAddingNewDayToCourse);
 router.get('/adminProducts', adminViewsController.products);

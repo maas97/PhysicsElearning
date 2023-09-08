@@ -83,7 +83,6 @@ exports.updateCourseDetails=(request,response,next)=>{
                 courseName:request.body.courseName,
                 courseDescription:request.body.courseDescription,
                 educationalLevel:request.body.educationalLevel,
-                semester:request.body.semester,
                 month:request.body.month,
                 price:request.body.price,
                 linkOfCoverOfCourse: request.body.linkOfCoverOfCourse
