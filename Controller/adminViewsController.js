@@ -32,22 +32,34 @@ process.on('uncaughtException', function (error) {
   
 
   module.exports.getOneStudent = async (req, res) => {
-    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-    // console.log(req.params.phoneNumber);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    console.log(req.params.phoneNumber);
     const oneStudentDetails = await studentSchema.findOne({phoneNumber: req.params.phoneNumber});
     
-    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$1");
-    // console.log(oneStudentDetails);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$1");
+    console.log(oneStudentDetails);
 
-    let subscribedCourseDetails =[];
+    let subscribedCourseDetailsWithNulls =[];
     oneStudentDetails.coursesSubscribedTo.forEach( async element => {
       if(element.isConfirmed === true){
-        subscribedCourseDetails.push(await courseDetailsSchema.findOne( {counter: element.counter}) );
+        subscribedCourseDetailsWithNulls.push(await courseDetailsSchema.findOne( {counter: element.counter}) );
+        console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ififiifififif");
+        console.log(subscribedCourseDetailsWithNulls)
       }      
     });
 
-    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$2");
-    // console.log(subscribedCourseDetails);
+
+
+  setTimeout(async()=>{
+
+
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$2");
+    console.log(subscribedCourseDetailsWithNulls);
+    console.log(subscribedCourseDetailsWithNulls.length);
+
+    const subscribedCourseDetails = subscribedCourseDetailsWithNulls.filter(item => item !== null);
+
+
 
     let requestedCourseDetails = [];
     oneStudentDetails.coursesSubscribedTo.forEach( async element => {
@@ -56,47 +68,67 @@ process.on('uncaughtException', function (error) {
       }      
     });
 
-    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$3");
-    // console.log(requestedCourseDetails);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$3");
+    console.log(requestedCourseDetails);
+    console.log(subscribedCourseDetails.length);
+    console.log(subscribedCourseDetails);
 
-    let allCourses = await courseDetailsSchema.find();
+    // let allCourses = await courseDetailsSchema.find();
     let allCounter = await courseDetailsSchema.find({},{counter:1,_id:0});
-  
-    const subscribedCounterArray = subscribedCourseDetails.map(object => object.counter);
-    const requestedCounterArray = requestedCourseDetails.map(object => object.counter);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
+    console.log(allCounter);
 
-    // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-    // console.log("sub counter")
-    // console.log(subscribedCounterArray)
-    // console.log("req counter")
-    // console.log(requestedCounterArray)
+    console.log(subscribedCourseDetails);
+    console.log(subscribedCourseDetails.length);
+    
+    let subscribedCounterArray = [];
+    if(subscribedCourseDetails.length > 0){
+       subscribedCounterArray = subscribedCourseDetails.map(object => object.counter);
+      console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$5");
+      console.log(subscribedCounterArray);
+    }
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$66666666666666666666");
+    
+    console.log(subscribedCounterArray);
+
+
+    const requestedCounterArray = requestedCourseDetails.map(object => object.counter);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$5");
+    console.log(requestedCounterArray);
+
+    console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+  
+    console.log("req counter")
+    console.log(requestedCounterArray)
 
     const allCounterArray = allCounter.map(obj => obj.counter);
-    // console.log("all counter")
-    // console.log(allCounterArray)
+    console.log("all counter")
+    console.log(allCounterArray)
 
     const preUnsubscribedCounterArray = allCounterArray.filter(item => !requestedCounterArray.includes(item));
     const unsubscribedCounterArray = preUnsubscribedCounterArray.filter(item=> !subscribedCounterArray.includes(item));
-    // console.log("unsub counter")
-    // console.log(unsubscribedCounterArray)
+    console.log("unsub counter")
+    console.log(unsubscribedCounterArray)
 
     let unSubscribedCourseDetails =[];
     unsubscribedCounterArray.forEach(async element=>{
     unSubscribedCourseDetails.push(await courseDetailsSchema.findOne({counter: element}))
     });
 
-  setTimeout(()=>{
-    // let coursesCounters = [];
-    // oneStudentDetails.coursesSubscribedTo.forEach( async element => {
-    //       console.log("))))))))))))))))))))))))))))))))))))))))))))))))))))");  
-    //       console.log(element.counter)
-    //       coursesCounters.push(element.counter );
-    //   });
+
+
+
+    let coursesCounters = [];
+    oneStudentDetails.coursesSubscribedTo.forEach( async element => {
+          console.log("))))))))))))))))))))))))))))))))))))))))))))))))))))");  
+          console.log(element.counter)
+          coursesCounters.push(element.counter );
+      });
     // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$1");
     // console.log(oneStudentDetails)
 
-    // console.log("$$$$$$$$$$$$$$$$$$$$$$$sub$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$2");
-    // console.log(subscribedCourseDetails);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$subbbbbbbbbbbbbbbb$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$2");
+    console.log(subscribedCourseDetails);
 
     // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$req$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$3");
     // console.log(requestedCourseDetails);
@@ -237,25 +269,35 @@ process.on('uncaughtException', function (error) {
         // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         // console.log(await daySchema.findOne( {_id: 6}));
       
-        let daysOfCourseArray = [];
+        let daysArray = [];
         currentCourseList.currentCourseListContentId.forEach( async element => {
-            daysOfCourseArray.push(await daySchema.findOne( {_id: element}) );
+          daysArray.push(await daySchema.findOne( {_id: element}) );
         });      
       
 
         setTimeout(()=>{
           // console.log("///////////////////////////****************///////////////////////////////")
-          // console.log("Course Days data")
-          // console.log(daysOfCourseArray)
-          // console.log("///////////////////////////****************///////////////////////////////")
-          // console.log(currentCourseList)
+          console.log("Course Days data with nulls")
+          console.log(daysArray)
+          // console.log(daysOfCourseArray[daysOfCourseArray.length - 1].day)
+          console.log("///////////////////////////****************///////////////////////////////")
+          console.log(currentCourseList)
+          console.log("Course Days data without nulls")
         
+          const daysOfCourseArray = daysArray.filter(item => item !== null);
+          console.log(daysOfCourseArray)
+
+          console.log("sorting course Days")
+
           daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
+          console.log(daysOfCourseArray)
+
+          
           // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
           // console.log(daysOfCourseArray[daysOfCourseArray.length - 1])
           let lastDayNumber
-          if(daysOfCourseArray[daysOfCourseArray.length - 1]){
-            lastDayNumber = daysOfCourseArray[daysOfCourseArray.length - 1].day.dayNumber;
+          if(daysOfCourseArray[daysOfCourseArray.length - 1] ){
+                  lastDayNumber = daysOfCourseArray[daysOfCourseArray.length - 1].day.dayNumber;
           } else {
             lastDayNumber = 0;
           }
@@ -271,7 +313,7 @@ process.on('uncaughtException', function (error) {
             daysOfCourseArray,
             lastDayNumber
           });
-        },2000); 
+        },1000); 
 
     }
 

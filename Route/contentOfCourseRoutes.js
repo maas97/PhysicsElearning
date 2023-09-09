@@ -16,6 +16,11 @@ router
     .route("/addContentToDay")
     .post(controller.addContentToDayAPI);
 
+    router
+    .route("/deleteContentOfDay")
+    .delete(controller.deleteContentOfDayAPI);
+
+
 router
     .route("/contents/:id")
     .get(controller.getDayById);

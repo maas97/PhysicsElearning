@@ -35,20 +35,22 @@ module.exports.coursesInfo = async (req, res) => {
         res.locals.admin = null;
         next();
       } else {
-      // console.log("##############################tokennnnnnnnnnnnn#######################################");
-      //   console.log(authToken);
-      //   console.log("##############################tokennnnnnnnnnnnn#######################################");
-      //   console.log(authToken);
+      console.log("##############################tokennnnnnnnnnnnn#######################################");
+        console.log(authToken);
+        console.log("##############################tokennnnnnnnnnnnn#######################################");
+        console.log(authToken);
 
         const student = await studentSchema.findById(decodedToken.id);
-      // console.log("#####################################################################");
+      console.log("#####################################################################");
+        console.log(student);
            
-      let subscribedCourseDetails =[];
+      let subscribedCourseDetailsWithNulls =[];
       student.coursesSubscribedTo.forEach( async element => {
         if(element.isConfirmed === true){
-          subscribedCourseDetails.push(await courseDetailsSchema.findOne( {counter: element.counter}) );
+          subscribedCourseDetailsWithNulls.push(await courseDetailsSchema.findOne( {counter: element.counter}) );
         }      
       });
+      console.log("1111111111111111111111111111111111111111111");
 
       let requestedCourseDetails = [];
       student.coursesSubscribedTo.forEach( async element => {
@@ -57,26 +59,50 @@ module.exports.coursesInfo = async (req, res) => {
         }      
       });
 
+      console.log("22222222222222222222222222222222222222222222222222");
+
       let allCourses = await courseDetailsSchema.find();
+      console.log("3333333333333333333333333333333333333333333333333333");
+
       let allCounter = await courseDetailsSchema.find({},{counter:1,_id:0});
+      console.log("44444444444444444444444444444444444444444444444444444");
+      console.log(subscribedCourseDetailsWithNulls);
+      console.log(subscribedCourseDetailsWithNulls.length);
+
+      const subscribedCourseDetails = subscribedCourseDetailsWithNulls.filter(item => item !== null);
+
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      console.log(subscribedCourseDetails);
+      console.log(subscribedCourseDetails.length);
     
-      const subscribedCounterArray = subscribedCourseDetails.map(object => object.counter);
+      let subscribedCounterArray = [];
+      if(subscribedCourseDetails.length > 0){
+         subscribedCounterArray = subscribedCourseDetails.map(object => object.counter);
+      }
+      console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$5");
+        console.log(subscribedCounterArray);
+      console.log("5555555555555555555555555555555555555555555555555555555555");
+
+      console.log(subscribedCounterArray);
+
+      console.log("5555555555555555555555555555555555555555555555555555555555");
+
       const requestedCounterArray = requestedCourseDetails.map(object => object.counter);
 
-      // console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-      // console.log("sub counter")
-      // console.log(subscribedCounterArray)
-      // console.log("req counter")
-      // console.log(requestedCounterArray)
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+      console.log("sub counter")
+      console.log(subscribedCounterArray)
+      console.log("req counter")
+      console.log(requestedCounterArray)
 
       const allCounterArray = allCounter.map(obj => obj.counter);
-      // console.log("all counter")
-      // console.log(allCounterArray)
+      console.log("all counter")
+      console.log(allCounterArray)
 
       const preUnsubscribedCounterArray = allCounterArray.filter(item => !requestedCounterArray.includes(item));
       const unsubscribedCounterArray = preUnsubscribedCounterArray.filter(item=> !subscribedCounterArray.includes(item));
-      // console.log("unsub counter")
-      // console.log(unsubscribedCounterArray)
+      console.log("unsub counter")
+      console.log(unsubscribedCounterArray)
 
       let unSubscribedCourseDetails =[];
       unsubscribedCounterArray.forEach(async element=>{
@@ -84,17 +110,17 @@ module.exports.coursesInfo = async (req, res) => {
 
       });
       setTimeout(()=>{
-        // console.log("///////////////////////////****************///////////////////////////////")
-        // console.log("student data")
-        // console.log(student)
-        // console.log("Requested Course Details")
-        // console.log(requestedCourseDetails)
-        // console.log("subscribed courses")
-        // console.log(subscribedCourseDetails)
-        // console.log("all courses")
-        // console.log(allCourses)
-        // console.log("unsubscribed courses")
-        // console.log(unSubscribedCourseDetails)
+        console.log("///////////////////////////****************///////////////////////////////")
+        console.log("student data")
+        console.log(student)
+        console.log("Requested Course Details")
+        console.log(requestedCourseDetails)
+        console.log("subscribed courses")
+        console.log(subscribedCourseDetails)
+        console.log("all courses")
+        console.log(allCourses)
+        console.log("unsubscribed courses")
+        console.log(unSubscribedCourseDetails)
       
         res.render('myCoursesInfo', {
           title: 'كورساتي',
@@ -176,12 +202,13 @@ module.exports.courseList = async (req, res) => {
 
 
   setTimeout(()=>{
-    // console.log("///////////////////////////****************///////////////////////////////")
-    // console.log("Course Days data")
-    // console.log(daysOfCourseArray)
-    // console.log("///////////////////////////****************///////////////////////////////")
-    // console.log(currentCourseList)
-  
+    console.log("///////////////////////////****************///////////////////////////////")
+    console.log("Course Days data")
+    console.log(daysOfCourseArray)
+    console.log("///////////////////////////****************///////////////////////////////")
+    console.log(currentCourseList)
+    console.log(currentCourseList.counter)
+    const currentCourseCounter = currentCourseList.counter;
     daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
     // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
@@ -191,7 +218,8 @@ module.exports.courseList = async (req, res) => {
     res.render('courseList', {
       title: 'كورساتي',
       currentCourseList,
-      daysOfCourseArray
+      daysOfCourseArray,
+      currentCourseCounter
     });
   },2000); 
 

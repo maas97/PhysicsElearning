@@ -117,3 +117,25 @@ exports.deleteDay=(request,response,next)=>{
     })
     .catch(error=>next(error));
 }
+
+
+exports.deleteContentOfDayAPI= async(request,response,next)=>{
+
+    const documentIdToUpdate = request.body.dayId; // The ID of the document you want to update
+    const objectIdToDelete = request.body.contentId; // The ID of the object you want to delete
+    
+    contentSchema.updateOne(
+      { _id: documentIdToUpdate }, // Filter to find the document to update
+      { $pull: { 'day.eachContentInsideDay': { _id: objectIdToDelete } } }, // Use $pull to remove the object by its ID
+      (err, result) => {
+        if (err) {
+          console.error('Error updating document:', err);
+          return;
+        }
+        console.log('Document updated successfully:', result);
+        response.status(200).json({result});
+
+      }
+    );
+
+    }

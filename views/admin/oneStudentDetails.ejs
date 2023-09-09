@@ -164,28 +164,27 @@
                     </thead>
                     <tbody>
                       <% if(subscribedCourseDetails.length > 0){ %>
-
-                        <% let j = 1%>
-                        <% for (let subCourse of subscribedCourseDetails) { %> 
-                              <tr>
-                                <th scope="row"><%= j %></th>
-                                <td><%= subCourse.courseName %> </td>
-                                <td><%= subCourse.month %> </td>
-                                <td><%= subCourse.price %> جنيه</td>
-                                <td>تم الاشتراك</td>
-                                <td>
-                                    <button class="btn btn-danger" id="removeButton" value="<%= subCourse.counter%>">  إلغاء اشتراك الكورس  </button>
-                                </td>
-                              </tr>
-                              <% j++ %>
-                        <% } %>
+                          <% let j = 1%>
+                          <% for (let subCourse of subscribedCourseDetails) { %> 
+                                <tr>
+                                  <th scope="row"><%= j %></th>
+                                  <td><%= subCourse.courseName %> </td>
+                                  <td><%= subCourse.month %> </td>
+                                  <td><%= subCourse.price %> جنيه</td>
+                                  <td>تم الاشتراك</td>
+                                  <td>
+                                      <button class="btn btn-danger" id="removeButton" value="<%= subCourse.counter%>">  إلغاء اشتراك الكورس  </button>
+                                  </td>
+                                </tr>
+                                <% j++ %>
+                          <% } %>
                         <% } else { %>
                           <tr>
                             <td colspan="6">
                             <span class="fs-2 ">لم يتم تأكيد حجز أي من الكورسات لهذا الطالب حتى الآن</span>
                             </td>
                           </tr>
-                          <% } %> 
+                        <% } %> 
                     </tbody>
                   </table>
               </div>

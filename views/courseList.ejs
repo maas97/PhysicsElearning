@@ -1,3 +1,7 @@
+<% for (let allowedCourse of user.coursesSubscribedTo) { %>
+<% if(allowedCourse.counter === currentCourseCounter ) { %>
+  <% if(allowedCourse.isConfirmed === true ) { %>
+
 <%- include("partials/htmlHead.ejs") -%>
 
     <title>كورساتي</title>
@@ -67,9 +71,9 @@
 
                   <div class="container-fluid-xxl position-relative mb-5 p-0 d-flex justify-content-center p-5 mt-5 mb-5" style="width: 80%; max-height: 80vh; overflow-y: scroll;" dir="rtl">
                     <div class="accordion col-10" id="accordionPanelsStayOpenExample">
-                      
+                    <% if(daysOfCourseArray.length > 0 ){ %>  
                     <% for (let day of daysOfCourseArray) { %>
-
+                      <% if( day !== null ) { %>
                       
                       <div class="accordion-item" style="width: max-width;">
                           <h2 class="accordion-header">
@@ -100,7 +104,11 @@
                         </div>
 
                         <% } %>
-                        
+                        <% } %>
+                        <% } else { %>
+                          <p class="introHeadline fs-4 mb-4 wow animate__animated animate__fadeInRightBig fw-bold mb-5" data-wow-offset="350"> لم يتم إضافة محتوى بعد </p>
+
+                        <% } %>
 
                       </div>
                   </div>
@@ -131,4 +139,8 @@
  
 
     <%- include("partials/jsScripts.ejs") -%>
+    <% } %>
 
+<% } %>
+
+<% } %>
