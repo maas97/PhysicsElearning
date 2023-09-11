@@ -194,25 +194,29 @@ module.exports.courseList = async (req, res) => {
   // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
   // console.log(await daySchema.findOne( {_id: 6}));
 
-  let daysOfCourseArray = [];
+  let daysOfCourseArrayWithNulls = [];
   currentCourseList.currentCourseListContentId.forEach( async element => {
-      daysOfCourseArray.push(await daySchema.findOne( {_id: element}) );
+    daysOfCourseArrayWithNulls.push(await daySchema.findOne( {_id: element}) );
   });
   // console.log(daysOfCourseArray);
 
 
   setTimeout(()=>{
     console.log("///////////////////////////****************///////////////////////////////")
-    console.log("Course Days data")
+    console.log("Course Days data with nulls")
+    console.log(daysOfCourseArrayWithNulls)
+    const daysOfCourseArray = daysOfCourseArrayWithNulls.filter(item => item !== null);
+    console.log("Course Days data without nulls")
     console.log(daysOfCourseArray)
+
     console.log("///////////////////////////****************///////////////////////////////")
     console.log(currentCourseList)
     console.log(currentCourseList.counter)
     const currentCourseCounter = currentCourseList.counter;
     daysOfCourseArray.sort((a, b) => a.day.dayNumber - b.day.dayNumber);
-    // console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
-    // console.log(daysOfCourseArray);
+    console.log(daysOfCourseArray);
 
 
     res.render('courseList', {
